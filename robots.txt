@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://praxisinitiative.org/sitemap.xml 

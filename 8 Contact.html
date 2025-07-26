@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Praxis Initiative</title>
+    <meta name="description" content="Contact Praxis Initiative for general inquiries, legal assistance, press, or to get involved in justice reform in Arizona.">
+    <link rel="canonical" href="https://praxisinitiative.org/8%20Contact.html">
+    <meta property="og:title" content="Contact | Praxis Initiative">
+    <meta property="og:description" content="Contact Praxis Initiative for general inquiries, legal assistance, press, or to get involved in justice reform in Arizona.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://praxisinitiative.org/8%20Contact.html">
+    <meta property="og:site_name" content="Praxis Initiative">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contact | Praxis Initiative">
+    <meta name="twitter:description" content="Contact Praxis Initiative for general inquiries, legal assistance, press, or to get involved in justice reform in Arizona.">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://js.givebutter.com/elements/latest.js"></script>
+</head>
+<body>
+
+    <div id="global-header"></div>
+
+    <main id="main-content" role="main">
+        <section class="hero">
+            <h1>Contact Our Team</h1>
+            <p>We respond within 48 hours to all inquiries.</p>
+        </section>
+
+        <div class="contact-container">
+            <section class="contact-info">
+                <div class="contact-method">
+                    <h2>General Inquiries</h2>
+                    <p>Email: info@praxisinitiative.org</p>
+                    <p>Phone: O: (480) 808-1800 | T: (888) 810-4080</p>
+                    <p>Address: 4022 E. Greenway Rd. Ste. 11 PMB 1046, Phoenix, AZ 85032</p>
+                </div>
+
+                <div class="contact-method">
+                    <h2>Press & Media</h2>
+                    <p>Email: Media@praxisinitiative.org</p>
+                    <p>Media kit available upon request</p>
+                </div>
+            </section>
+
+            <section class="contact-form">
+                <form id="contact-form" autocomplete="on" spellcheck="true">
+                    <input type="text" placeholder="Your Name" required autocomplete="name">
+                    <input type="email" placeholder="Email" required autocomplete="email">
+                    <select required title="Select a topic">
+                        <option value="">Select a topic</option>
+                        <option>Legal Assistance</option>
+                        <option>Volunteer Inquiry</option>
+                        <option>Donation Question</option>
+                        <option>Press Inquiry</option>
+                    </select>
+                    <textarea placeholder="Your message" required autocomplete="off" spellcheck="true"></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <footer id="global-footer" role="contentinfo"></footer>
+
+    <script src="js/components.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const nav = document.querySelector('.header-nav');
+            if (menuToggle && nav) {
+                menuToggle.addEventListener('click', () => {
+                    menuToggle.classList.toggle('is-active');
+                    nav.classList.toggle('is-active');
+                    const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                    menuToggle.setAttribute('aria-expanded', !isExpanded);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

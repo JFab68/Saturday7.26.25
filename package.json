@@ -1,0 +1,13 @@
+{
+  "name": "newsite",
+  "version": "1.0.1",
+  "description": "Praxis Initiative static site",
+  "main": "index.js",
+  "scripts": {
+    "release": "standard-version",
+    "build": "node scripts/build.js"
+  },
+  "devDependencies": {
+    "standard-version": "^9.5.0"
+  }
+}
