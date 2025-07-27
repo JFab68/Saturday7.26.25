@@ -4425,3 +4425,228 @@ html {
     }
 }
 
+
+/* ===== 4B CRIMINAL LEGAL REFORM PAGE ENHANCEMENTS ===== */
+
+/* Interactive Six Ps Framework */
+.interactive-framework .clickable-ps {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.interactive-framework .clickable-ps:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.interactive-framework .clickable-ps:hover .ps-icon {
+    transform: scale(1.1);
+}
+
+.ps-learn-more {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-top: 12px;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.clickable-ps:hover .ps-learn-more {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.ps-learn-more:hover {
+    background: var(--secondary-color);
+}
+
+/* Six Ps Modal */
+.ps-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    animation: fadeIn 0.3s ease;
+}
+
+.ps-modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 32px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    animation: slideIn 0.3s ease;
+}
+
+.ps-close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+}
+
+.ps-close:hover {
+    color: var(--primary-color);
+}
+
+/* Interactive Timeline */
+.interactive-timeline .clickable-era {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.interactive-timeline .clickable-era:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.era-learn-more {
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-top: 12px;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.clickable-era:hover .era-learn-more {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.era-learn-more:hover {
+    background: var(--primary-color);
+}
+
+/* Era Modal */
+.era-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    animation: fadeIn 0.3s ease;
+}
+
+.era-modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 32px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 700px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    animation: slideIn 0.3s ease;
+}
+
+.era-close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+}
+
+.era-close:hover {
+    color: var(--primary-color);
+}
+
+/* Modal Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { 
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Enhanced Impact Section */
+.impact-grid .impact-item {
+    transition: all 0.3s ease;
+}
+
+.impact-grid .impact-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.impact-grid .impact-item h4 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+    transition: all 0.3s ease;
+}
+
+.impact-grid .impact-item:hover h4 {
+    color: var(--secondary-color);
+    transform: scale(1.05);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .ps-modal-content,
+    .era-modal-content {
+        margin: 10% auto;
+        padding: 24px;
+        width: 95%;
+    }
+    
+    .interactive-framework .clickable-ps:hover {
+        transform: none;
+    }
+    
+    .interactive-timeline .clickable-era:hover {
+        transform: none;
+    }
+    
+    .ps-learn-more,
+    .era-learn-more {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+

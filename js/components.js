@@ -2278,3 +2278,417 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+
+// ===== 4B CRIMINAL LEGAL REFORM PAGE FUNCTIONALITY =====
+
+// Six Ps Framework Data
+const sixPsData = {
+    police: {
+        title: "Police Reform",
+        icon: "👮",
+        description: "Comprehensive police accountability and community-centered approaches",
+        details: [
+            "Community policing initiatives that build trust between law enforcement and communities",
+            "Bias training and cultural competency programs for all officers",
+            "Body camera requirements and transparency in police misconduct investigations",
+            "De-escalation training and mental health crisis intervention protocols",
+            "Civilian oversight boards with meaningful authority to investigate complaints"
+        ],
+        impact: "Studies show community policing reduces crime by 15-20% while improving police-community relations",
+        reforms: [
+            "Mandatory bias training for all officers",
+            "Community oversight of police departments",
+            "Investment in mental health crisis response teams",
+            "Transparency in use of force incidents"
+        ]
+    },
+    prosecution: {
+        title: "Prosecutorial Reform",
+        icon: "⚖️",
+        description: "Promoting fairness, transparency, and accountability in prosecutorial decisions",
+        details: [
+            "Prosecutorial discretion guidelines to ensure consistent and fair charging decisions",
+            "Transparency in plea bargaining processes and charging guidelines",
+            "Conviction integrity units to review potential wrongful convictions",
+            "Data collection on prosecutorial decisions to identify disparities",
+            "Training on implicit bias and cultural competency for prosecutors"
+        ],
+        impact: "Prosecutorial reforms can reduce wrongful convictions by 40% and improve case outcomes",
+        reforms: [
+            "Open file discovery policies",
+            "Conviction integrity units in all jurisdictions",
+            "Regular training on bias and ethics",
+            "Public reporting on prosecutorial metrics"
+        ]
+    },
+    pretrial: {
+        title: "Pretrial Justice",
+        icon: "🏛️",
+        description: "Ensuring fair and effective pretrial processes that don't penalize poverty",
+        details: [
+            "Risk assessment tools to guide pretrial detention decisions",
+            "Alternatives to cash bail that don't discriminate based on wealth",
+            "Pretrial services including supervision and support programs",
+            "Speedy trial protections to minimize time in pretrial detention",
+            "Court reminder systems to reduce failure to appear rates"
+        ],
+        impact: "Pretrial reform reduces jail populations by 25-30% while maintaining public safety",
+        reforms: [
+            "Eliminate cash bail for non-violent offenses",
+            "Expand pretrial services and supervision",
+            "Implement risk assessment tools",
+            "Strengthen speedy trial protections"
+        ]
+    },
+    probation: {
+        title: "Probation Reform",
+        icon: "📋",
+        description: "Evidence-based supervision focused on support and successful outcomes",
+        details: [
+            "Evidence-based supervision practices that reduce recidivism",
+            "Graduated sanctions that provide alternatives to revocation",
+            "Support services including job training, education, and mental health treatment",
+            "Reduced caseloads to allow for meaningful supervision and support",
+            "Performance metrics focused on successful completion rather than violations"
+        ],
+        impact: "Evidence-based probation reduces recidivism by 30% and improves completion rates",
+        reforms: [
+            "Implement evidence-based supervision practices",
+            "Expand support services for probationers",
+            "Reduce probation officer caseloads",
+            "Focus on successful completion rather than violations"
+        ]
+    },
+    prison: {
+        title: "Prison Reform",
+        icon: "🏢",
+        description: "Humane conditions and effective rehabilitation programming",
+        details: [
+            "Evidence-based rehabilitation programs including education and job training",
+            "Mental health and substance abuse treatment programs",
+            "Humane living conditions that meet constitutional standards",
+            "Family visitation and communication programs to maintain community ties",
+            "Preparation for reentry beginning on day one of incarceration"
+        ],
+        impact: "Comprehensive prison programming reduces recidivism by 35% and improves reentry outcomes",
+        reforms: [
+            "Expand education and job training programs",
+            "Improve mental health and substance abuse treatment",
+            "Ensure humane living conditions",
+            "Strengthen family connection programs"
+        ]
+    },
+    parole: {
+        title: "Parole & Reentry",
+        icon: "🚪",
+        description: "Comprehensive reentry support for successful community integration",
+        details: [
+            "Comprehensive reentry planning beginning before release",
+            "Housing assistance and transitional housing programs",
+            "Job placement services and employer engagement programs",
+            "Mental health and substance abuse treatment continuation",
+            "Family reunification and community support programs"
+        ],
+        impact: "Comprehensive reentry support reduces recidivism by 40% and improves employment outcomes",
+        reforms: [
+            "Expand transitional housing programs",
+            "Strengthen job placement services",
+            "Improve access to healthcare and treatment",
+            "Remove barriers to employment and housing"
+        ]
+    }
+};
+
+// Timeline Era Data
+const timelineData = {
+    copper: {
+        title: "Copper Time Era (Pre-1978)",
+        years: "Pre-1978",
+        description: "Arizona's original approach to criminal justice emphasized rehabilitation and individualized treatment",
+        characteristics: [
+            "Indeterminate sentencing allowed for individualized justice",
+            "Early release based on rehabilitation progress and good behavior",
+            "Lower incarceration rates with focus on treatment and reintegration",
+            "Judicial discretion in sentencing decisions",
+            "Emphasis on rehabilitation over punishment"
+        ],
+        outcomes: [
+            "Lower prison populations and costs",
+            "Higher successful reintegration rates",
+            "More individualized approach to justice",
+            "Greater judicial flexibility in sentencing"
+        ],
+        transition: "Growing concerns about sentencing disparities and public safety led to calls for more structured approaches"
+    },
+    oldcode: {
+        title: "Old Code Era (1978-1993)",
+        years: "1978-1993",
+        description: "Transitional period with structured sentencing guidelines balancing accountability and rehabilitation",
+        characteristics: [
+            "Structured sentencing guidelines with some judicial discretion",
+            "Balanced approach between accountability and rehabilitation",
+            "Moderate growth in incarceration rates",
+            "Introduction of more systematic sentencing practices",
+            "Continued focus on rehabilitation programming"
+        ],
+        outcomes: [
+            "More consistent sentencing practices",
+            "Moderate increase in prison populations",
+            "Maintained rehabilitation focus",
+            "Balanced approach to public safety and individual needs"
+        ],
+        transition: "Public pressure for tougher sentences and 'truth in sentencing' led to major policy changes in 1994"
+    },
+    truth: {
+        title: "Truth-in-Sentencing Era (1994-Present)",
+        years: "1994-Present",
+        description: "Mandatory minimum sentences and reduced discretion created current mass incarceration crisis",
+        characteristics: [
+            "Mandatory minimum sentences with limited judicial discretion",
+            "Truth-in-sentencing requiring 85% of sentence to be served",
+            "Dramatic increase in prison population and costs",
+            "Reduced focus on rehabilitation programming",
+            "Limited opportunities for early release"
+        ],
+        outcomes: [
+            "Prison population increased by 300%+",
+            "Annual corrections costs rose to $1.5 billion",
+            "Higher recidivism rates due to limited programming",
+            "Disproportionate impact on communities of color",
+            "Overcrowding and constitutional violations"
+        ],
+        reform_needs: [
+            "Restore judicial discretion in sentencing",
+            "Expand rehabilitation and education programs",
+            "Implement evidence-based sentencing practices",
+            "Address racial and economic disparities",
+            "Focus on successful reentry and community safety"
+        ]
+    }
+};
+
+// Show Six Ps Details
+function showPsDetails(psType) {
+    const data = sixPsData[psType];
+    if (!data) return;
+    
+    const modal = document.getElementById('ps-modal');
+    const content = document.getElementById('ps-details-content');
+    
+    content.innerHTML = `
+        <div class="ps-detail-header">
+            <div class="ps-detail-icon">${data.icon}</div>
+            <h2>${data.title}</h2>
+            <p class="ps-detail-description">${data.description}</p>
+        </div>
+        
+        <div class="ps-detail-section">
+            <h3>Key Reform Areas</h3>
+            <ul class="ps-detail-list">
+                ${data.details.map(detail => `<li>${detail}</li>`).join('')}
+            </ul>
+        </div>
+        
+        <div class="ps-detail-section">
+            <h3>Evidence-Based Impact</h3>
+            <p class="ps-impact">${data.impact}</p>
+        </div>
+        
+        <div class="ps-detail-section">
+            <h3>Specific Reforms Needed</h3>
+            <ul class="ps-reform-list">
+                ${data.reforms.map(reform => `<li>${reform}</li>`).join('')}
+            </ul>
+        </div>
+        
+        <div class="ps-detail-actions">
+            <button class="btn btn-primary" onclick="shareReform('${psType}')">Share This Reform</button>
+            <button class="btn btn-outline" onclick="closePsModal()">Close</button>
+        </div>
+    `;
+    
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+// Close Six Ps Modal
+function closePsModal() {
+    const modal = document.getElementById('ps-modal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// Show Era Details
+function showEraDetails(eraType) {
+    const data = timelineData[eraType];
+    if (!data) return;
+    
+    const modal = document.getElementById('era-modal');
+    const content = document.getElementById('era-details-content');
+    
+    let reformSection = '';
+    if (data.reform_needs) {
+        reformSection = `
+            <div class="era-detail-section">
+                <h3>Reform Priorities</h3>
+                <ul class="era-reform-list">
+                    ${data.reform_needs.map(reform => `<li>${reform}</li>`).join('')}
+                </ul>
+            </div>
+        `;
+    }
+    
+    content.innerHTML = `
+        <div class="era-detail-header">
+            <h2>${data.title}</h2>
+            <p class="era-detail-years">${data.years}</p>
+            <p class="era-detail-description">${data.description}</p>
+        </div>
+        
+        <div class="era-detail-section">
+            <h3>Key Characteristics</h3>
+            <ul class="era-detail-list">
+                ${data.characteristics.map(char => `<li>${char}</li>`).join('')}
+            </ul>
+        </div>
+        
+        <div class="era-detail-section">
+            <h3>Outcomes & Impact</h3>
+            <ul class="era-outcome-list">
+                ${data.outcomes.map(outcome => `<li>${outcome}</li>`).join('')}
+            </ul>
+        </div>
+        
+        ${reformSection}
+        
+        ${data.transition ? `
+            <div class="era-detail-section">
+                <h3>Historical Transition</h3>
+                <p class="era-transition">${data.transition}</p>
+            </div>
+        ` : ''}
+        
+        <div class="era-detail-actions">
+            <button class="btn btn-primary" onclick="shareTimeline('${eraType}')">Share This History</button>
+            <button class="btn btn-outline" onclick="closeEraModal()">Close</button>
+        </div>
+    `;
+    
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+// Close Era Modal
+function closeEraModal() {
+    const modal = document.getElementById('era-modal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// Share Reform Function
+function shareReform(psType) {
+    const data = sixPsData[psType];
+    const url = window.location.href;
+    const text = `Learn about ${data.title} - ${data.description} #CriminalJusticeReform #${psType.charAt(0).toUpperCase() + psType.slice(1)}Reform`;
+    
+    if (navigator.share) {
+        navigator.share({
+            title: data.title,
+            text: text,
+            url: url
+        }).catch(console.error);
+    } else {
+        const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+        window.open(twitterUrl, '_blank', 'width=600,height=400');
+    }
+}
+
+// Share Timeline Function
+function shareTimeline(eraType) {
+    const data = timelineData[eraType];
+    const url = window.location.href;
+    const text = `Understanding Arizona's sentencing history: ${data.title} - ${data.description} #CriminalJusticeReform #SentencingReform`;
+    
+    if (navigator.share) {
+        navigator.share({
+            title: data.title,
+            text: text,
+            url: url
+        }).catch(console.error);
+    } else {
+        const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+        window.open(twitterUrl, '_blank', 'width=600,height=400');
+    }
+}
+
+// Initialize Criminal Legal Reform Page
+function initializeCriminalLegalReformPage() {
+    // Initialize animated counters
+    const counters = document.querySelectorAll('.animated-counter');
+    
+    const observerOptions = {
+        threshold: 0.5,
+        rootMargin: '0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                animateReformCounter(entry.target);
+                entry.target.classList.add('counted');
+            }
+        });
+    }, observerOptions);
+    
+    counters.forEach(counter => observer.observe(counter));
+    
+    // Close modals when clicking outside
+    window.onclick = function(event) {
+        const psModal = document.getElementById('ps-modal');
+        const eraModal = document.getElementById('era-modal');
+        
+        if (event.target === psModal) {
+            closePsModal();
+        }
+        if (event.target === eraModal) {
+            closeEraModal();
+        }
+    };
+}
+
+function animateReformCounter(element) {
+    const target = parseFloat(element.dataset.target);
+    const suffix = element.dataset.suffix || '';
+    const prefix = element.dataset.prefix || '';
+    const duration = 2000;
+    const increment = target / (duration / 16);
+    
+    let current = 0;
+    const timer = setInterval(() => {
+        current += increment;
+        
+        if (current >= target) {
+            current = target;
+            clearInterval(timer);
+        }
+        
+        let displayValue = Math.floor(current);
+        if (target === 96) {
+            displayValue = Math.floor(current) + '%';
+        } else if (target === 1.5) {
+            displayValue = '$' + current.toFixed(1) + 'B';
+        } else if (target === 30) {
+            displayValue = Math.floor(current) + '+ Years';
+        }
+        
+        element.textContent = prefix + displayValue + suffix;
+    }, 16);
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.location.pathname.includes('4B') || window.location.pathname.includes('criminal_legal_reform')) {
+        initializeCriminalLegalReformPage();
+    }
+});
+
