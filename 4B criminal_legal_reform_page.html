@@ -31,15 +31,15 @@
                 
                 <div class="crisis-stats">
                     <div class="crisis-stat">
-                        <span class="crisis-number">96%</span>
+                        <span class="crisis-number animated-counter" data-target="96" data-suffix="%">0</span>
                         <span class="crisis-label">Of incarcerated individuals will return to communities</span>
                     </div>
                     <div class="crisis-stat">
-                        <span class="crisis-number">$1.5B</span>
+                        <span class="crisis-number animated-counter" data-target="1.5" data-prefix="$" data-suffix="B">0</span>
                         <span class="crisis-label">Annual Arizona corrections spending on broken system</span>
                     </div>
                     <div class="crisis-stat">
-                        <span class="crisis-number">30+ Years</span>
+                        <span class="crisis-number animated-counter" data-target="30" data-suffix="+ Years">0</span>
                         <span class="crisis-label">Since Truth-in-Sentencing created mass incarceration crisis</span>
                     </div>
                 </div>
@@ -105,41 +105,57 @@
                 <h2 class="section-title fade-in">The Six Ps Framework</h2>
                 <p class="section-subtitle fade-in">Mapping reform opportunities across every stage of the criminal legal system</p>
 
-                <div class="six-ps-grid">
-                    <div class="ps-item fade-in">
+                <div class="six-ps-grid interactive-framework">
+                    <div class="ps-item fade-in clickable-ps" data-ps="police" onclick="showPsDetails('police')">
                         <div class="ps-icon">👮</div>
                         <h4>Police</h4>
                         <p>Community policing, accountability measures, and bias training</p>
+                        <button class="ps-learn-more">Learn More</button>
                     </div>
 
-                    <div class="ps-item fade-in">
+                    <div class="ps-item fade-in clickable-ps" data-ps="prosecution" onclick="showPsDetails('prosecution')">
                         <div class="ps-icon">⚖️</div>
                         <h4>Prosecution</h4>
                         <p>Prosecutorial discretion, charging guidelines, and transparency</p>
+                        <button class="ps-learn-more">Learn More</button>
                     </div>
 
-                    <div class="ps-item fade-in">
+                    <div class="ps-item fade-in clickable-ps" data-ps="pretrial" onclick="showPsDetails('pretrial')">
                         <div class="ps-icon">🏛️</div>
                         <h4>Pretrial</h4>
                         <p>Bail reform, pretrial services, and detention alternatives</p>
+                        <button class="ps-learn-more">Learn More</button>
                     </div>
 
-                    <div class="ps-item fade-in">
+                    <div class="ps-item fade-in clickable-ps" data-ps="probation" onclick="showPsDetails('probation')">
                         <div class="ps-icon">📋</div>
                         <h4>Probation</h4>
                         <p>Evidence-based supervision and support services</p>
+                        <button class="ps-learn-more">Learn More</button>
                     </div>
 
-                    <div class="ps-item fade-in">
+                    <div class="ps-item fade-in clickable-ps" data-ps="prison" onclick="showPsDetails('prison')">
                         <div class="ps-icon">🏢</div>
                         <h4>Prison</h4>
                         <p>Rehabilitation programming and humane conditions</p>
+                        <button class="ps-learn-more">Learn More</button>
                     </div>
 
-                    <div class="ps-item fade-in">
+                    <div class="ps-item fade-in clickable-ps" data-ps="parole" onclick="showPsDetails('parole')">
                         <div class="ps-icon">🚪</div>
                         <h4>Parole</h4>
                         <p>Reentry planning and community support systems</p>
+                        <button class="ps-learn-more">Learn More</button>
+                    </div>
+                </div>
+                
+                <!-- Six Ps Details Modal -->
+                <div id="ps-modal" class="ps-modal">
+                    <div class="ps-modal-content">
+                        <span class="ps-close" onclick="closePsModal()">&times;</span>
+                        <div id="ps-details-content">
+                            <!-- Content will be populated by JavaScript -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -150,23 +166,36 @@
                 <h2 class="section-title fade-in">Arizona's Sentencing Evolution</h2>
                 <p class="section-subtitle fade-in">Understanding how we got here and where we need to go</p>
 
-                <div class="timeline-horizontal">
-                    <div class="era-card fade-in">
+                <div class="timeline-horizontal interactive-timeline">
+                    <div class="era-card fade-in clickable-era" data-era="copper" onclick="showEraDetails('copper')">
                         <div class="era-years">Pre-1978</div>
                         <h4>"Copper Time"</h4>
                         <p>Indeterminate sentencing with early release based on rehabilitation progress. Lower incarceration rates and focus on treatment and reintegration.</p>
+                        <button class="era-learn-more">Explore Era</button>
                     </div>
 
-                    <div class="era-card fade-in">
+                    <div class="era-card fade-in clickable-era" data-era="oldcode" onclick="showEraDetails('oldcode')">
                         <div class="era-years">1978-1993</div>
                         <h4>Old Code Era</h4>
                         <p>Transitional period with structured sentencing guidelines. Balanced approach between accountability and rehabilitation with moderate incarceration growth.</p>
+                        <button class="era-learn-more">Explore Era</button>
                     </div>
 
-                    <div class="era-card fade-in">
+                    <div class="era-card fade-in clickable-era" data-era="truth" onclick="showEraDetails('truth')">
                         <div class="era-years">1994-Present</div>
                         <h4>Truth-in-Sentencing</h4>
                         <p>Mandatory minimum sentences and reduced discretion. Dramatic increase in prison population and costs, creating current mass incarceration crisis.</p>
+                        <button class="era-learn-more">Explore Era</button>
+                    </div>
+                </div>
+                
+                <!-- Timeline Details Modal -->
+                <div id="era-modal" class="era-modal">
+                    <div class="era-modal-content">
+                        <span class="era-close" onclick="closeEraModal()">&times;</span>
+                        <div id="era-details-content">
+                            <!-- Content will be populated by JavaScript -->
+                        </div>
                     </div>
                 </div>
             </div>

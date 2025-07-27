@@ -31,15 +31,15 @@
                 
                 <div class="crisis-stats">
                     <div class="crisis-stat">
-                        <span class="crisis-number">34,500+</span>
+                        <span class="crisis-number animated-counter" data-target="34500">0</span>
                         <span class="crisis-label">People in ADCRR with zero independent oversight</span>
                     </div>
                     <div class="crisis-stat">
-                        <span class="crisis-number">$1.5B</span>
+                        <span class="crisis-number animated-counter" data-target="1.5" data-suffix="B">0</span>
                         <span class="crisis-label">Annual taxpayer cost without accountability</span>
                     </div>
                     <div class="crisis-stat">
-                        <span class="crisis-number">0</span>
+                        <span class="crisis-number animated-counter" data-target="0">0</span>
                         <span class="crisis-label">Independent oversight bodies monitoring Arizona prisons</span>
                     </div>
                 </div>
@@ -73,10 +73,22 @@
                 <p class="section-subtitle fade-in">The absence of independent monitoring creates conditions that harm incarcerated individuals, staff, and communities</p>
 
                 <div class="problem-grid">
-                    <div class="problem-card fade-in">
+                    <div class="problem-card fade-in expandable-card">
                         <span class="problem-icon">⚕️</span>
                         <h3>Healthcare Failures</h3>
                         <p>Medical neglect and inadequate healthcare delivery leading to preventable deaths and constitutional violations across Arizona's prison system.</p>
+                        <button class="learn-more-btn" onclick="toggleCardExpansion(this)">Learn More</button>
+                        <div class="expanded-content">
+                            <h4>Specific Healthcare Issues:</h4>
+                            <ul>
+                                <li><strong>Delayed Medical Care:</strong> Critical delays in emergency medical response and routine healthcare delivery</li>
+                                <li><strong>Inadequate Staffing:</strong> Chronic shortage of qualified medical professionals in correctional facilities</li>
+                                <li><strong>Mental Health Crisis:</strong> Limited access to mental health services and crisis intervention</li>
+                                <li><strong>Medication Management:</strong> Inconsistent medication distribution and monitoring</li>
+                                <li><strong>Preventable Deaths:</strong> Multiple deaths that could have been prevented with proper medical oversight</li>
+                            </ul>
+                            <p><strong>Impact:</strong> The Jensen v. Shinn lawsuit specifically cites healthcare failures as constitutional violations affecting thousands of incarcerated individuals.</p>
+                        </div>
                     </div>
 
                     <div class="problem-card fade-in">
@@ -192,9 +204,47 @@
                     <h2>Support Independent Prison Oversight</h2>
                     <p>Join our campaign to establish comprehensive oversight of Arizona's prison system. Together, we can create transparency, accountability, and protection for the 34,500+ people in ADCRR.</p>
                     
-                    <div class="cta-margin-top">
-                        <a href="/action-center" class="btn btn-primary">Take Action</a>
-                        <a href="/donate" class="btn btn-secondary">Support Our Work</a>
+                    <div class="cta-buttons-grid">
+                        <a href="/action-center" class="btn btn-primary">
+                            <span class="btn-icon">📢</span>
+                            Take Action Now
+                        </a>
+                        <a href="/donate" class="btn btn-secondary">
+                            <span class="btn-icon">💝</span>
+                            Support Our Work
+                        </a>
+                        <button class="btn btn-outline" onclick="shareAdvocacy()">
+                            <span class="btn-icon">📱</span>
+                            Share This Issue
+                        </button>
+                        <a href="#newsletter-signup" class="btn btn-outline">
+                            <span class="btn-icon">📧</span>
+                            Get Updates
+                        </a>
+                    </div>
+                    
+                    <!-- Newsletter Signup Section -->
+                    <div id="newsletter-signup" class="newsletter-section">
+                        <h3>Stay Informed About Prison Oversight</h3>
+                        <p>Get updates on our oversight campaign and opportunities to advocate for transparency.</p>
+                        <form class="newsletter-form" onsubmit="handleNewsletterSignup(event)">
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                                <button type="submit" class="btn btn-primary">Subscribe</button>
+                            </div>
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="interests" value="oversight">
+                                    <span class="checkmark"></span>
+                                    Prison oversight updates
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="interests" value="advocacy">
+                                    <span class="checkmark"></span>
+                                    Advocacy opportunities
+                                </label>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

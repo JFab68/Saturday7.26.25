@@ -31,15 +31,15 @@
                 
                 <div class="crisis-stats">
                     <div class="crisis-stat">
-                        <span class="crisis-number">80%</span>
+                        <span class="crisis-number animated-counter" data-target="80" data-suffix="%">0</span>
                         <span class="crisis-label">Increase in opioid-related deaths since 2017</span>
                     </div>
                     <div class="crisis-stat">
-                        <span class="crisis-number">107,000</span>
+                        <span class="crisis-number animated-counter" data-target="107000">0</span>
                         <span class="crisis-label">Overdose deaths nationally in 2023</span>
                     </div>
                     <div class="crisis-stat">
-                        <span class="crisis-number">2,300+</span>
+                        <span class="crisis-number animated-counter" data-target="2300" data-suffix="+">0</span>
                         <span class="crisis-label">Overdose deaths in Arizona annually</span>
                     </div>
                 </div>
@@ -106,16 +106,18 @@
                 <p class="section-subtitle fade-in">Proven strategies that reduce overdose deaths and support recovery</p>
 
                 <div class="solutions-grid">
-                    <div class="solution-feature fade-in">
+                    <div class="solution-feature fade-in interactive-feature">
                         <div class="solution-icon">💊</div>
                         <h4>Naloxone Distribution</h4>
                         <p>Community-wide naloxone training and distribution programs that equip families, first responders, and community members with life-saving overdose reversal medication.</p>
+                        <button class="feature-action-btn" onclick="openNaloxoneLocator()">Find Naloxone Near You</button>
                     </div>
 
-                    <div class="solution-feature fade-in">
+                    <div class="solution-feature fade-in interactive-feature">
                         <div class="solution-icon">🏥</div>
                         <h4>Medication-Assisted Treatment</h4>
                         <p>Expanding access to FDA-approved medications like methadone, buprenorphine, and naltrexone that reduce cravings and withdrawal symptoms while supporting long-term recovery.</p>
+                        <button class="feature-action-btn" onclick="openTreatmentFinder()">Find Treatment Centers</button>
                     </div>
 
                     <div class="solution-feature fade-in">
@@ -254,19 +256,136 @@
             </div>
         </section>
 
+        <section class="interactive-tools-section">
+            <div class="container">
+                <h2 class="section-title fade-in">Interactive Tools & Resources</h2>
+                <p class="section-subtitle fade-in">Access life-saving resources and information</p>
+                
+                <div class="tools-grid">
+                    <div class="tool-card fade-in" onclick="openOverdoseDataMap()">
+                        <div class="tool-icon">📊</div>
+                        <h4>Arizona Overdose Data Map</h4>
+                        <p>Interactive visualization of overdose trends and hotspots across Arizona counties</p>
+                        <button class="tool-btn">View Data Map</button>
+                    </div>
+                    
+                    <div class="tool-card fade-in" onclick="openCrisisResources()">
+                        <div class="tool-icon">🚨</div>
+                        <h4>Crisis Intervention Center</h4>
+                        <p>24/7 resources for overdose emergencies, mental health crises, and immediate support</p>
+                        <button class="tool-btn">Access Crisis Help</button>
+                    </div>
+                    
+                    <div class="tool-card fade-in" onclick="openHarmReductionKit()">
+                        <div class="tool-icon">🛡️</div>
+                        <h4>Harm Reduction Toolkit</h4>
+                        <p>Downloadable guides, safety information, and educational materials</p>
+                        <button class="tool-btn">Download Toolkit</button>
+                    </div>
+                    
+                    <div class="tool-card fade-in" onclick="openPolicyTracker()">
+                        <div class="tool-icon">📋</div>
+                        <h4>Policy Tracker</h4>
+                        <p>Track current drug policy legislation and reform efforts in Arizona</p>
+                        <button class="tool-btn">View Policies</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="cta-section">
             <div class="container">
                 <div class="cta-content fade-in">
                     <h2>Support Evidence-Based Drug Policy</h2>
                     <p>Join our efforts to treat addiction as a health issue, not a crime. Help us expand access to life-saving harm reduction services and evidence-based treatment throughout Arizona.</p>
                     
-                    <div class="cta-margin-top">
-                        <a href="/action-center" class="btn btn-primary">Take Action</a>
-                        <a href="/resources" class="btn btn-secondary">Access Resources</a>
+                    <div class="cta-buttons-grid">
+                        <a href="/action-center" class="btn btn-primary">
+                            <span class="btn-icon">📢</span>
+                            Take Action Now
+                        </a>
+                        <a href="/resources" class="btn btn-secondary">
+                            <span class="btn-icon">📚</span>
+                            Access Resources
+                        </a>
+                        <button class="btn btn-outline" onclick="shareDrugPolicy()">
+                            <span class="btn-icon">📱</span>
+                            Share This Issue
+                        </button>
+                        <a href="#drug-policy-newsletter" class="btn btn-outline">
+                            <span class="btn-icon">📧</span>
+                            Get Updates
+                        </a>
+                    </div>
+                    
+                    <!-- Drug Policy Newsletter Signup -->
+                    <div id="drug-policy-newsletter" class="newsletter-section">
+                        <h3>Stay Informed About Drug Policy Reform</h3>
+                        <p>Get updates on harm reduction initiatives, policy changes, and life-saving resources.</p>
+                        <form class="newsletter-form" onsubmit="handleDrugPolicyNewsletter(event)">
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                                <button type="submit" class="btn btn-primary">Subscribe</button>
+                            </div>
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="interests" value="overdose-prevention">
+                                    <span class="checkmark"></span>
+                                    Overdose prevention updates
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="interests" value="harm-reduction">
+                                    <span class="checkmark"></span>
+                                    Harm reduction resources
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="interests" value="policy-alerts">
+                                    <span class="checkmark"></span>
+                                    Policy reform alerts
+                                </label>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </section>
+        
+        <!-- Interactive Modals -->
+        <div id="naloxone-modal" class="resource-modal">
+            <div class="resource-modal-content">
+                <span class="resource-close" onclick="closeResourceModal('naloxone-modal')">&times;</span>
+                <div id="naloxone-content">
+                    <!-- Content populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+        
+        <div id="treatment-modal" class="resource-modal">
+            <div class="resource-modal-content">
+                <span class="resource-close" onclick="closeResourceModal('treatment-modal')">&times;</span>
+                <div id="treatment-content">
+                    <!-- Content populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+        
+        <div id="overdose-data-modal" class="resource-modal">
+            <div class="resource-modal-content">
+                <span class="resource-close" onclick="closeResourceModal('overdose-data-modal')">&times;</span>
+                <div id="overdose-data-content">
+                    <!-- Content populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+        
+        <div id="crisis-modal" class="resource-modal">
+            <div class="resource-modal-content">
+                <span class="resource-close" onclick="closeResourceModal('crisis-modal')">&times;</span>
+                <div id="crisis-content">
+                    <!-- Content populated by JavaScript -->
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer id="global-footer" role="contentinfo"></footer>

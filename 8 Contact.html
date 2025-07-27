@@ -24,39 +24,520 @@
     <main id="main-content" role="main">
         <section class="hero">
             <h1>Contact Our Team</h1>
-            <p>We respond within 48 hours to all inquiries.</p>
+            <p>We respond within 48 hours to all inquiries. Choose your preferred way to connect with us.</p>
+            
+            <!-- Contact Statistics -->
+            <div class="contact-stats">
+                <div class="contact-stat">
+                    <div class="stat-number" data-target="48">48</div>
+                    <div class="stat-label">Hour Response Time</div>
+                </div>
+                <div class="contact-stat">
+                    <div class="stat-number" data-target="95">95</div>
+                    <div class="stat-label">% Satisfaction Rate</div>
+                </div>
+                <div class="contact-stat">
+                    <div class="stat-number" data-target="2400">2.4K</div>
+                    <div class="stat-label">People Helped This Year</div>
+                </div>
+                <div class="contact-stat">
+                    <div class="stat-number" data-target="24">24</div>
+                    <div class="stat-label">Languages Supported</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Method Selector -->
+        <section class="contact-methods-selector">
+            <div class="container">
+                <h2>How would you like to connect?</h2>
+                <div class="method-cards">
+                    <div class="method-card active" data-method="form">
+                        <div class="method-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Send a Message</h3>
+                        <p>Detailed inquiry form with file attachments</p>
+                        <div class="method-badge">Most Popular</div>
+                    </div>
+                    <div class="method-card" data-method="chat">
+                        <div class="method-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3>Live Chat</h3>
+                        <p>Instant support during business hours</p>
+                        <div class="method-status online">Online Now</div>
+                    </div>
+                    <div class="method-card" data-method="appointment">
+                        <div class="method-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3>Schedule Meeting</h3>
+                        <p>Book a consultation with our team</p>
+                        <div class="method-availability">Next: Today 2:00 PM</div>
+                    </div>
+                    <div class="method-card" data-method="phone">
+                        <div class="method-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h3>Call Us</h3>
+                        <p>Speak directly with our team</p>
+                        <div class="method-hours">Mon-Fri 9AM-5PM</div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <div class="contact-container">
-            <section class="contact-info">
-                <div class="contact-method">
-                    <h2>General Inquiries</h2>
-                    <p>Email: info@praxisinitiative.org</p>
-                    <p>Phone: O: (480) 808-1800 | T: (888) 810-4080</p>
-                    <p>Address: 4022 E. Greenway Rd. Ste. 11 PMB 1046, Phoenix, AZ 85032</p>
+            <!-- Enhanced Contact Form Section -->
+            <section class="contact-form-section" id="form-section">
+                <div class="form-header">
+                    <h2>Send Us a Message</h2>
+                    <p>Fill out the form below and we'll get back to you within 48 hours.</p>
                 </div>
 
-                <div class="contact-method">
-                    <h2>Press & Media</h2>
-                    <p>Email: Media@praxisinitiative.org</p>
-                    <p>Media kit available upon request</p>
+                <!-- Multi-step Form Progress -->
+                <div class="form-progress">
+                    <div class="progress-step active" data-step="1">
+                        <div class="step-number">1</div>
+                        <div class="step-label">Contact Info</div>
+                    </div>
+                    <div class="progress-step" data-step="2">
+                        <div class="step-number">2</div>
+                        <div class="step-label">Inquiry Details</div>
+                    </div>
+                    <div class="progress-step" data-step="3">
+                        <div class="step-number">3</div>
+                        <div class="step-label">Additional Info</div>
+                    </div>
+                    <div class="progress-step" data-step="4">
+                        <div class="step-number">4</div>
+                        <div class="step-label">Review & Send</div>
+                    </div>
+                </div>
+
+                <!-- Multi-step Contact Form -->
+                <form id="contact-form" autocomplete="on" spellcheck="true">
+                    <!-- Step 1: Contact Information -->
+                    <div class="form-step active" data-step="1">
+                        <h3>Your Contact Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contact-first-name">First Name *</label>
+                                <input type="text" id="contact-first-name" name="firstName" placeholder="First Name" required autocomplete="given-name">
+                                <div class="field-validation"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-last-name">Last Name *</label>
+                                <input type="text" id="contact-last-name" name="lastName" placeholder="Last Name" required autocomplete="family-name">
+                                <div class="field-validation"></div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contact-email">Email Address *</label>
+                                <input type="email" id="contact-email" name="email" placeholder="your.email@example.com" required autocomplete="email">
+                                <div class="field-validation"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-phone">Phone Number</label>
+                                <input type="tel" id="contact-phone" name="phone" placeholder="(555) 123-4567" autocomplete="tel">
+                                <div class="field-validation"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-organization">Organization (Optional)</label>
+                            <input type="text" id="contact-organization" name="organization" placeholder="Your organization or company" autocomplete="organization">
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Inquiry Details -->
+                    <div class="form-step" data-step="2">
+                        <h3>Tell Us About Your Inquiry</h3>
+                        <div class="form-group">
+                            <label for="contact-topic">Primary Topic *</label>
+                            <select id="contact-topic" name="topic" required title="Select a topic">
+                                <option value="">Select a topic</option>
+                                <option value="legal">Legal Assistance & Support</option>
+                                <option value="volunteer">Volunteer Opportunities</option>
+                                <option value="donation">Donation & Fundraising</option>
+                                <option value="press">Press & Media Inquiries</option>
+                                <option value="partnership">Partnership Opportunities</option>
+                                <option value="research">Research & Data Requests</option>
+                                <option value="policy">Policy & Advocacy</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <div class="field-validation"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-urgency">Urgency Level</label>
+                            <select id="contact-urgency" name="urgency">
+                                <option value="low">Low - General inquiry</option>
+                                <option value="medium" selected>Medium - Response within 48 hours</option>
+                                <option value="high">High - Response within 24 hours</option>
+                                <option value="urgent">Urgent - Same day response needed</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-subject">Subject Line *</label>
+                            <input type="text" id="contact-subject" name="subject" placeholder="Brief description of your inquiry" required>
+                            <div class="field-validation"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-message">Your Message *</label>
+                            <textarea id="contact-message" name="message" placeholder="Please provide details about your inquiry, including any specific questions or information that would help us assist you better." required autocomplete="off" spellcheck="true" rows="6"></textarea>
+                            <div class="character-count">
+                                <span class="current">0</span>/<span class="max">2000</span> characters
+                            </div>
+                            <div class="field-validation"></div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Additional Information -->
+                    <div class="form-step" data-step="3">
+                        <h3>Additional Information</h3>
+                        <div class="form-group">
+                            <label for="contact-location">Your Location</label>
+                            <select id="contact-location" name="location">
+                                <option value="">Select your location</option>
+                                <option value="arizona">Arizona</option>
+                                <option value="california">California</option>
+                                <option value="nevada">Nevada</option>
+                                <option value="new-mexico">New Mexico</option>
+                                <option value="texas">Texas</option>
+                                <option value="other-us">Other US State</option>
+                                <option value="international">International</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-referral">How did you hear about us?</label>
+                            <select id="contact-referral" name="referral">
+                                <option value="">Select an option</option>
+                                <option value="search">Search Engine</option>
+                                <option value="social">Social Media</option>
+                                <option value="news">News Article</option>
+                                <option value="referral">Friend/Colleague Referral</option>
+                                <option value="event">Event or Conference</option>
+                                <option value="partner">Partner Organization</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-files">Attach Files (Optional)</label>
+                            <div class="file-upload-area" id="file-upload-area">
+                                <input type="file" id="contact-files" name="files" multiple accept=".pdf,.doc,.docx,.txt,.jpg,.jpeg,.png">
+                                <div class="upload-content">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Drag and drop files here or <span class="upload-link">browse</span></p>
+                                    <small>Supported formats: PDF, DOC, DOCX, TXT, JPG, PNG (Max 10MB each)</small>
+                                </div>
+                            </div>
+                            <div class="uploaded-files" id="uploaded-files"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="contact-newsletter" name="newsletter">
+                                <span class="checkmark"></span>
+                                Subscribe to our newsletter for updates on criminal justice reform
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="contact-privacy" name="privacy" required>
+                                <span class="checkmark"></span>
+                                I agree to the <a href="#" target="_blank">Privacy Policy</a> and <a href="#" target="_blank">Terms of Service</a> *
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Review and Send -->
+                    <div class="form-step" data-step="4">
+                        <h3>Review Your Information</h3>
+                        <div class="form-review">
+                            <div class="review-section">
+                                <h4>Contact Information</h4>
+                                <div class="review-content" id="review-contact"></div>
+                            </div>
+                            <div class="review-section">
+                                <h4>Inquiry Details</h4>
+                                <div class="review-content" id="review-inquiry"></div>
+                            </div>
+                            <div class="review-section">
+                                <h4>Additional Information</h4>
+                                <div class="review-content" id="review-additional"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Navigation -->
+                    <div class="form-navigation">
+                        <button type="button" id="prev-step" class="btn-secondary" style="display: none;">Previous</button>
+                        <button type="button" id="next-step" class="btn-primary">Next</button>
+                        <button type="submit" id="submit-form" class="btn-primary" style="display: none;">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Live Chat Section -->
+            <section class="live-chat-section" id="chat-section" style="display: none;">
+                <div class="chat-header">
+                    <h2>Live Chat Support</h2>
+                    <p>Connect with our team for immediate assistance.</p>
+                    <div class="chat-status">
+                        <div class="status-indicator online"></div>
+                        <span>Our team is online and ready to help</span>
+                    </div>
+                </div>
+                <div class="chat-widget">
+                    <div class="chat-messages" id="chat-messages">
+                        <div class="chat-message bot">
+                            <div class="message-avatar">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div class="message-content">
+                                <div class="message-text">Hello! I'm here to help you with any questions about Praxis Initiative. How can I assist you today?</div>
+                                <div class="message-time">Just now</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-input-area">
+                        <div class="chat-suggestions">
+                            <button class="suggestion-btn" data-message="I need legal assistance">Legal Assistance</button>
+                            <button class="suggestion-btn" data-message="I want to volunteer">Volunteer</button>
+                            <button class="suggestion-btn" data-message="I have a press inquiry">Press Inquiry</button>
+                            <button class="suggestion-btn" data-message="I want to make a donation">Donation</button>
+                        </div>
+                        <div class="chat-input">
+                            <input type="text" id="chat-input" placeholder="Type your message...">
+                            <button type="button" id="send-chat">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </section>
 
-            <section class="contact-form">
-                <form id="contact-form" autocomplete="on" spellcheck="true">
-                    <input type="text" placeholder="Your Name" required autocomplete="name">
-                    <input type="email" placeholder="Email" required autocomplete="email">
-                    <select required title="Select a topic">
-                        <option value="">Select a topic</option>
-                        <option>Legal Assistance</option>
-                        <option>Volunteer Inquiry</option>
-                        <option>Donation Question</option>
-                        <option>Press Inquiry</option>
-                    </select>
-                    <textarea placeholder="Your message" required autocomplete="off" spellcheck="true"></textarea>
-                    <button type="submit">Send Message</button>
-                </form>
+            <!-- Appointment Scheduling Section -->
+            <section class="appointment-section" id="appointment-section" style="display: none;">
+                <div class="appointment-header">
+                    <h2>Schedule a Consultation</h2>
+                    <p>Book a meeting with our team to discuss your needs in detail.</p>
+                </div>
+                <div class="appointment-scheduler">
+                    <div class="scheduler-calendar">
+                        <div class="calendar-header">
+                            <button type="button" id="prev-month">&lt;</button>
+                            <h3 id="current-month">January 2025</h3>
+                            <button type="button" id="next-month">&gt;</button>
+                        </div>
+                        <div class="calendar-grid" id="calendar-grid">
+                            <!-- Calendar will be generated by JavaScript -->
+                        </div>
+                    </div>
+                    <div class="scheduler-times">
+                        <h4>Available Times</h4>
+                        <div class="time-slots" id="time-slots">
+                            <div class="time-slot" data-time="09:00">9:00 AM</div>
+                            <div class="time-slot" data-time="10:00">10:00 AM</div>
+                            <div class="time-slot" data-time="11:00">11:00 AM</div>
+                            <div class="time-slot" data-time="14:00">2:00 PM</div>
+                            <div class="time-slot" data-time="15:00">3:00 PM</div>
+                            <div class="time-slot" data-time="16:00">4:00 PM</div>
+                        </div>
+                        <div class="appointment-details">
+                            <div class="form-group">
+                                <label for="appointment-type">Meeting Type</label>
+                                <select id="appointment-type">
+                                    <option value="consultation">General Consultation (30 min)</option>
+                                    <option value="legal">Legal Assistance (45 min)</option>
+                                    <option value="volunteer">Volunteer Orientation (30 min)</option>
+                                    <option value="partnership">Partnership Discussion (60 min)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="appointment-notes">Additional Notes</label>
+                                <textarea id="appointment-notes" placeholder="Any specific topics you'd like to discuss?"></textarea>
+                            </div>
+                            <button type="button" id="book-appointment" class="btn-primary" disabled>
+                                <i class="fas fa-calendar-check"></i> Book Appointment
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Information and Team Directory -->
+            <section class="contact-info-section">
+                <div class="contact-info">
+                    <div class="contact-method">
+                        <div class="method-header">
+                            <i class="fas fa-envelope"></i>
+                            <h2>General Inquiries</h2>
+                        </div>
+                        <p><strong>Email:</strong> info@praxisinitiative.org</p>
+                        <p><strong>Phone:</strong> O: (480) 808-1800 | T: (888) 810-4080</p>
+                        <p><strong>Address:</strong> 4022 E. Greenway Rd. Ste. 11 PMB 1046, Phoenix, AZ 85032</p>
+                        <div class="contact-hours">
+                            <h4>Business Hours</h4>
+                            <p>Monday - Friday: 9:00 AM - 5:00 PM MST</p>
+                            <p>Saturday: 10:00 AM - 2:00 PM MST</p>
+                            <p>Sunday: Closed</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="method-header">
+                            <i class="fas fa-newspaper"></i>
+                            <h2>Press & Media</h2>
+                        </div>
+                        <p><strong>Email:</strong> Media@praxisinitiative.org</p>
+                        <p><strong>Media Kit:</strong> Available upon request</p>
+                        <p><strong>Response Time:</strong> Within 4 hours during business days</p>
+                        <div class="media-resources">
+                            <h4>Quick Resources</h4>
+                            <a href="#" class="resource-link">
+                                <i class="fas fa-download"></i> Press Kit
+                            </a>
+                            <a href="#" class="resource-link">
+                                <i class="fas fa-images"></i> Logo Assets
+                            </a>
+                            <a href="#" class="resource-link">
+                                <i class="fas fa-file-pdf"></i> Fact Sheets
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Directory -->
+                <div class="team-directory">
+                    <h2>Meet Our Team</h2>
+                    <p>Connect directly with the right team member for your specific needs.</p>
+                    <div class="team-grid">
+                        <div class="team-card">
+                            <div class="team-photo">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="team-info">
+                                <h3>Sarah Johnson</h3>
+                                <p class="team-role">Executive Director</p>
+                                <p class="team-specialty">Strategic planning, partnerships, media relations</p>
+                                <div class="team-contact">
+                                    <a href="mailto:sarah@praxisinitiative.org" class="contact-btn">
+                                        <i class="fas fa-envelope"></i> Email
+                                    </a>
+                                    <a href="#" class="contact-btn" data-calendar="sarah">
+                                        <i class="fas fa-calendar"></i> Schedule
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="team-photo">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="team-info">
+                                <h3>Marcus Rodriguez</h3>
+                                <p class="team-role">Legal Director</p>
+                                <p class="team-specialty">Legal assistance, policy analysis, litigation support</p>
+                                <div class="team-contact">
+                                    <a href="mailto:marcus@praxisinitiative.org" class="contact-btn">
+                                        <i class="fas fa-envelope"></i> Email
+                                    </a>
+                                    <a href="#" class="contact-btn" data-calendar="marcus">
+                                        <i class="fas fa-calendar"></i> Schedule
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="team-photo">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="team-info">
+                                <h3>Dr. Emily Chen</h3>
+                                <p class="team-role">Research Director</p>
+                                <p class="team-specialty">Data analysis, research studies, policy recommendations</p>
+                                <div class="team-contact">
+                                    <a href="mailto:emily@praxisinitiative.org" class="contact-btn">
+                                        <i class="fas fa-envelope"></i> Email
+                                    </a>
+                                    <a href="#" class="contact-btn" data-calendar="emily">
+                                        <i class="fas fa-calendar"></i> Schedule
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="team-photo">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="team-info">
+                                <h3>James Wilson</h3>
+                                <p class="team-role">Community Outreach Manager</p>
+                                <p class="team-specialty">Volunteer coordination, community programs, events</p>
+                                <div class="team-contact">
+                                    <a href="mailto:james@praxisinitiative.org" class="contact-btn">
+                                        <i class="fas fa-envelope"></i> Email
+                                    </a>
+                                    <a href="#" class="contact-btn" data-calendar="james">
+                                        <i class="fas fa-calendar"></i> Schedule
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Map -->
+                <div class="location-map">
+                    <h2>Visit Our Office</h2>
+                    <div class="map-container">
+                        <div class="map-placeholder" id="office-map">
+                            <div class="map-content">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <h3>Praxis Initiative Office</h3>
+                                <p>4022 E. Greenway Rd. Ste. 11 PMB 1046<br>Phoenix, AZ 85032</p>
+                                <div class="map-actions">
+                                    <a href="https://maps.google.com/?q=4022+E.+Greenway+Rd.+Ste.+11+PMB+1046,+Phoenix,+AZ+85032" target="_blank" class="map-btn">
+                                        <i class="fas fa-directions"></i> Get Directions
+                                    </a>
+                                    <a href="#" class="map-btn" id="show-parking">
+                                        <i class="fas fa-parking"></i> Parking Info
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="location-details">
+                            <h4>Office Information</h4>
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <strong>Hours:</strong><br>
+                                    Mon-Fri: 9:00 AM - 5:00 PM<br>
+                                    Sat: 10:00 AM - 2:00 PM
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-parking"></i>
+                                <div>
+                                    <strong>Parking:</strong><br>
+                                    Free parking available<br>
+                                    Accessible spaces provided
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-bus"></i>
+                                <div>
+                                    <strong>Public Transit:</strong><br>
+                                    Bus routes 27, 44<br>
+                                    Light rail accessible
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
         </div>
     </main>
