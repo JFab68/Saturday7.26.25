@@ -1715,3 +1715,165 @@ a:focus, button:focus, [role="button"]:focus, input:focus, select:focus, textare
 }
 
 
+
+
+/* =================================================================
+   14. ENHANCED FORM STYLES
+   ================================================================= */
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--dark-gray);
+  font-size: 14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: inherit;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--primary-navy);
+  box-shadow: 0 0 0 3px rgba(0, 0, 128, 0.1);
+  outline: none;
+}
+
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-group select {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 40px;
+  appearance: none;
+}
+
+/* Enhanced button styling */
+.form-group + button[type="submit"] {
+  margin-top: 10px;
+}
+
+
+/* =================================================================
+   15. HOVER ANIMATIONS & MICRO-INTERACTIONS
+   ================================================================= */
+
+/* Button hover effects */
+.btn, button, [role="button"] {
+  transition: all 0.3s ease;
+  transform: translateY(0);
+}
+
+.btn:hover, button:hover, [role="button"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active, button:active, [role="button"]:active {
+  transform: translateY(0);
+  transition: all 0.1s ease;
+}
+
+/* Link hover effects */
+a {
+  transition: color 0.3s ease, text-decoration-color 0.3s ease;
+}
+
+.nav-links-row a:hover {
+  color: var(--secondary-maroon);
+  text-decoration: underline;
+  text-decoration-color: var(--secondary-maroon);
+}
+
+/* Card hover effects */
+.card, .program-card, .partner-card, .news-card {
+  transition: all 0.3s ease;
+  transform: translateY(0);
+}
+
+.card:hover, .program-card:hover, .partner-card:hover, .news-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Logo hover effect */
+.logo-link:hover .logo-img {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+.logo-img {
+  transition: transform 0.3s ease;
+}
+
+/* Statistics counter animation preparation */
+.stat-number {
+  transition: all 0.3s ease;
+}
+
+.stat-number.animate {
+  animation: countUp 2s ease-out;
+}
+
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Loading state animations */
+.loading {
+  opacity: 0.7;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Fade in animation for content */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger animation delays */
+.fade-in-up:nth-child(1) { transition-delay: 0.1s; }
+.fade-in-up:nth-child(2) { transition-delay: 0.2s; }
+.fade-in-up:nth-child(3) { transition-delay: 0.3s; }
+.fade-in-up:nth-child(4) { transition-delay: 0.4s; }
+.fade-in-up:nth-child(5) { transition-delay: 0.5s; }
+.fade-in-up:nth-child(6) { transition-delay: 0.6s; }
+
