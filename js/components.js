@@ -1504,3 +1504,635 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+
+// ===== CONTACT PAGE FUNCTIONALITY =====
+
+// Contact page initialization
+function initializeContactPage() {
+    initializeContactStats();
+    initializeMethodSelector();
+    initializeMultiStepForm();
+    initializeLiveChat();
+    initializeAppointmentScheduler();
+    initializeFileUpload();
+    initializeFormValidation();
+}
+
+// Animated statistics for Contact page
+function initializeContactStats() {
+    const statNumbers = document.querySelectorAll('.contact-stat .stat-number');
+    
+    const animateCounter = (element, target) => {
+        const duration = 2000;
+        const start = 0;
+        const increment = target / (duration / 16);
+        let current = start;
+        
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                current = target;
+                clearInterval(timer);
+            }
+            
+            // Format number with appropriate suffix
+            let displayValue = Math.floor(current);
+            if (target >= 1000) {
+                displayValue = (current / 1000).toFixed(1) + 'K';
+            }
+            
+            element.textContent = displayValue;
+        }, 16);
+    };
+    
+    // Intersection Observer for triggering animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const element = entry.target;
+                const target = parseInt(element.dataset.target);
+                animateCounter(element, target);
+                observer.unobserve(element);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    statNumbers.forEach(stat => observer.observe(stat));
+}
+
+// Contact method selector
+function initializeMethodSelector() {
+    const methodCards = document.querySelectorAll('.method-card');
+    const sections = {
+        form: document.getElementById('form-section'),
+        chat: document.getElementById('chat-section'),
+        appointment: document.getElementById('appointment-section'),
+        phone: null // Phone doesn't have a section, just shows contact info
+    };
+    
+    methodCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const method = card.dataset.method;
+            
+            // Update active card
+            methodCards.forEach(c => c.classList.remove('active'));
+            card.classList.add('active');
+            
+            // Show/hide sections
+            Object.keys(sections).forEach(key => {
+                if (sections[key]) {
+                    sections[key].style.display = key === method ? 'block' : 'none';
+                }
+            });
+            
+            // Special handling for phone
+            if (method === 'phone') {
+                // Scroll to contact info
+                document.querySelector('.contact-info-section').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+// Multi-step form functionality
+function initializeMultiStepForm() {
+    const form = document.getElementById('contact-form');
+    const steps = document.querySelectorAll('.form-step');
+    const progressSteps = document.querySelectorAll('.progress-step');
+    const nextBtn = document.getElementById('next-step');
+    const prevBtn = document.getElementById('prev-step');
+    const submitBtn = document.getElementById('submit-form');
+    
+    let currentStep = 1;
+    const totalSteps = steps.length;
+    
+    function updateStep(step) {
+        // Hide all steps
+        steps.forEach(s => s.classList.remove('active'));
+        progressSteps.forEach(s => {
+            s.classList.remove('active', 'completed');
+        });
+        
+        // Show current step
+        document.querySelector(`[data-step="${step}"]`).classList.add('active');
+        document.querySelector(`.progress-step[data-step="${step}"]`).classList.add('active');
+        
+        // Mark completed steps
+        for (let i = 1; i < step; i++) {
+            document.querySelector(`.progress-step[data-step="${i}"]`).classList.add('completed');
+        }
+        
+        // Update navigation buttons
+        prevBtn.style.display = step > 1 ? 'block' : 'none';
+        nextBtn.style.display = step < totalSteps ? 'block' : 'none';
+        submitBtn.style.display = step === totalSteps ? 'block' : 'none';
+        
+        // Update review section if on last step
+        if (step === totalSteps) {
+            updateReviewSection();
+        }
+    }
+    
+    function validateStep(step) {
+        const currentStepElement = document.querySelector(`.form-step[data-step="${step}"]`);
+        const requiredFields = currentStepElement.querySelectorAll('[required]');
+        let isValid = true;
+        
+        requiredFields.forEach(field => {
+            if (!field.value.trim()) {
+                showFieldError(field, 'This field is required');
+                isValid = false;
+            } else {
+                clearFieldError(field);
+                
+                // Additional validation
+                if (field.type === 'email' && !isValidEmail(field.value)) {
+                    showFieldError(field, 'Please enter a valid email address');
+                    isValid = false;
+                }
+            }
+        });
+        
+        return isValid;
+    }
+    
+    function updateReviewSection() {
+        const formData = new FormData(form);
+        
+        // Contact Information
+        const contactReview = document.getElementById('review-contact');
+        contactReview.innerHTML = `
+            <div class="review-item"><span class="review-label">Name:</span> ${formData.get('firstName')} ${formData.get('lastName')}</div>
+            <div class="review-item"><span class="review-label">Email:</span> ${formData.get('email')}</div>
+            <div class="review-item"><span class="review-label">Phone:</span> ${formData.get('phone') || 'Not provided'}</div>
+            <div class="review-item"><span class="review-label">Organization:</span> ${formData.get('organization') || 'Not provided'}</div>
+        `;
+        
+        // Inquiry Details
+        const inquiryReview = document.getElementById('review-inquiry');
+        const topicSelect = document.getElementById('contact-topic');
+        const urgencySelect = document.getElementById('contact-urgency');
+        inquiryReview.innerHTML = `
+            <div class="review-item"><span class="review-label">Topic:</span> ${topicSelect.options[topicSelect.selectedIndex].text}</div>
+            <div class="review-item"><span class="review-label">Urgency:</span> ${urgencySelect.options[urgencySelect.selectedIndex].text}</div>
+            <div class="review-item"><span class="review-label">Subject:</span> ${formData.get('subject')}</div>
+            <div class="review-item"><span class="review-label">Message:</span> ${formData.get('message').substring(0, 100)}${formData.get('message').length > 100 ? '...' : ''}</div>
+        `;
+        
+        // Additional Information
+        const additionalReview = document.getElementById('review-additional');
+        const locationSelect = document.getElementById('contact-location');
+        const referralSelect = document.getElementById('contact-referral');
+        additionalReview.innerHTML = `
+            <div class="review-item"><span class="review-label">Location:</span> ${locationSelect.value ? locationSelect.options[locationSelect.selectedIndex].text : 'Not specified'}</div>
+            <div class="review-item"><span class="review-label">How you heard about us:</span> ${referralSelect.value ? referralSelect.options[referralSelect.selectedIndex].text : 'Not specified'}</div>
+            <div class="review-item"><span class="review-label">Newsletter:</span> ${formData.get('newsletter') ? 'Yes' : 'No'}</div>
+            <div class="review-item"><span class="review-label">Files attached:</span> ${document.querySelectorAll('.uploaded-file').length} files</div>
+        `;
+    }
+    
+    // Navigation event listeners
+    nextBtn.addEventListener('click', () => {
+        if (validateStep(currentStep)) {
+            currentStep++;
+            updateStep(currentStep);
+        }
+    });
+    
+    prevBtn.addEventListener('click', () => {
+        currentStep--;
+        updateStep(currentStep);
+    });
+    
+    // Form submission
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        if (validateStep(currentStep)) {
+            // Simulate form submission
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                showNotification('Message sent successfully! We\'ll get back to you within 48 hours.', 'success');
+                form.reset();
+                currentStep = 1;
+                updateStep(currentStep);
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+                submitBtn.disabled = false;
+                
+                // Clear uploaded files
+                document.getElementById('uploaded-files').innerHTML = '';
+            }, 2000);
+        }
+    });
+    
+    // Initialize first step
+    updateStep(currentStep);
+}
+
+// Live chat functionality
+function initializeLiveChat() {
+    const chatMessages = document.getElementById('chat-messages');
+    const chatInput = document.getElementById('chat-input');
+    const sendBtn = document.getElementById('send-chat');
+    const suggestionBtns = document.querySelectorAll('.suggestion-btn');
+    
+    function addMessage(text, isUser = false) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `chat-message ${isUser ? 'user' : 'bot'}`;
+        
+        const now = new Date();
+        const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        
+        messageDiv.innerHTML = `
+            <div class="message-avatar">
+                <i class="fas ${isUser ? 'fa-user' : 'fa-user-tie'}"></i>
+            </div>
+            <div class="message-content">
+                <div class="message-text">${text}</div>
+                <div class="message-time">${timeString}</div>
+            </div>
+        `;
+        
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        
+        // Auto-respond for demo
+        if (isUser) {
+            setTimeout(() => {
+                const responses = [
+                    "Thank you for your message. Let me connect you with the right team member.",
+                    "I understand your inquiry. Someone from our team will be with you shortly.",
+                    "That's a great question! Let me get you the information you need.",
+                    "I'll make sure your request gets to the appropriate department right away."
+                ];
+                const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                addMessage(randomResponse);
+            }, 1000 + Math.random() * 2000);
+        }
+    }
+    
+    function sendMessage() {
+        const message = chatInput.value.trim();
+        if (message) {
+            addMessage(message, true);
+            chatInput.value = '';
+        }
+    }
+    
+    // Event listeners
+    sendBtn.addEventListener('click', sendMessage);
+    chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            sendMessage();
+        }
+    });
+    
+    suggestionBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const message = btn.dataset.message;
+            addMessage(message, true);
+        });
+    });
+}
+
+// Appointment scheduling functionality
+function initializeAppointmentScheduler() {
+    const calendarGrid = document.getElementById('calendar-grid');
+    const currentMonthElement = document.getElementById('current-month');
+    const prevMonthBtn = document.getElementById('prev-month');
+    const nextMonthBtn = document.getElementById('next-month');
+    const timeSlots = document.querySelectorAll('.time-slot');
+    const bookBtn = document.getElementById('book-appointment');
+    
+    let currentDate = new Date();
+    let selectedDate = null;
+    let selectedTime = null;
+    
+    const months = [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+    
+    function generateCalendar(year, month) {
+        const firstDay = new Date(year, month, 1);
+        const lastDay = new Date(year, month + 1, 0);
+        const daysInMonth = lastDay.getDate();
+        const startingDayOfWeek = firstDay.getDay();
+        
+        calendarGrid.innerHTML = '';
+        
+        // Add day headers
+        const dayHeaders = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        dayHeaders.forEach(day => {
+            const dayHeader = document.createElement('div');
+            dayHeader.textContent = day;
+            dayHeader.style.fontWeight = 'bold';
+            dayHeader.style.textAlign = 'center';
+            dayHeader.style.padding = '0.5rem';
+            dayHeader.style.color = 'var(--primary-color)';
+            calendarGrid.appendChild(dayHeader);
+        });
+        
+        // Add empty cells for days before the first day of the month
+        for (let i = 0; i < startingDayOfWeek; i++) {
+            const emptyDay = document.createElement('div');
+            calendarGrid.appendChild(emptyDay);
+        }
+        
+        // Add days of the month
+        for (let day = 1; day <= daysInMonth; day++) {
+            const dayElement = document.createElement('div');
+            dayElement.textContent = day;
+            dayElement.className = 'calendar-day';
+            
+            const dayDate = new Date(year, month, day);
+            const today = new Date();
+            
+            // Mark as available if it's a future weekday
+            if (dayDate > today && dayDate.getDay() !== 0 && dayDate.getDay() !== 6) {
+                dayElement.classList.add('available');
+                dayElement.addEventListener('click', () => selectDate(dayDate, dayElement));
+            } else {
+                dayElement.classList.add('unavailable');
+            }
+            
+            calendarGrid.appendChild(dayElement);
+        }
+        
+        currentMonthElement.textContent = `${months[month]} ${year}`;
+    }
+    
+    function selectDate(date, element) {
+        // Remove previous selection
+        document.querySelectorAll('.calendar-day.selected').forEach(day => {
+            day.classList.remove('selected');
+        });
+        
+        // Select new date
+        element.classList.add('selected');
+        selectedDate = date;
+        
+        // Update time slots availability (simulate some being unavailable)
+        timeSlots.forEach((slot, index) => {
+            slot.classList.remove('selected', 'unavailable');
+            if (Math.random() > 0.7) { // 30% chance of being unavailable
+                slot.classList.add('unavailable');
+            }
+        });
+        
+        updateBookButton();
+    }
+    
+    function selectTime(timeElement) {
+        if (timeElement.classList.contains('unavailable')) return;
+        
+        // Remove previous selection
+        timeSlots.forEach(slot => slot.classList.remove('selected'));
+        
+        // Select new time
+        timeElement.classList.add('selected');
+        selectedTime = timeElement.dataset.time;
+        
+        updateBookButton();
+    }
+    
+    function updateBookButton() {
+        bookBtn.disabled = !(selectedDate && selectedTime);
+    }
+    
+    // Event listeners
+    prevMonthBtn.addEventListener('click', () => {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        generateCalendar(currentDate.getFullYear(), currentDate.getMonth());
+    });
+    
+    nextMonthBtn.addEventListener('click', () => {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        generateCalendar(currentDate.getFullYear(), currentDate.getMonth());
+    });
+    
+    timeSlots.forEach(slot => {
+        slot.addEventListener('click', () => selectTime(slot));
+    });
+    
+    bookBtn.addEventListener('click', () => {
+        if (selectedDate && selectedTime) {
+            const appointmentType = document.getElementById('appointment-type').value;
+            const notes = document.getElementById('appointment-notes').value;
+            
+            // Simulate booking
+            bookBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Booking...';
+            bookBtn.disabled = true;
+            
+            setTimeout(() => {
+                const dateString = selectedDate.toLocaleDateString();
+                const timeString = selectedTime;
+                showNotification(`Appointment booked for ${dateString} at ${timeString}. You'll receive a confirmation email shortly.`, 'success');
+                
+                // Reset form
+                selectedDate = null;
+                selectedTime = null;
+                document.querySelectorAll('.calendar-day.selected, .time-slot.selected').forEach(el => {
+                    el.classList.remove('selected');
+                });
+                document.getElementById('appointment-notes').value = '';
+                
+                bookBtn.innerHTML = '<i class="fas fa-calendar-check"></i> Book Appointment';
+                updateBookButton();
+            }, 2000);
+        }
+    });
+    
+    // Initialize calendar
+    generateCalendar(currentDate.getFullYear(), currentDate.getMonth());
+}
+
+// File upload functionality
+function initializeFileUpload() {
+    const fileInput = document.getElementById('contact-files');
+    const uploadArea = document.getElementById('file-upload-area');
+    const uploadedFiles = document.getElementById('uploaded-files');
+    const uploadLink = uploadArea.querySelector('.upload-link');
+    
+    let files = [];
+    
+    function handleFiles(fileList) {
+        Array.from(fileList).forEach(file => {
+            if (file.size > 10 * 1024 * 1024) { // 10MB limit
+                showNotification(`File "${file.name}" is too large. Maximum size is 10MB.`, 'error');
+                return;
+            }
+            
+            if (files.find(f => f.name === file.name)) {
+                showNotification(`File "${file.name}" is already uploaded.`, 'error');
+                return;
+            }
+            
+            files.push(file);
+            addFileToList(file);
+        });
+    }
+    
+    function addFileToList(file) {
+        const fileDiv = document.createElement('div');
+        fileDiv.className = 'uploaded-file';
+        
+        const fileSize = (file.size / 1024).toFixed(1) + ' KB';
+        if (file.size > 1024 * 1024) {
+            fileSize = (file.size / (1024 * 1024)).toFixed(1) + ' MB';
+        }
+        
+        fileDiv.innerHTML = `
+            <div class="file-info">
+                <i class="fas fa-file file-icon"></i>
+                <div class="file-details">
+                    <div class="file-name">${file.name}</div>
+                    <div class="file-size">${fileSize}</div>
+                </div>
+            </div>
+            <button type="button" class="remove-file" data-filename="${file.name}">
+                <i class="fas fa-times"></i>
+            </button>
+        `;
+        
+        uploadedFiles.appendChild(fileDiv);
+        
+        // Add remove functionality
+        fileDiv.querySelector('.remove-file').addEventListener('click', () => {
+            files = files.filter(f => f.name !== file.name);
+            fileDiv.remove();
+        });
+    }
+    
+    // Event listeners
+    fileInput.addEventListener('change', (e) => {
+        handleFiles(e.target.files);
+        e.target.value = ''; // Reset input
+    });
+    
+    uploadLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        fileInput.click();
+    });
+    
+    // Drag and drop
+    uploadArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        uploadArea.classList.add('dragover');
+    });
+    
+    uploadArea.addEventListener('dragleave', () => {
+        uploadArea.classList.remove('dragover');
+    });
+    
+    uploadArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        uploadArea.classList.remove('dragover');
+        handleFiles(e.dataTransfer.files);
+    });
+}
+
+// Form validation functionality
+function initializeFormValidation() {
+    const messageTextarea = document.getElementById('contact-message');
+    const characterCount = document.querySelector('.character-count');
+    
+    // Character count for message
+    if (messageTextarea && characterCount) {
+        const maxLength = 2000;
+        const currentSpan = characterCount.querySelector('.current');
+        
+        messageTextarea.addEventListener('input', () => {
+            const length = messageTextarea.value.length;
+            currentSpan.textContent = length;
+            
+            characterCount.classList.remove('warning', 'error');
+            if (length > maxLength * 0.8) {
+                characterCount.classList.add('warning');
+            }
+            if (length > maxLength) {
+                characterCount.classList.add('error');
+                messageTextarea.value = messageTextarea.value.substring(0, maxLength);
+                currentSpan.textContent = maxLength;
+            }
+        });
+    }
+    
+    // Real-time validation for all inputs
+    const inputs = document.querySelectorAll('#contact-form input, #contact-form select, #contact-form textarea');
+    inputs.forEach(input => {
+        input.addEventListener('blur', () => validateField(input));
+        input.addEventListener('input', () => {
+            if (input.classList.contains('error')) {
+                validateField(input);
+            }
+        });
+    });
+}
+
+// Utility functions
+function validateField(field) {
+    const value = field.value.trim();
+    let isValid = true;
+    let message = '';
+    
+    if (field.hasAttribute('required') && !value) {
+        isValid = false;
+        message = 'This field is required';
+    } else if (field.type === 'email' && value && !isValidEmail(value)) {
+        isValid = false;
+        message = 'Please enter a valid email address';
+    } else if (field.type === 'tel' && value && !isValidPhone(value)) {
+        isValid = false;
+        message = 'Please enter a valid phone number';
+    }
+    
+    if (isValid) {
+        clearFieldError(field);
+    } else {
+        showFieldError(field, message);
+    }
+    
+    return isValid;
+}
+
+function showFieldError(field, message) {
+    field.classList.add('error');
+    const validation = field.parentNode.querySelector('.field-validation');
+    if (validation) {
+        validation.textContent = message;
+        validation.className = 'field-validation error';
+    }
+}
+
+function clearFieldError(field) {
+    field.classList.remove('error');
+    const validation = field.parentNode.querySelector('.field-validation');
+    if (validation) {
+        validation.textContent = '';
+        validation.className = 'field-validation';
+    }
+}
+
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+function isValidPhone(phone) {
+    const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+    return phoneRegex.test(phone.replace(/[\s\-\(\)]/g, ''));
+}
+
+// Initialize Contact page functionality
+document.addEventListener('DOMContentLoaded', () => {
+    // Check if we're on the Contact page
+    if (window.location.pathname.includes('Contact') || document.querySelector('.contact-stats')) {
+        initializeContactPage();
+    }
+});
+
