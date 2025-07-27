@@ -727,3 +727,301 @@ document.addEventListener('DOMContentLoaded', () => {
     new ProgramTimeline();
 });
 
+
+// =================================================================
+// PARTNERS PAGE INTERACTIVE FUNCTIONALITY
+// =================================================================
+
+class PartnersManager {
+    constructor() {
+        this.searchInput = document.getElementById('partner-search');
+        this.categoryFilter = document.getElementById('category-filter');
+        this.gridViewBtn = document.getElementById('grid-view');
+        this.listViewBtn = document.getElementById('list-view');
+        this.partnersContainer = document.getElementById('partners-container');
+        this.resultsCount = document.getElementById('results-count');
+        this.partnerCards = document.querySelectorAll('.partner-card');
+        
+        this.init();
+    }
+
+    init() {
+        if (!this.partnersContainer) return;
+
+        // Initialize search functionality
+        if (this.searchInput) {
+            this.searchInput.addEventListener('input', this.debounce(() => {
+                this.filterPartners();
+            }, 300));
+        }
+
+        // Initialize category filtering
+        if (this.categoryFilter) {
+            this.categoryFilter.addEventListener('change', () => {
+                this.filterPartners();
+            });
+        }
+
+        // Initialize view toggle
+        if (this.gridViewBtn && this.listViewBtn) {
+            this.gridViewBtn.addEventListener('click', () => {
+                this.setView('grid');
+            });
+
+            this.listViewBtn.addEventListener('click', () => {
+                this.setView('list');
+            });
+        }
+
+        // Initialize animated counters for partnership stats
+        this.initPartnershipStats();
+
+        // Initial filter
+        this.filterPartners();
+    }
+
+    filterPartners() {
+        const searchTerm = this.searchInput ? this.searchInput.value.toLowerCase() : '';
+        const selectedCategory = this.categoryFilter ? this.categoryFilter.value : 'all';
+        let visibleCount = 0;
+
+        this.partnerCards.forEach(card => {
+            const cardCategory = card.getAttribute('data-category') || '';
+            const cardText = card.textContent.toLowerCase();
+            
+            const matchesSearch = !searchTerm || cardText.includes(searchTerm);
+            const matchesCategory = selectedCategory === 'all' || cardCategory === selectedCategory;
+            
+            if (matchesSearch && matchesCategory) {
+                this.showCard(card);
+                visibleCount++;
+            } else {
+                this.hideCard(card);
+            }
+        });
+
+        // Update results count
+        if (this.resultsCount) {
+            const partnerText = visibleCount === 1 ? 'partner' : 'partners';
+            this.resultsCount.textContent = `${visibleCount} ${partnerText} found`;
+        }
+
+        // Add staggered animation to visible cards
+        this.animateVisibleCards();
+    }
+
+    showCard(card) {
+        card.classList.remove('hidden', 'fade-out');
+        card.classList.add('fade-in');
+        setTimeout(() => {
+            card.style.display = '';
+        }, 50);
+    }
+
+    hideCard(card) {
+        card.classList.remove('fade-in');
+        card.classList.add('fade-out');
+        setTimeout(() => {
+            card.classList.add('hidden');
+            card.style.display = 'none';
+        }, 300);
+    }
+
+    setView(viewType) {
+        if (viewType === 'grid') {
+            this.partnersContainer.classList.remove('list-view');
+            this.gridViewBtn.classList.add('active');
+            this.listViewBtn.classList.remove('active');
+        } else {
+            this.partnersContainer.classList.add('list-view');
+            this.listViewBtn.classList.add('active');
+            this.gridViewBtn.classList.remove('active');
+        }
+    }
+
+    animateVisibleCards() {
+        const visibleCards = Array.from(this.partnerCards).filter(card => 
+            !card.classList.contains('hidden')
+        );
+
+        visibleCards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+            card.classList.add('fade-in-up');
+        });
+    }
+
+    initPartnershipStats() {
+        const statNumbers = document.querySelectorAll('.partnership-stat .stat-number');
+        
+        if (statNumbers.length === 0) return;
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                    this.animateStatNumber(entry.target);
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, {
+            threshold: 0.5
+        });
+
+        statNumbers.forEach(stat => {
+            observer.observe(stat);
+        });
+    }
+
+    animateStatNumber(element) {
+        const text = element.textContent;
+        const hasPlus = text.includes('+');
+        const targetValue = parseInt(text.replace(/[^\d]/g, ''));
+        
+        let currentValue = 0;
+        const increment = targetValue / 30;
+        const duration = 1500;
+        const frameRate = duration / 30;
+
+        element.textContent = '0';
+
+        const timer = setInterval(() => {
+            currentValue += increment;
+            
+            if (currentValue >= targetValue) {
+                currentValue = targetValue;
+                clearInterval(timer);
+            }
+
+            let displayValue = Math.floor(currentValue).toString();
+            if (hasPlus) displayValue += '+';
+
+            element.textContent = displayValue;
+        }, frameRate);
+    }
+
+    debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+}
+
+// =================================================================
+// PARTNERSHIP VISUALIZATION
+// =================================================================
+
+class PartnershipVisualization {
+    constructor() {
+        this.createVisualization();
+    }
+
+    createVisualization() {
+        // Create partnership network visualization section
+        const visualizationHTML = `
+            <section class="partnership-network section">
+                <div class="container">
+                    <h2>Partnership Network</h2>
+                    <p>Explore how our partners connect across different focus areas</p>
+                    <div class="network-container">
+                        <div class="network-node" data-category="criminal-justice">
+                            <div class="node-circle">
+                                <span class="node-count">6</span>
+                            </div>
+                            <div class="node-label">Criminal Justice Reform</div>
+                        </div>
+                        <div class="network-node" data-category="harm-reduction">
+                            <div class="node-circle">
+                                <span class="node-count">3</span>
+                            </div>
+                            <div class="node-label">Harm Reduction</div>
+                        </div>
+                        <div class="network-node" data-category="research">
+                            <div class="node-circle">
+                                <span class="node-count">4</span>
+                            </div>
+                            <div class="node-label">Research & Policy</div>
+                        </div>
+                        <div class="network-node" data-category="advocacy">
+                            <div class="node-circle">
+                                <span class="node-count">4</span>
+                            </div>
+                            <div class="node-label">Advocacy & Rights</div>
+                        </div>
+                        <div class="network-node" data-category="health">
+                            <div class="node-circle">
+                                <span class="node-count">5</span>
+                            </div>
+                            <div class="node-label">Health & Wellness</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        `;
+
+        // Insert before the CTA section
+        const ctaSection = document.querySelector('.cta');
+        if (ctaSection) {
+            ctaSection.insertAdjacentHTML('beforebegin', visualizationHTML);
+            this.initNetworkInteractions();
+        }
+    }
+
+    initNetworkInteractions() {
+        const networkNodes = document.querySelectorAll('.network-node');
+        const categoryFilter = document.getElementById('category-filter');
+
+        networkNodes.forEach(node => {
+            node.addEventListener('click', () => {
+                const category = node.getAttribute('data-category');
+                if (categoryFilter) {
+                    categoryFilter.value = category;
+                    categoryFilter.dispatchEvent(new Event('change'));
+                    
+                    // Scroll to partners section
+                    document.getElementById('partners-container').scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+
+            node.addEventListener('mouseenter', () => {
+                node.style.transform = 'scale(1.1)';
+            });
+
+            node.addEventListener('mouseleave', () => {
+                node.style.transform = 'scale(1)';
+            });
+        });
+    }
+}
+
+// Update the main DOMContentLoaded event listener
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize animated counters
+    new AnimatedCounters();
+    
+    // Initialize scroll animations
+    new ScrollAnimations();
+    
+    // Initialize interactive program cards
+    new InteractiveProgramCards();
+    
+    // Initialize expandable cards
+    new ExpandableCards();
+    
+    // Initialize program timeline
+    new ProgramTimeline();
+    
+    // Initialize partners manager (only on partners page)
+    if (document.getElementById('partners-container')) {
+        new PartnersManager();
+        new PartnershipVisualization();
+    }
+});
+

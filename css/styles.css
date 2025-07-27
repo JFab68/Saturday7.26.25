@@ -2145,3 +2145,428 @@ html {
   }
 }
 
+
+/* =================================================================
+   18. PARTNERS PAGE INTERACTIVE ELEMENTS
+   ================================================================= */
+
+/* Partnership Statistics */
+.partnership-stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.partnership-stat {
+  text-align: center;
+  color: white;
+}
+
+.partnership-stat .stat-number {
+  font-size: 36px;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.partnership-stat .stat-label {
+  font-size: 14px;
+  opacity: 0.9;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Partners Controls */
+.partners-controls {
+  background: #f8f9fa;
+  padding: 30px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.controls-wrapper {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.search-container {
+  position: relative;
+  flex: 1;
+  min-width: 250px;
+}
+
+.search-container input {
+  width: 100%;
+  padding: 12px 45px 12px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 25px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.search-container input:focus {
+  border-color: var(--primary-navy);
+  outline: none;
+}
+
+.search-icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--medium-gray);
+}
+
+.filter-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filter-container label {
+  font-weight: 500;
+  color: var(--dark-gray);
+  white-space: nowrap;
+}
+
+.filter-container select {
+  padding: 10px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+  min-width: 180px;
+}
+
+.view-toggle {
+  display: flex;
+  gap: 5px;
+}
+
+.view-btn {
+  padding: 10px 12px;
+  border: 2px solid #e0e0e0;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.view-btn:first-child {
+  border-radius: 8px 0 0 8px;
+}
+
+.view-btn:last-child {
+  border-radius: 0 8px 8px 0;
+}
+
+.view-btn.active {
+  background: var(--primary-navy);
+  color: white;
+  border-color: var(--primary-navy);
+}
+
+.view-btn:hover:not(.active) {
+  background: #f0f0f0;
+}
+
+.results-info {
+  color: var(--medium-gray);
+  font-size: 14px;
+}
+
+/* Enhanced Partner Cards */
+.partners-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.partners-list.list-view {
+  grid-template-columns: 1fr;
+  max-width: 800px;
+}
+
+.partner-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.partners-list.list-view .partner-card {
+  flex-direction: row;
+  align-items: center;
+}
+
+.partner-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.partner-card.hidden {
+  display: none;
+}
+
+.partner-logo {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  padding: 20px;
+  background: #f8f9fa;
+}
+
+.partners-list.list-view .partner-logo {
+  width: 150px;
+  height: 100px;
+  flex-shrink: 0;
+}
+
+.partner-content {
+  padding: 25px;
+  flex: 1;
+}
+
+.partner-content h2 {
+  color: var(--primary-navy);
+  margin-bottom: 12px;
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+.partner-content p {
+  color: var(--medium-gray);
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.partner-tags {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background: var(--light-gray);
+  color: var(--dark-gray);
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.partner-content .btn {
+  margin-top: auto;
+}
+
+/* Animation for filtering */
+.partner-card.fade-out {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.3s ease;
+}
+
+.partner-card.fade-in {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 0.3s ease;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .partnership-stats {
+    gap: 20px;
+  }
+  
+  .partnership-stat .stat-number {
+    font-size: 28px;
+  }
+  
+  .controls-wrapper {
+    flex-direction: column;
+    gap: 20px;
+    align-items: stretch;
+  }
+  
+  .search-container {
+    min-width: auto;
+  }
+  
+  .filter-container {
+    justify-content: space-between;
+  }
+  
+  .partners-list {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .partners-list.list-view .partner-card {
+    flex-direction: column;
+  }
+  
+  .partners-list.list-view .partner-logo {
+    width: 100%;
+    height: 150px;
+  }
+}
+
+
+/* =================================================================
+   19. PARTNERSHIP NETWORK VISUALIZATION
+   ================================================================= */
+
+.partnership-network {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 60px 0;
+}
+
+.partnership-network h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: var(--primary-navy);
+  font-size: 32px;
+}
+
+.partnership-network p {
+  text-align: center;
+  margin-bottom: 50px;
+  color: var(--medium-gray);
+  font-size: 18px;
+}
+
+.network-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.network-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 20px;
+  border-radius: 15px;
+  background: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.network-node:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.node-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-navy), var(--secondary-maroon));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.network-node:hover .node-circle {
+  transform: scale(1.1);
+}
+
+.node-count {
+  color: white;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.node-label {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--dark-gray);
+  max-width: 120px;
+  line-height: 1.3;
+}
+
+/* Connecting lines between nodes (optional enhancement) */
+.network-container::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--light-gray), transparent);
+  z-index: 0;
+}
+
+.network-node {
+  position: relative;
+  z-index: 1;
+}
+
+/* Category-specific colors */
+.network-node[data-category="criminal-justice"] .node-circle {
+  background: linear-gradient(135deg, #dc3545, #c82333);
+}
+
+.network-node[data-category="harm-reduction"] .node-circle {
+  background: linear-gradient(135deg, #28a745, #218838);
+}
+
+.network-node[data-category="research"] .node-circle {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+}
+
+.network-node[data-category="advocacy"] .node-circle {
+  background: linear-gradient(135deg, #ffc107, #e0a800);
+}
+
+.network-node[data-category="health"] .node-circle {
+  background: linear-gradient(135deg, #6f42c1, #5a32a3);
+}
+
+/* Mobile responsiveness for network */
+@media (max-width: 768px) {
+  .network-container {
+    gap: 20px;
+  }
+  
+  .network-container::before {
+    display: none;
+  }
+  
+  .node-circle {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .node-count {
+    font-size: 18px;
+  }
+  
+  .node-label {
+    font-size: 12px;
+    max-width: 100px;
+  }
+}
+
