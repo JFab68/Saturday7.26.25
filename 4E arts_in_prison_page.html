@@ -31,15 +31,15 @@
                 
                 <div class="impact-stats">
                     <div class="impact-stat">
-                        <span class="impact-number">34,500+</span>
+                        <span class="impact-number animated-counter" data-target="34500" data-suffix="+">0</span>
                         <span class="impact-label">People in ADCRR who could benefit from arts programming</span>
                     </div>
                     <div class="impact-stat">
-                        <span class="impact-number">75%</span>
+                        <span class="impact-number animated-counter" data-target="75" data-suffix="%">0</span>
                         <span class="impact-label">Reduction in disciplinary incidents through arts participation</span>
                     </div>
                     <div class="impact-stat">
-                        <span class="impact-number">50%</span>
+                        <span class="impact-number animated-counter" data-target="50" data-suffix="%">0</span>
                         <span class="impact-label">Improvement in emotional regulation skills</span>
                     </div>
                 </div>
@@ -225,19 +225,136 @@
             </div>
         </section>
 
+        <section class="arts-showcase-section">
+            <div class="container">
+                <h2 class="section-title fade-in">Interactive Arts Showcase</h2>
+                <p class="section-subtitle fade-in">Explore our programs, meet our artists, and discover the transformative power of creativity</p>
+                
+                <div class="arts-tools-grid">
+                    <div class="arts-tool-card fade-in" onclick="openArtistGallery()">
+                        <div class="tool-icon">🎨</div>
+                        <h4>Artist Spotlight Gallery</h4>
+                        <p>Discover inspiring artwork and stories from program participants and graduates</p>
+                        <button class="arts-tool-btn">View Gallery</button>
+                    </div>
+                    
+                    <div class="arts-tool-card fade-in" onclick="openWorkshopCalendar()">
+                        <div class="tool-icon">📅</div>
+                        <h4>Creative Workshop Calendar</h4>
+                        <p>Find upcoming arts workshops, classes, and creative sessions in Arizona facilities</p>
+                        <button class="arts-tool-btn">View Schedule</button>
+                    </div>
+                    
+                    <div class="arts-tool-card fade-in" onclick="openArtTherapyResources()">
+                        <div class="tool-icon">🧠</div>
+                        <h4>Art Therapy Resource Center</h4>
+                        <p>Access therapeutic art techniques, healing exercises, and mental wellness resources</p>
+                        <button class="arts-tool-btn">Access Resources</button>
+                    </div>
+                    
+                    <div class="arts-tool-card fade-in" onclick="openVolunteerArtists()">
+                        <div class="tool-icon">🤝</div>
+                        <h4>Volunteer Artist Network</h4>
+                        <p>Connect with volunteer opportunities to teach, mentor, and support arts programming</p>
+                        <button class="arts-tool-btn">Get Involved</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="cta-section">
             <div class="container">
                 <div class="cta-content fade-in">
                     <h2>Support Arts in Prison Programming</h2>
                     <p>Help us expand transformative arts programming throughout Arizona's correctional facilities. Your support enables life-changing opportunities for creativity, healing, and personal growth.</p>
                     
-                    <div class="cta-margin-top">
-                        <a href="/action-center" class="btn btn-primary">Support Our Work</a>
-                        <a href="/contact-us" class="btn btn-secondary">Partner With Us</a>
+                    <div class="cta-buttons-grid">
+                        <a href="/action-center" class="btn btn-primary">
+                            <span class="btn-icon">💝</span>
+                            Support Our Work
+                        </a>
+                        <a href="/contact-us" class="btn btn-secondary">
+                            <span class="btn-icon">🤝</span>
+                            Partner With Us
+                        </a>
+                        <button class="btn btn-outline" onclick="shareArtsProgram()">
+                            <span class="btn-icon">📱</span>
+                            Share This Program
+                        </button>
+                        <a href="#arts-newsletter" class="btn btn-outline">
+                            <span class="btn-icon">📧</span>
+                            Get Updates
+                        </a>
+                    </div>
+                    
+                    <!-- Arts Program Newsletter Signup -->
+                    <div id="arts-newsletter" class="newsletter-section">
+                        <h3>Stay Connected with Arts in Prison Programming</h3>
+                        <p>Get updates on new programs, artist showcases, volunteer opportunities, and ways to support creative rehabilitation.</p>
+                        <form class="newsletter-form" onsubmit="handleArtsNewsletter(event)">
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                                <button type="submit" class="btn btn-primary">Subscribe</button>
+                            </div>
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="interests" value="artist-spotlights">
+                                    <span class="checkmark"></span>
+                                    Artist spotlights and success stories
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="interests" value="volunteer-opportunities">
+                                    <span class="checkmark"></span>
+                                    Volunteer teaching opportunities
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="interests" value="program-updates">
+                                    <span class="checkmark"></span>
+                                    Program updates and expansions
+                                </label>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </section>
+        
+        <!-- Interactive Modals -->
+        <div id="artist-gallery-modal" class="arts-modal">
+            <div class="arts-modal-content">
+                <span class="arts-close" onclick="closeArtsModal('artist-gallery-modal')">&times;</span>
+                <div id="artist-gallery-content">
+                    <!-- Content populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+        
+        <div id="workshop-calendar-modal" class="arts-modal">
+            <div class="arts-modal-content">
+                <span class="arts-close" onclick="closeArtsModal('workshop-calendar-modal')">&times;</span>
+                <div id="workshop-calendar-content">
+                    <!-- Content populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+        
+        <div id="art-therapy-modal" class="arts-modal">
+            <div class="arts-modal-content">
+                <span class="arts-close" onclick="closeArtsModal('art-therapy-modal')">&times;</span>
+                <div id="art-therapy-content">
+                    <!-- Content populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+        
+        <div id="volunteer-artists-modal" class="arts-modal">
+            <div class="arts-modal-content">
+                <span class="arts-close" onclick="closeArtsModal('volunteer-artists-modal')">&times;</span>
+                <div id="volunteer-artists-content">
+                    <!-- Content populated by JavaScript -->
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer id="global-footer" role="contentinfo"></footer>

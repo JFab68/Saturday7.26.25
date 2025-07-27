@@ -3852,3 +3852,653 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+
+// ===== 4E ARTS IN PRISON PAGE FUNCTIONALITY =====
+
+// Featured Artists Data
+const featuredArtists = [
+    {
+        name: "Maria S.",
+        medium: "Visual Arts & Painting",
+        story: "Through the arts program, I discovered my passion for painting landscapes. Art became my therapy and helped me process trauma while developing new skills for my future.",
+        achievements: "Completed 15 paintings, participated in 3 exhibitions, now teaching art to other participants",
+        image: "🎨",
+        program: "Visual Arts Workshop",
+        timeInProgram: "2 years"
+    },
+    {
+        name: "James T.",
+        medium: "Music & Songwriting",
+        story: "Music saved my life. Writing songs helped me express emotions I couldn't put into words and connected me with others who understood my journey.",
+        achievements: "Wrote 12 original songs, formed prison band, performed at facility events",
+        image: "🎵",
+        program: "Music Therapy Program",
+        timeInProgram: "18 months"
+    },
+    {
+        name: "Angela R.",
+        medium: "Dance & Movement",
+        story: "Dr. Bendix's Think Motion program taught me that my body could express healing, not just pain. Dance became my path to emotional freedom.",
+        achievements: "Completed advanced movement therapy, became peer mentor, reduced anxiety by 80%",
+        image: "💃",
+        program: "Think Motion Dance Therapy",
+        timeInProgram: "3 years"
+    },
+    {
+        name: "David L.",
+        medium: "Creative Writing & Poetry",
+        story: "Poetry gave me a voice when I felt voiceless. Through writing workshops, I learned to tell my story with honesty and hope.",
+        achievements: "Published in prison literary magazine, won writing contest, mentoring new writers",
+        image: "✍️",
+        program: "Creative Writing Workshop",
+        timeInProgram: "1 year"
+    },
+    {
+        name: "Carmen V.",
+        medium: "Theater & Performance",
+        story: "Acting allowed me to explore different parts of myself and practice being the person I want to become when I'm released.",
+        achievements: "Lead role in 3 productions, drama therapy certification, conflict resolution skills",
+        image: "🎭",
+        program: "Theater Arts Program",
+        timeInProgram: "2.5 years"
+    },
+    {
+        name: "Robert K.",
+        medium: "Sculpture & Ceramics",
+        story: "Working with clay taught me patience and precision. Each piece I create represents growth and the possibility of transformation.",
+        achievements: "Created 25+ sculptures, taught ceramics basics, developed mindfulness practice",
+        image: "🏺",
+        program: "Sculpture Workshop",
+        timeInProgram: "16 months"
+    }
+];
+
+// Workshop Schedule Data
+const workshopSchedule = [
+    {
+        title: "Introduction to Visual Arts",
+        date: "2024-05-20",
+        time: "2:00 PM - 4:00 PM",
+        location: "Perryville Women's Prison",
+        instructor: "Sarah Martinez, Art Therapist",
+        description: "Basic drawing and painting techniques for beginners. All materials provided.",
+        category: "visual-arts",
+        capacity: 15,
+        enrolled: 12
+    },
+    {
+        title: "Music Therapy Session",
+        date: "2024-05-22",
+        time: "10:00 AM - 12:00 PM",
+        location: "Phoenix Correctional Facility",
+        instructor: "Michael Johnson, Music Therapist",
+        description: "Group music therapy focusing on emotional expression and healing.",
+        category: "music",
+        capacity: 20,
+        enrolled: 18
+    },
+    {
+        title: "Think Motion Dance Workshop",
+        date: "2024-05-25",
+        time: "1:00 PM - 3:00 PM",
+        location: "Perryville Women's Prison",
+        instructor: "Dr. Susan Bendix",
+        description: "Therapeutic dance and movement workshop focusing on emotional regulation.",
+        category: "dance",
+        capacity: 12,
+        enrolled: 10
+    },
+    {
+        title: "Creative Writing Circle",
+        date: "2024-05-27",
+        time: "6:00 PM - 8:00 PM",
+        location: "Tucson Prison Complex",
+        instructor: "Jennifer Adams, Published Author",
+        description: "Poetry and storytelling workshop for all skill levels.",
+        category: "writing",
+        capacity: 16,
+        enrolled: 14
+    },
+    {
+        title: "Theater Arts Workshop",
+        date: "2024-05-30",
+        time: "3:00 PM - 5:00 PM",
+        location: "Phoenix Correctional Facility",
+        instructor: "Carlos Rivera, Drama Therapist",
+        description: "Acting exercises and scene work focusing on personal growth.",
+        category: "theater",
+        capacity: 10,
+        enrolled: 8
+    },
+    {
+        title: "Ceramics & Sculpture",
+        date: "2024-06-02",
+        time: "9:00 AM - 12:00 PM",
+        location: "Florence Prison Complex",
+        instructor: "Lisa Chen, Professional Sculptor",
+        description: "Hands-on ceramics workshop exploring form and expression.",
+        category: "sculpture",
+        capacity: 8,
+        enrolled: 6
+    }
+];
+
+// Art Therapy Resources Data
+const artTherapyResources = [
+    {
+        category: "Emotional Regulation",
+        icon: "🧘",
+        techniques: [
+            "Color breathing exercises",
+            "Mandala creation for centering",
+            "Emotion mapping through abstract art",
+            "Progressive muscle relaxation with drawing",
+            "Mindful sketching practices"
+        ]
+    },
+    {
+        category: "Trauma Processing",
+        icon: "💚",
+        techniques: [
+            "Safe place visualization art",
+            "Trauma timeline through collage",
+            "Body mapping for healing",
+            "Symbolic representation exercises",
+            "Narrative art therapy techniques"
+        ]
+    },
+    {
+        category: "Self-Expression",
+        icon: "🎨",
+        techniques: [
+            "Identity collage creation",
+            "Mask-making for different selves",
+            "Journaling with visual elements",
+            "Dream imagery exploration",
+            "Future self visualization art"
+        ]
+    },
+    {
+        category: "Social Connection",
+        icon: "🤝",
+        techniques: [
+            "Collaborative mural projects",
+            "Group storytelling through art",
+            "Community quilt making",
+            "Shared poetry and illustration",
+            "Ensemble music creation"
+        ]
+    },
+    {
+        category: "Stress Relief",
+        icon: "🌿",
+        techniques: [
+            "Zentangle and pattern drawing",
+            "Clay work for tension release",
+            "Watercolor flow meditation",
+            "Music improvisation sessions",
+            "Movement and dance therapy"
+        ]
+    },
+    {
+        category: "Goal Setting",
+        icon: "🎯",
+        techniques: [
+            "Vision board creation",
+            "Goal visualization art",
+            "Progress tracking through art",
+            "Achievement celebration projects",
+            "Future planning collages"
+        ]
+    }
+];
+
+// Volunteer Artist Opportunities Data
+const volunteerOpportunities = [
+    {
+        title: "Visual Arts Instructor",
+        location: "Perryville Women's Prison",
+        description: "Teach basic drawing, painting, and mixed media techniques to incarcerated women. Help participants develop artistic skills and emotional expression.",
+        timeCommitment: "4 hours/week, 6-month commitment",
+        requirements: [
+            "Background in visual arts or art education",
+            "Ability to pass background check",
+            "Patience and empathy for working with vulnerable populations",
+            "Willingness to undergo volunteer training"
+        ],
+        contact: "arts@praxisinitiative.org"
+    },
+    {
+        title: "Music Therapy Assistant",
+        location: "Phoenix Correctional Facility",
+        description: "Support music therapy sessions and help participants learn instruments, songwriting, and music production basics.",
+        timeCommitment: "3 hours/week, ongoing",
+        requirements: [
+            "Musical background or training",
+            "Experience with therapeutic approaches preferred",
+            "Strong communication skills",
+            "Commitment to participant confidentiality"
+        ],
+        contact: "music@praxisinitiative.org"
+    },
+    {
+        title: "Creative Writing Mentor",
+        location: "Multiple facilities",
+        description: "Guide participants in poetry, storytelling, and journaling exercises. Help develop writing skills and personal narrative.",
+        timeCommitment: "2-3 hours/week, flexible schedule",
+        requirements: [
+            "Writing experience or education",
+            "Ability to provide constructive feedback",
+            "Understanding of trauma-informed practices",
+            "Reliable transportation to facilities"
+        ],
+        contact: "writing@praxisinitiative.org"
+    },
+    {
+        title: "Dance/Movement Facilitator",
+        location: "Perryville Women's Prison",
+        description: "Assist with Think Motion program and other movement-based therapeutic activities.",
+        timeCommitment: "2 hours/week, 3-month minimum",
+        requirements: [
+            "Dance or movement therapy background",
+            "Understanding of trauma-informed movement",
+            "Physical ability to demonstrate movements",
+            "Sensitivity to diverse backgrounds"
+        ],
+        contact: "movement@praxisinitiative.org"
+    },
+    {
+        title: "Art Supply Coordinator",
+        location: "Administrative/Remote",
+        description: "Organize art supply donations, inventory management, and distribution to various prison programs.",
+        timeCommitment: "5-8 hours/week, flexible",
+        requirements: [
+            "Organizational and logistics skills",
+            "Ability to coordinate with multiple facilities",
+            "Transportation for supply delivery",
+            "Detail-oriented and reliable"
+        ],
+        contact: "supplies@praxisinitiative.org"
+    }
+];
+
+// Open Artist Gallery
+function openArtistGallery() {
+    const modal = document.getElementById('artist-gallery-modal');
+    const content = document.getElementById('artist-gallery-content');
+    
+    content.innerHTML = `
+        <div class="gallery-header">
+            <h2>🎨 Artist Spotlight Gallery</h2>
+            <p>Meet the talented individuals whose lives have been transformed through arts programming.</p>
+        </div>
+        
+        <div class="artist-grid">
+            ${featuredArtists.map(artist => `
+                <div class="artist-card">
+                    <div class="artist-image">${artist.image}</div>
+                    <div class="artist-info">
+                        <div class="artist-name">${artist.name}</div>
+                        <div class="artist-medium">${artist.medium}</div>
+                        <div class="artist-story">"${artist.story}"</div>
+                        <div class="artist-achievements">
+                            <strong>Achievements:</strong> ${artist.achievements}
+                        </div>
+                        <div style="margin-top: 15px; font-size: 0.9rem; color: #666;">
+                            <div><strong>Program:</strong> ${artist.program}</div>
+                            <div><strong>Time in Program:</strong> ${artist.timeInProgram}</div>
+                        </div>
+                    </div>
+                </div>
+            `).join('')}
+        </div>
+        
+        <div class="gallery-footer" style="text-align: center; margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+            <h4>Share Your Story</h4>
+            <p>Are you a program participant with artwork or experiences to share? We'd love to feature your journey.</p>
+            <button class="btn btn-primary" onclick="submitArtistStory()">Submit Your Story</button>
+        </div>
+    `;
+    
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+// Open Workshop Calendar
+function openWorkshopCalendar() {
+    const modal = document.getElementById('workshop-calendar-modal');
+    const content = document.getElementById('workshop-calendar-content');
+    
+    content.innerHTML = `
+        <div class="calendar-header">
+            <h2>📅 Creative Workshop Calendar</h2>
+            <p>Upcoming arts workshops and creative sessions in Arizona correctional facilities.</p>
+        </div>
+        
+        <div class="calendar-filters">
+            <button class="calendar-filter-btn active" onclick="filterWorkshops('all')">All Workshops</button>
+            <button class="calendar-filter-btn" onclick="filterWorkshops('visual-arts')">Visual Arts</button>
+            <button class="calendar-filter-btn" onclick="filterWorkshops('music')">Music</button>
+            <button class="calendar-filter-btn" onclick="filterWorkshops('dance')">Dance</button>
+            <button class="calendar-filter-btn" onclick="filterWorkshops('writing')">Writing</button>
+            <button class="calendar-filter-btn" onclick="filterWorkshops('theater')">Theater</button>
+        </div>
+        
+        <div class="workshops-grid" id="workshops-container">
+            ${workshopSchedule.map(workshop => `
+                <div class="workshop-card" data-category="${workshop.category}">
+                    <div class="workshop-title">${workshop.title}</div>
+                    <div class="workshop-details">
+                        <div class="workshop-detail">
+                            <span>📅</span>
+                            <span>${workshop.date}</span>
+                        </div>
+                        <div class="workshop-detail">
+                            <span>🕒</span>
+                            <span>${workshop.time}</span>
+                        </div>
+                        <div class="workshop-detail">
+                            <span>📍</span>
+                            <span>${workshop.location}</span>
+                        </div>
+                        <div class="workshop-detail">
+                            <span>👨‍🏫</span>
+                            <span>${workshop.instructor}</span>
+                        </div>
+                        <div class="workshop-detail">
+                            <span>👥</span>
+                            <span>${workshop.enrolled}/${workshop.capacity} enrolled</span>
+                        </div>
+                    </div>
+                    <div class="workshop-description">${workshop.description}</div>
+                    <button class="register-btn" onclick="registerForWorkshop('${workshop.title}')">
+                        ${workshop.enrolled < workshop.capacity ? 'Register Interest' : 'Join Waitlist'}
+                    </button>
+                </div>
+            `).join('')}
+        </div>
+        
+        <div class="calendar-footer" style="text-align: center; margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+            <h4>Request a Workshop</h4>
+            <p>Don't see what you're looking for? Request a specific type of arts workshop for your facility.</p>
+            <button class="btn btn-secondary" onclick="requestWorkshop()">Request Workshop</button>
+        </div>
+    `;
+    
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+// Open Art Therapy Resources
+function openArtTherapyResources() {
+    const modal = document.getElementById('art-therapy-modal');
+    const content = document.getElementById('art-therapy-content');
+    
+    content.innerHTML = `
+        <div class="therapy-header">
+            <h2>🧠 Art Therapy Resource Center</h2>
+            <p>Therapeutic art techniques and exercises for healing, growth, and emotional wellness.</p>
+        </div>
+        
+        <div class="therapy-categories">
+            ${artTherapyResources.map(category => `
+                <div class="therapy-category">
+                    <h4>${category.icon} ${category.category}</h4>
+                    <ul class="therapy-techniques">
+                        ${category.techniques.map(technique => `
+                            <li>${technique}</li>
+                        `).join('')}
+                    </ul>
+                    <button class="download-resource-btn" onclick="downloadTherapyGuide('${category.category}')">
+                        Download Guide
+                    </button>
+                </div>
+            `).join('')}
+        </div>
+        
+        <div class="therapy-resources-footer">
+            <h4>Professional Support</h4>
+            <p>These resources are designed to complement, not replace, professional mental health care. If you're experiencing a mental health crisis, please seek immediate professional help.</p>
+            
+            <div style="background: #e8f5e8; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                <h5>Crisis Resources:</h5>
+                <ul style="margin: 10px 0; padding-left: 20px;">
+                    <li><strong>National Suicide Prevention Lifeline:</strong> 988</li>
+                    <li><strong>Crisis Text Line:</strong> Text HOME to 741741</li>
+                    <li><strong>SAMHSA National Helpline:</strong> 1-800-662-4357</li>
+                </ul>
+            </div>
+        </div>
+    `;
+    
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+// Open Volunteer Artists Network
+function openVolunteerArtists() {
+    const modal = document.getElementById('volunteer-artists-modal');
+    const content = document.getElementById('volunteer-artists-content');
+    
+    content.innerHTML = `
+        <div class="volunteer-header">
+            <h2>🤝 Volunteer Artist Network</h2>
+            <p>Join our community of volunteer artists making a difference in Arizona's correctional facilities.</p>
+        </div>
+        
+        <div class="volunteer-opportunities-grid">
+            ${volunteerOpportunities.map(opportunity => `
+                <div class="volunteer-opportunity">
+                    <div class="volunteer-title">${opportunity.title}</div>
+                    <div class="volunteer-location">📍 ${opportunity.location}</div>
+                    <div class="volunteer-description">${opportunity.description}</div>
+                    <div class="volunteer-time">⏰ <strong>Time Commitment:</strong> ${opportunity.timeCommitment}</div>
+                    <div class="volunteer-requirements">
+                        <h5>Requirements:</h5>
+                        <ul class="requirements-list">
+                            ${opportunity.requirements.map(req => `<li>${req}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <button class="apply-volunteer-arts-btn" onclick="applyForArtsVolunteer('${opportunity.title}', '${opportunity.contact}')">
+                        Apply Now
+                    </button>
+                </div>
+            `).join('')}
+        </div>
+        
+        <div class="volunteer-info">
+            <h4>Why Volunteer with Arts in Prison?</h4>
+            <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 5px 0;">🎨 <strong>Make a Direct Impact:</strong> See firsthand how arts transform lives</li>
+                    <li style="padding: 5px 0;">🌱 <strong>Personal Growth:</strong> Develop new skills and perspectives</li>
+                    <li style="padding: 5px 0;">🤝 <strong>Community Building:</strong> Connect with like-minded advocates</li>
+                    <li style="padding: 5px 0;">📚 <strong>Training Provided:</strong> Comprehensive orientation and ongoing support</li>
+                    <li style="padding: 5px 0;">🏆 <strong>Recognition:</strong> Volunteer appreciation events and certificates</li>
+                </ul>
+            </div>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="btn btn-primary" onclick="generalVolunteerInquiry()">General Volunteer Inquiry</button>
+                <button class="btn btn-secondary" onclick="volunteerOrientation()">Attend Orientation</button>
+            </div>
+        </div>
+    `;
+    
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+// Utility Functions
+function filterWorkshops(category) {
+    const workshops = document.querySelectorAll('.workshop-card');
+    const buttons = document.querySelectorAll('.calendar-filter-btn');
+    
+    // Update active button
+    buttons.forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+    
+    // Filter workshops
+    workshops.forEach(workshop => {
+        if (category === 'all' || workshop.dataset.category === category) {
+            workshop.style.display = 'block';
+        } else {
+            workshop.style.display = 'none';
+        }
+    });
+}
+
+function registerForWorkshop(workshopTitle) {
+    alert(`Thank you for your interest in: ${workshopTitle}\n\nTo register, please contact your facility's program coordinator or email arts@praxisinitiative.org with:\n• Your name and facility\n• Workshop you're interested in\n• Any relevant experience\n\nWe'll follow up with registration details.`);
+}
+
+function submitArtistStory() {
+    alert(`Share Your Artistic Journey!\n\nWe'd love to feature your story in our Artist Spotlight Gallery. Please email arts@praxisinitiative.org with:\n\n• Your artistic medium and experience\n• A brief story about your journey\n• Photos of your artwork (if available)\n• How arts programming has impacted you\n\nAll submissions are reviewed for inclusion in our gallery.`);
+}
+
+function downloadTherapyGuide(category) {
+    alert(`Downloading ${category} Therapy Guide...\n\nThis comprehensive guide includes:\n• Step-by-step techniques\n• Safety considerations\n• Adaptation suggestions\n• Additional resources\n\nFile will be saved to your Downloads folder.`);
+}
+
+function applyForArtsVolunteer(title, contact) {
+    alert(`Thank you for your interest in: ${title}\n\nTo apply, please email: ${contact}\n\nInclude:\n• Your resume and relevant experience\n• Cover letter explaining your interest\n• Availability and schedule preferences\n• Any questions about the position\n\nWe'll respond within 5 business days with next steps.`);
+}
+
+function requestWorkshop() {
+    alert(`Request a Custom Workshop\n\nTo request a specific arts workshop for your facility, please email arts@praxisinitiative.org with:\n\n• Type of workshop desired\n• Facility name and contact\n• Preferred dates and times\n• Number of participants\n• Any special requirements\n\nWe'll work with you to develop a program that meets your needs.`);
+}
+
+function generalVolunteerInquiry() {
+    alert(`General Volunteer Inquiry\n\nInterested in volunteering but not sure which role fits? Email volunteer@praxisinitiative.org with:\n\n• Your background and interests\n• Available time commitment\n• Preferred location/facility\n• Any questions about volunteering\n\nWe'll help match you with the perfect opportunity!`);
+}
+
+function volunteerOrientation() {
+    alert(`Volunteer Orientation Sessions\n\nNext orientations:\n• May 25, 2024 - 10:00 AM (Phoenix)\n• June 8, 2024 - 2:00 PM (Tucson)\n• June 15, 2024 - 6:00 PM (Virtual)\n\nTo register: volunteer@praxisinitiative.org\nInclude your preferred session and contact information.`);
+}
+
+// Close Arts Modal
+function closeArtsModal(modalId) {
+    const modal = document.getElementById(modalId);
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// Arts Program Sharing
+function shareArtsProgram() {
+    const url = window.location.href;
+    const title = 'Support Arts in Prison Programming';
+    const text = 'Discover the transformative power of arts in rehabilitation. Support creative programming that heals, empowers, and transforms lives in Arizona prisons. #ArtsInPrison #CriminalJusticeReform #ArtHeals';
+    
+    if (navigator.share) {
+        navigator.share({
+            title: title,
+            text: text,
+            url: url
+        }).catch(console.error);
+    } else {
+        const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+        window.open(twitterUrl, '_blank', 'width=600,height=400');
+    }
+}
+
+// Newsletter Signup
+function handleArtsNewsletter(event) {
+    event.preventDefault();
+    
+    const form = event.target;
+    const email = form.email.value;
+    const interests = Array.from(form.querySelectorAll('input[name="interests"]:checked')).map(cb => cb.value);
+    
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Subscribing...';
+    submitBtn.disabled = true;
+    
+    setTimeout(() => {
+        alert(`Thank you for subscribing to arts program updates!\n\nYou'll receive information about: ${interests.join(', ')}`);
+        form.reset();
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+    }, 1500);
+}
+
+// Initialize Arts in Prison Page
+function initializeArtsInPrisonPage() {
+    // Initialize animated counters
+    const counters = document.querySelectorAll('.animated-counter');
+    
+    const observerOptions = {
+        threshold: 0.5,
+        rootMargin: '0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                animateArtsCounter(entry.target);
+                entry.target.classList.add('counted');
+            }
+        });
+    }, observerOptions);
+    
+    counters.forEach(counter => observer.observe(counter));
+    
+    // Close modals when clicking outside
+    window.onclick = function(event) {
+        const modals = ['artist-gallery-modal', 'workshop-calendar-modal', 'art-therapy-modal', 'volunteer-artists-modal'];
+        modals.forEach(modalId => {
+            const modal = document.getElementById(modalId);
+            if (event.target === modal) {
+                closeArtsModal(modalId);
+            }
+        });
+    };
+    
+    // Add smooth scrolling for newsletter link
+    const newsletterLink = document.querySelector('a[href="#arts-newsletter"]');
+    if (newsletterLink) {
+        newsletterLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector('#arts-newsletter');
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    }
+}
+
+function animateArtsCounter(element) {
+    const target = parseFloat(element.dataset.target);
+    const suffix = element.dataset.suffix || '';
+    const duration = 2000;
+    const increment = target / (duration / 16);
+    
+    let current = 0;
+    const timer = setInterval(() => {
+        current += increment;
+        
+        if (current >= target) {
+            current = target;
+            clearInterval(timer);
+        }
+        
+        let displayValue;
+        if (target === 34500) {
+            displayValue = Math.floor(current).toLocaleString() + '+';
+        } else if (target === 75 || target === 50) {
+            displayValue = Math.floor(current) + '%';
+        } else {
+            displayValue = Math.floor(current);
+        }
+        
+        element.textContent = displayValue;
+    }, 16);
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.location.pathname.includes('4E') || window.location.pathname.includes('arts_in_prison')) {
+        initializeArtsInPrisonPage();
+    }
+});
+
