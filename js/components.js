@@ -2692,3 +2692,509 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+
+// ===== 4C DRUG POLICY PAGE FUNCTIONALITY =====
+
+// Naloxone Distribution Sites Data
+const naloxoneLocations = [
+    {
+        name: "Phoenix Community Health Center",
+        address: "1234 Central Ave, Phoenix, AZ 85007",
+        phone: "(602) 555-0123",
+        hours: "Mon-Fri 8AM-6PM, Sat 9AM-3PM",
+        services: ["Free naloxone kits", "Training sessions", "Overdose prevention education"],
+        type: "health-center"
+    },
+    {
+        name: "Tucson Harm Reduction Coalition",
+        address: "567 Stone Ave, Tucson, AZ 85701",
+        phone: "(520) 555-0456",
+        hours: "Mon-Fri 10AM-7PM, Sat-Sun 12PM-5PM",
+        services: ["Naloxone distribution", "Syringe exchange", "Peer support"],
+        type: "harm-reduction"
+    },
+    {
+        name: "Mesa Fire Department",
+        address: "Multiple locations throughout Mesa",
+        phone: "(480) 555-0789",
+        hours: "24/7 Emergency Services",
+        services: ["Emergency naloxone", "First responder training", "Community education"],
+        type: "emergency"
+    },
+    {
+        name: "Flagstaff Community Pharmacy",
+        address: "890 Route 66, Flagstaff, AZ 86001",
+        phone: "(928) 555-0321",
+        hours: "Mon-Sat 9AM-8PM, Sun 10AM-6PM",
+        services: ["Naloxone prescription", "Insurance coverage assistance", "Usage training"],
+        type: "pharmacy"
+    }
+];
+
+// Treatment Centers Data
+const treatmentCenters = [
+    {
+        name: "Arizona Addiction Recovery Center",
+        address: "1111 Recovery Way, Phoenix, AZ 85008",
+        phone: "(602) 555-1111",
+        services: ["Methadone", "Buprenorphine", "Naltrexone", "Counseling"],
+        insurance: ["Medicaid", "Private Insurance", "Self-Pay"],
+        availability: "Accepting new patients",
+        type: "comprehensive"
+    },
+    {
+        name: "Desert Hope Treatment Center",
+        address: "2222 Hope Blvd, Tucson, AZ 85702",
+        phone: "(520) 555-2222",
+        services: ["Outpatient MAT", "Group therapy", "Individual counseling"],
+        insurance: ["Most insurance accepted"],
+        availability: "Waitlist available",
+        type: "outpatient"
+    },
+    {
+        name: "Mountain View Recovery",
+        address: "3333 Summit Dr, Flagstaff, AZ 86002",
+        phone: "(928) 555-3333",
+        services: ["Residential treatment", "Detox", "MAT", "Aftercare"],
+        insurance: ["Private insurance", "Self-pay"],
+        availability: "Call for availability",
+        type: "residential"
+    }
+];
+
+// Arizona Overdose Data (simulated)
+const overdoseData = {
+    statewide: {
+        total2023: 2347,
+        increase: "12% from 2022",
+        fentanylRelated: "78%",
+        demographics: {
+            "18-25": "15%",
+            "26-35": "32%",
+            "36-45": "28%",
+            "46-55": "18%",
+            "56+": "7%"
+        }
+    },
+    counties: [
+        { name: "Maricopa", deaths: 1456, rate: "32.1 per 100k", trend: "↑ 15%" },
+        { name: "Pima", deaths: 287, rate: "27.8 per 100k", trend: "↑ 8%" },
+        { name: "Pinal", deaths: 156, rate: "35.2 per 100k", trend: "↑ 22%" },
+        { name: "Yavapai", deaths: 89, rate: "38.1 per 100k", trend: "↑ 18%" },
+        { name: "Mohave", deaths: 78, rate: "36.4 per 100k", trend: "↑ 12%" }
+    ]
+};
+
+// Crisis Resources Data
+const crisisResources = [
+    {
+        name: "National Suicide Prevention Lifeline",
+        number: "988",
+        description: "24/7 crisis support and suicide prevention",
+        type: "national"
+    },
+    {
+        name: "Arizona Crisis Line",
+        number: "1-844-746-8181",
+        description: "Statewide mental health and substance use crisis support",
+        type: "state"
+    },
+    {
+        name: "Crisis Response Network",
+        number: "(602) 222-9444",
+        description: "Mobile crisis teams and emergency mental health services",
+        type: "local"
+    },
+    {
+        name: "SAMHSA National Helpline",
+        number: "1-800-662-4357",
+        description: "Treatment referral and information service",
+        type: "national"
+    }
+];
+
+// Open Naloxone Locator
+function openNaloxoneLocator() {
+    const modal = document.getElementById('naloxone-modal');
+    const content = document.getElementById('naloxone-content');
+    
+    content.innerHTML = `
+        <div class="resource-header">
+            <h2>🏥 Naloxone Distribution Sites</h2>
+            <p>Find free naloxone (Narcan) near you. All locations provide training on proper usage.</p>
+        </div>
+        
+        <div class="location-search">
+            <input type="text" id="location-search" placeholder="Enter your city or ZIP code" class="search-input">
+            <button onclick="searchNaloxoneLocations()" class="search-btn">Search</button>
+        </div>
+        
+        <div class="locations-grid">
+            ${naloxoneLocations.map(location => `
+                <div class="location-card ${location.type}">
+                    <h4>${location.name}</h4>
+                    <p class="address">📍 ${location.address}</p>
+                    <p class="phone">📞 ${location.phone}</p>
+                    <p class="hours">🕒 ${location.hours}</p>
+                    <div class="services">
+                        <h5>Services:</h5>
+                        <ul>
+                            ${location.services.map(service => `<li>${service}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <button class="contact-btn" onclick="contactLocation('${location.phone}')">Contact Now</button>
+                </div>
+            `).join('')}
+        </div>
+        
+        <div class="emergency-notice">
+            <h4>🚨 Emergency Overdose Response</h4>
+            <p><strong>Call 911 immediately</strong> if someone is experiencing an overdose. Naloxone is a temporary reversal - professional medical attention is always required.</p>
+        </div>
+    `;
+    
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+// Open Treatment Finder
+function openTreatmentFinder() {
+    const modal = document.getElementById('treatment-modal');
+    const content = document.getElementById('treatment-content');
+    
+    content.innerHTML = `
+        <div class="resource-header">
+            <h2>🏥 Treatment Center Finder</h2>
+            <p>Find medication-assisted treatment (MAT) and recovery services in Arizona.</p>
+        </div>
+        
+        <div class="treatment-filters">
+            <select id="treatment-type" class="filter-select">
+                <option value="all">All Treatment Types</option>
+                <option value="comprehensive">Comprehensive Care</option>
+                <option value="outpatient">Outpatient Only</option>
+                <option value="residential">Residential Treatment</option>
+            </select>
+            <select id="insurance-type" class="filter-select">
+                <option value="all">All Insurance Types</option>
+                <option value="medicaid">Medicaid</option>
+                <option value="private">Private Insurance</option>
+                <option value="self-pay">Self-Pay</option>
+            </select>
+        </div>
+        
+        <div class="treatment-centers">
+            ${treatmentCenters.map(center => `
+                <div class="treatment-card ${center.type}">
+                    <h4>${center.name}</h4>
+                    <p class="address">📍 ${center.address}</p>
+                    <p class="phone">📞 ${center.phone}</p>
+                    <div class="services">
+                        <h5>Services Available:</h5>
+                        <div class="service-tags">
+                            ${center.services.map(service => `<span class="service-tag">${service}</span>`).join('')}
+                        </div>
+                    </div>
+                    <div class="insurance">
+                        <h5>Insurance Accepted:</h5>
+                        <p>${center.insurance.join(', ')}</p>
+                    </div>
+                    <div class="availability">
+                        <span class="availability-status">${center.availability}</span>
+                    </div>
+                    <button class="contact-btn" onclick="contactTreatmentCenter('${center.phone}')">Call Now</button>
+                </div>
+            `).join('')}
+        </div>
+        
+        <div class="treatment-notice">
+            <h4>💡 Getting Started with Treatment</h4>
+            <p>Most treatment centers offer free consultations. Don't let insurance concerns prevent you from calling - many centers have financial assistance programs.</p>
+        </div>
+    `;
+    
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+// Open Overdose Data Map
+function openOverdoseDataMap() {
+    const modal = document.getElementById('overdose-data-modal');
+    const content = document.getElementById('overdose-data-content');
+    
+    content.innerHTML = `
+        <div class="resource-header">
+            <h2>📊 Arizona Overdose Data Dashboard</h2>
+            <p>Understanding the scope and trends of the overdose crisis in Arizona.</p>
+        </div>
+        
+        <div class="data-summary">
+            <div class="data-card">
+                <h3>${overdoseData.statewide.total2023.toLocaleString()}</h3>
+                <p>Total overdose deaths in 2023</p>
+            </div>
+            <div class="data-card">
+                <h3>${overdoseData.statewide.increase}</h3>
+                <p>Increase from previous year</p>
+            </div>
+            <div class="data-card">
+                <h3>${overdoseData.statewide.fentanylRelated}</h3>
+                <p>Involved fentanyl</p>
+            </div>
+        </div>
+        
+        <div class="county-data">
+            <h4>Deaths by County (2023)</h4>
+            <div class="county-grid">
+                ${overdoseData.counties.map(county => `
+                    <div class="county-card">
+                        <h5>${county.name} County</h5>
+                        <p class="deaths">${county.deaths} deaths</p>
+                        <p class="rate">${county.rate}</p>
+                        <p class="trend ${county.trend.includes('↑') ? 'increasing' : 'decreasing'}">${county.trend}</p>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+        
+        <div class="demographics">
+            <h4>Age Demographics</h4>
+            <div class="demo-chart">
+                ${Object.entries(overdoseData.statewide.demographics).map(([age, percent]) => `
+                    <div class="demo-bar">
+                        <span class="age-group">${age}</span>
+                        <div class="bar-container">
+                            <div class="bar" style="width: ${percent}"></div>
+                        </div>
+                        <span class="percentage">${percent}</span>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+        
+        <div class="data-source">
+            <p><em>Data source: Arizona Department of Health Services, 2023 Overdose Surveillance Report</em></p>
+        </div>
+    `;
+    
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+// Open Crisis Resources
+function openCrisisResources() {
+    const modal = document.getElementById('crisis-modal');
+    const content = document.getElementById('crisis-content');
+    
+    content.innerHTML = `
+        <div class="resource-header">
+            <h2>🚨 Crisis Intervention Resources</h2>
+            <p>Immediate help for overdose emergencies, mental health crises, and substance use support.</p>
+        </div>
+        
+        <div class="emergency-alert">
+            <h3>🚨 EMERGENCY: Call 911</h3>
+            <p>If someone is unconscious, not breathing, or in immediate danger, call 911 immediately.</p>
+        </div>
+        
+        <div class="crisis-hotlines">
+            <h4>24/7 Crisis Hotlines</h4>
+            ${crisisResources.map(resource => `
+                <div class="hotline-card ${resource.type}">
+                    <h5>${resource.name}</h5>
+                    <p class="hotline-number">${resource.number}</p>
+                    <p class="description">${resource.description}</p>
+                    <button class="call-btn" onclick="callHotline('${resource.number}')">Call Now</button>
+                </div>
+            `).join('')}
+        </div>
+        
+        <div class="overdose-response">
+            <h4>Overdose Response Steps</h4>
+            <ol class="response-steps">
+                <li><strong>Call 911</strong> - Always call emergency services first</li>
+                <li><strong>Administer naloxone</strong> - If available, give naloxone (Narcan)</li>
+                <li><strong>Rescue breathing</strong> - Provide rescue breaths if trained</li>
+                <li><strong>Stay with person</strong> - Monitor until help arrives</li>
+                <li><strong>Be prepared to repeat</strong> - Naloxone effects are temporary</li>
+            </ol>
+        </div>
+        
+        <div class="good-samaritan">
+            <h4>🛡️ Good Samaritan Law Protection</h4>
+            <p>Arizona's Good Samaritan Law protects people who call for help during an overdose from prosecution for drug possession.</p>
+        </div>
+    `;
+    
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+// Open Harm Reduction Kit
+function openHarmReductionKit() {
+    // Simulate download
+    const downloads = [
+        "Overdose Prevention Guide.pdf",
+        "Naloxone Administration Instructions.pdf",
+        "Safe Use Guidelines.pdf",
+        "Treatment Resource Directory.pdf",
+        "Family Support Guide.pdf"
+    ];
+    
+    alert(`Downloading Harm Reduction Toolkit:\n\n${downloads.join('\n')}\n\nFiles will be saved to your Downloads folder.`);
+}
+
+// Open Policy Tracker
+function openPolicyTracker() {
+    alert("Policy Tracker: This feature would connect to a live database of current Arizona drug policy legislation, reform bills, and advocacy opportunities. Contact Praxis Initiative for the latest policy updates.");
+}
+
+// Close Resource Modal
+function closeResourceModal(modalId) {
+    const modal = document.getElementById(modalId);
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// Contact Functions
+function contactLocation(phone) {
+    window.open(`tel:${phone}`, '_self');
+}
+
+function contactTreatmentCenter(phone) {
+    window.open(`tel:${phone}`, '_self');
+}
+
+function callHotline(number) {
+    window.open(`tel:${number}`, '_self');
+}
+
+// Search Functions
+function searchNaloxoneLocations() {
+    const searchTerm = document.getElementById('location-search').value.toLowerCase();
+    // In a real implementation, this would filter results
+    alert(`Searching for naloxone locations near: ${searchTerm}\n\nIn a live version, this would show filtered results based on your location.`);
+}
+
+// Drug Policy Sharing
+function shareDrugPolicy() {
+    const url = window.location.href;
+    const title = 'Support Evidence-Based Drug Policy Reform in Arizona';
+    const text = 'Arizona needs evidence-based drug policy that treats addiction as a health issue, not a crime. Join the movement for harm reduction and overdose prevention. #DrugPolicyReform #HarmReduction';
+    
+    if (navigator.share) {
+        navigator.share({
+            title: title,
+            text: text,
+            url: url
+        }).catch(console.error);
+    } else {
+        const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+        window.open(twitterUrl, '_blank', 'width=600,height=400');
+    }
+}
+
+// Newsletter Signup
+function handleDrugPolicyNewsletter(event) {
+    event.preventDefault();
+    
+    const form = event.target;
+    const email = form.email.value;
+    const interests = Array.from(form.querySelectorAll('input[name="interests"]:checked')).map(cb => cb.value);
+    
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Subscribing...';
+    submitBtn.disabled = true;
+    
+    setTimeout(() => {
+        alert(`Thank you for subscribing to drug policy updates!\n\nYou'll receive information about: ${interests.join(', ')}`);
+        form.reset();
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+    }, 1500);
+}
+
+// Initialize Drug Policy Page
+function initializeDrugPolicyPage() {
+    // Initialize animated counters
+    const counters = document.querySelectorAll('.animated-counter');
+    
+    const observerOptions = {
+        threshold: 0.5,
+        rootMargin: '0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                animateDrugPolicyCounter(entry.target);
+                entry.target.classList.add('counted');
+            }
+        });
+    }, observerOptions);
+    
+    counters.forEach(counter => observer.observe(counter));
+    
+    // Close modals when clicking outside
+    window.onclick = function(event) {
+        const modals = ['naloxone-modal', 'treatment-modal', 'overdose-data-modal', 'crisis-modal'];
+        modals.forEach(modalId => {
+            const modal = document.getElementById(modalId);
+            if (event.target === modal) {
+                closeResourceModal(modalId);
+            }
+        });
+    };
+    
+    // Add smooth scrolling for newsletter link
+    const newsletterLink = document.querySelector('a[href="#drug-policy-newsletter"]');
+    if (newsletterLink) {
+        newsletterLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector('#drug-policy-newsletter');
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    }
+}
+
+function animateDrugPolicyCounter(element) {
+    const target = parseFloat(element.dataset.target);
+    const suffix = element.dataset.suffix || '';
+    const prefix = element.dataset.prefix || '';
+    const duration = 2000;
+    const increment = target / (duration / 16);
+    
+    let current = 0;
+    const timer = setInterval(() => {
+        current += increment;
+        
+        if (current >= target) {
+            current = target;
+            clearInterval(timer);
+        }
+        
+        let displayValue;
+        if (target === 107000) {
+            displayValue = Math.floor(current).toLocaleString();
+        } else if (target === 80) {
+            displayValue = Math.floor(current) + '%';
+        } else if (target === 2300) {
+            displayValue = Math.floor(current).toLocaleString() + '+';
+        } else {
+            displayValue = Math.floor(current);
+        }
+        
+        element.textContent = prefix + displayValue + suffix;
+    }, 16);
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.location.pathname.includes('4C') || window.location.pathname.includes('drug_policy')) {
+        initializeDrugPolicyPage();
+    }
+});
+
