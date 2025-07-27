@@ -370,3 +370,360 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// =================================================================
+// ANIMATED STATISTICS COUNTERS
+// =================================================================
+
+class AnimatedCounters {
+    constructor() {
+        this.counters = document.querySelectorAll('.crisis-number');
+        this.init();
+    }
+
+    init() {
+        if (this.counters.length === 0) return;
+
+        // Create intersection observer to trigger animation when in view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                    this.animateCounter(entry.target);
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, {
+            threshold: 0.5,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        this.counters.forEach(counter => {
+            observer.observe(counter);
+        });
+    }
+
+    animateCounter(element) {
+        const text = element.textContent;
+        const hasPercent = text.includes('%');
+        const hasPlus = text.includes('+');
+        const hasComma = text.includes(',');
+        
+        // Extract the numeric value
+        let targetValue = parseFloat(text.replace(/[^\d.]/g, ''));
+        
+        // Handle special cases
+        if (text.includes('215,000')) {
+            targetValue = 215000;
+        } else if (text.includes('446')) {
+            targetValue = 446;
+        } else if (text.includes('13')) {
+            targetValue = 13;
+        } else if (text.includes('4.2')) {
+            targetValue = 4.2;
+        }
+
+        let currentValue = 0;
+        const increment = targetValue / 60; // 60 frames for smooth animation
+        const duration = 2000; // 2 seconds
+        const frameRate = duration / 60;
+
+        element.textContent = '0';
+        element.classList.add('animate');
+
+        const timer = setInterval(() => {
+            currentValue += increment;
+            
+            if (currentValue >= targetValue) {
+                currentValue = targetValue;
+                clearInterval(timer);
+            }
+
+            // Format the display value
+            let displayValue;
+            if (text.includes('4.2')) {
+                displayValue = currentValue.toFixed(1);
+            } else if (text.includes('215,000')) {
+                displayValue = Math.floor(currentValue).toLocaleString();
+            } else {
+                displayValue = Math.floor(currentValue).toString();
+            }
+
+            // Add back the symbols
+            if (hasPercent) displayValue += '%';
+            if (hasPlus) displayValue += '+';
+
+            element.textContent = displayValue;
+        }, frameRate);
+    }
+}
+
+// =================================================================
+// SCROLL-TRIGGERED ANIMATIONS
+// =================================================================
+
+class ScrollAnimations {
+    constructor() {
+        this.elements = document.querySelectorAll('.program-feature, .program-text, .crisis-stat');
+        this.init();
+    }
+
+    init() {
+        if (this.elements.length === 0) return;
+
+        // Add fade-in-up class to elements
+        this.elements.forEach((element, index) => {
+            element.classList.add('fade-in-up');
+            element.style.transitionDelay = `${index * 0.1}s`;
+        });
+
+        // Create intersection observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        this.elements.forEach(element => {
+            observer.observe(element);
+        });
+    }
+}
+
+// =================================================================
+// INTERACTIVE PROGRAM CARDS
+// =================================================================
+
+class InteractiveProgramCards {
+    constructor() {
+        this.programFeatures = document.querySelectorAll('.program-feature');
+        this.init();
+    }
+
+    init() {
+        if (this.programFeatures.length === 0) return;
+
+        this.programFeatures.forEach(feature => {
+            // Add hover sound effect (optional)
+            feature.addEventListener('mouseenter', () => {
+                feature.style.transform = 'translateY(-5px) scale(1.02)';
+                feature.style.transition = 'all 0.3s ease';
+            });
+
+            feature.addEventListener('mouseleave', () => {
+                feature.style.transform = 'translateY(0) scale(1)';
+            });
+
+            // Add click interaction
+            feature.addEventListener('click', () => {
+                // Add a subtle pulse effect
+                feature.style.animation = 'pulse 0.6s ease-in-out';
+                setTimeout(() => {
+                    feature.style.animation = '';
+                }, 600);
+            });
+        });
+    }
+}
+
+// Initialize all animations when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize animated counters
+    new AnimatedCounters();
+    
+    // Initialize scroll animations
+    new ScrollAnimations();
+    
+    // Initialize interactive program cards
+    new InteractiveProgramCards();
+});
+
+// Add pulse animation to CSS if not already present
+if (!document.querySelector('#pulse-animation-style')) {
+    const style = document.createElement('style');
+    style.id = 'pulse-animation-style';
+    style.textContent = `
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+
+// =================================================================
+// EXPANDABLE PROGRAM CARDS
+// =================================================================
+
+class ExpandableCards {
+    constructor() {
+        this.expandButtons = document.querySelectorAll('.expand-btn');
+        this.init();
+    }
+
+    init() {
+        if (this.expandButtons.length === 0) return;
+
+        this.expandButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.toggleCard(button);
+            });
+        });
+    }
+
+    toggleCard(button) {
+        const card = button.closest('.expandable-card');
+        const content = card.querySelector('.expandable-content');
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+        // Toggle expanded state
+        button.setAttribute('aria-expanded', !isExpanded);
+        
+        if (!isExpanded) {
+            // Expand
+            content.style.display = 'block';
+            content.classList.add('expanded');
+            card.classList.add('expanding');
+            
+            // Update button text
+            button.querySelector('.btn-text').textContent = 'Learn';
+            
+            // Smooth scroll to keep card in view
+            setTimeout(() => {
+                card.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest'
+                });
+            }, 200);
+            
+        } else {
+            // Collapse
+            content.classList.remove('expanded');
+            card.classList.remove('expanding');
+            
+            // Update button text
+            button.querySelector('.btn-text').textContent = 'Learn';
+            
+            // Hide content after animation
+            setTimeout(() => {
+                content.style.display = 'none';
+            }, 400);
+        }
+
+        // Add pulse effect to the card
+        card.style.animation = 'pulse 0.6s ease-in-out';
+        setTimeout(() => {
+            card.style.animation = '';
+        }, 600);
+    }
+}
+
+// =================================================================
+// PROGRAM TIMELINE WIDGET
+// =================================================================
+
+class ProgramTimeline {
+    constructor() {
+        this.timelineContainer = document.querySelector('.program-timeline');
+        this.init();
+    }
+
+    init() {
+        if (!this.timelineContainer) {
+            this.createTimeline();
+        }
+    }
+
+    createTimeline() {
+        // Create timeline section if it doesn't exist
+        const timelineHTML = `
+            <section class="program-timeline section">
+                <div class="container">
+                    <h2>Our Journey: Key Milestones</h2>
+                    <div class="timeline">
+                        <div class="timeline-item" data-year="2020">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h3>Organization Founded</h3>
+                                <p>Praxis Initiative established with a mission to transform Arizona's criminal justice system</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item" data-year="2022">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h3>First Legislative Victory</h3>
+                                <p>Successfully advocated for criminal justice reform legislation</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item" data-year="2024">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h3>Independent Oversight Office</h3>
+                                <p>Created Arizona's first Independent Correctional Oversight Office</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item" data-year="2025">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h3>Expanding Impact</h3>
+                                <p>Launching comprehensive programs across all five focus areas</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        `;
+
+        // Insert timeline before the last section
+        const lastSection = document.querySelector('main section:last-of-type');
+        if (lastSection) {
+            lastSection.insertAdjacentHTML('beforebegin', timelineHTML);
+            this.animateTimeline();
+        }
+    }
+
+    animateTimeline() {
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.3
+        });
+
+        timelineItems.forEach((item, index) => {
+            item.style.transitionDelay = `${index * 0.2}s`;
+            observer.observe(item);
+        });
+    }
+}
+
+// Update the DOMContentLoaded event listener
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize animated counters
+    new AnimatedCounters();
+    
+    // Initialize scroll animations
+    new ScrollAnimations();
+    
+    // Initialize interactive program cards
+    new InteractiveProgramCards();
+    
+    // Initialize expandable cards
+    new ExpandableCards();
+    
+    // Initialize program timeline
+    new ProgramTimeline();
+});
+
