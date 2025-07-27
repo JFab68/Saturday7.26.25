@@ -3198,3 +3198,657 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+
+// ===== 4D CIVIC ENGAGEMENT PAGE FUNCTIONALITY =====
+
+// Arizona Representatives Data
+const arizonaRepresentatives = [
+    {
+        name: "Mark Kelly",
+        title: "U.S. Senator",
+        party: "Democrat",
+        phone: "(202) 224-2235",
+        email: "https://www.kelly.senate.gov/contact",
+        office: "516 Hart Senate Office Building",
+        photo: "👨‍💼"
+    },
+    {
+        name: "Kyrsten Sinema",
+        title: "U.S. Senator", 
+        party: "Independent",
+        phone: "(202) 224-4521",
+        email: "https://www.sinema.senate.gov/contact",
+        office: "317 Hart Senate Office Building",
+        photo: "👩‍💼"
+    },
+    {
+        name: "Katie Hobbs",
+        title: "Governor",
+        party: "Democrat",
+        phone: "(602) 542-4331",
+        email: "https://azgovernor.gov/contact",
+        office: "1700 W Washington St, Phoenix, AZ",
+        photo: "👩‍⚖️"
+    }
+];
+
+// Current Arizona Criminal Justice Bills (simulated data)
+const currentBills = [
+    {
+        number: "HB 2234",
+        title: "Criminal Justice Reform and Sentencing Guidelines",
+        description: "Reforms mandatory minimum sentencing laws and expands judicial discretion in non-violent offenses.",
+        status: "committee",
+        committee: "House Judiciary Committee",
+        sponsor: "Rep. Jennifer Longdon",
+        lastAction: "Referred to committee on March 15, 2024",
+        category: "sentencing"
+    },
+    {
+        number: "SB 1456",
+        title: "Prison Oversight and Transparency Act",
+        description: "Establishes independent oversight board for Arizona Department of Corrections.",
+        status: "introduced",
+        committee: "Senate Government Committee",
+        sponsor: "Sen. Martin Quezada",
+        lastAction: "Introduced February 28, 2024",
+        category: "oversight"
+    },
+    {
+        number: "HB 2567",
+        title: "Reentry Services Expansion",
+        description: "Expands funding for job training, housing assistance, and mental health services for formerly incarcerated individuals.",
+        status: "passed",
+        committee: "House Appropriations",
+        sponsor: "Rep. Cesar Chavez",
+        lastAction: "Passed House 35-25 on April 2, 2024",
+        category: "reentry"
+    },
+    {
+        number: "SB 1789",
+        title: "Drug Policy Reform Initiative",
+        description: "Decriminalizes personal use quantities of controlled substances and expands treatment options.",
+        status: "committee",
+        committee: "Senate Health Committee",
+        sponsor: "Sen. Rebecca Rios",
+        lastAction: "Committee hearing scheduled April 18, 2024",
+        category: "drug-policy"
+    },
+    {
+        number: "HB 2890",
+        title: "Voting Rights Restoration",
+        description: "Automatically restores voting rights upon release from incarceration for non-violent felonies.",
+        status: "introduced",
+        committee: "House Elections Committee",
+        sponsor: "Rep. Athena Salman",
+        lastAction: "Introduced March 22, 2024",
+        category: "voting-rights"
+    }
+];
+
+// Volunteer Opportunities Data
+const volunteerOpportunities = [
+    {
+        title: "Policy Research Assistant",
+        organization: "Praxis Initiative",
+        description: "Help research criminal justice policies and prepare briefing materials for advocacy campaigns.",
+        timeCommitment: "5-10 hours/week",
+        location: "Remote/Phoenix",
+        skills: ["Research", "Writing", "Data Analysis"],
+        category: "research",
+        contact: "volunteer@praxisinitiative.org"
+    },
+    {
+        title: "Community Outreach Coordinator",
+        organization: "Arizona Justice Project",
+        description: "Organize community events and educational workshops about criminal justice reform.",
+        timeCommitment: "10-15 hours/week",
+        location: "Phoenix Metro",
+        skills: ["Event Planning", "Public Speaking", "Community Organizing"],
+        category: "outreach",
+        contact: "outreach@azjustice.org"
+    },
+    {
+        title: "Legislative Testimony Trainer",
+        organization: "Voices for Justice Coalition",
+        description: "Train formerly incarcerated individuals to provide effective testimony at legislative hearings.",
+        timeCommitment: "Weekend workshops",
+        location: "Phoenix/Tucson",
+        skills: ["Public Speaking", "Training", "Lived Experience"],
+        category: "training",
+        contact: "training@voicesforjustice.org"
+    },
+    {
+        title: "Digital Advocacy Specialist",
+        organization: "Reform Arizona Now",
+        description: "Manage social media campaigns and online advocacy efforts for criminal justice reform.",
+        timeCommitment: "8-12 hours/week",
+        location: "Remote",
+        skills: ["Social Media", "Digital Marketing", "Content Creation"],
+        category: "digital",
+        contact: "digital@reformaznow.org"
+    },
+    {
+        title: "Reentry Mentor",
+        organization: "Second Chance Arizona",
+        description: "Provide one-on-one mentoring and support for individuals transitioning from incarceration.",
+        timeCommitment: "4-6 hours/week",
+        location: "Statewide",
+        skills: ["Mentoring", "Lived Experience", "Empathy"],
+        category: "mentoring",
+        contact: "mentors@secondchanceaz.org"
+    }
+];
+
+// Training Events Data
+const upcomingEvents = [
+    {
+        title: "Advocacy 101: Making Your Voice Heard",
+        date: "2024-05-15",
+        time: "6:00 PM - 8:00 PM",
+        location: "Phoenix Community Center",
+        description: "Learn the basics of effective advocacy and how to contact your representatives.",
+        type: "training"
+    },
+    {
+        title: "Legislative Session Preview",
+        date: "2024-05-22",
+        time: "7:00 PM - 9:00 PM",
+        location: "Virtual Event",
+        description: "Preview of upcoming criminal justice bills and how to get involved.",
+        type: "information"
+    },
+    {
+        title: "Public Speaking Workshop",
+        date: "2024-06-05",
+        time: "10:00 AM - 4:00 PM",
+        location: "Tucson Public Library",
+        description: "Intensive workshop on public speaking and testimony skills.",
+        type: "workshop"
+    },
+    {
+        title: "Community Organizing Bootcamp",
+        date: "2024-06-12",
+        time: "9:00 AM - 5:00 PM",
+        location: "ASU Downtown Campus",
+        description: "Full-day training on grassroots organizing and campaign strategy.",
+        type: "bootcamp"
+    }
+];
+
+// Open Voter Registration Tool
+function openVoterRegistration() {
+    const modal = document.getElementById('voter-registration-modal');
+    const content = document.getElementById('voter-registration-content');
+    
+    content.innerHTML = `
+        <div class="voter-registration-header">
+            <h2>🗳️ Voter Registration & Information</h2>
+            <p>Check your registration status and get information about voting in Arizona.</p>
+        </div>
+        
+        <div class="voter-info-form">
+            <div class="form-field">
+                <label for="voter-first-name">First Name</label>
+                <input type="text" id="voter-first-name" placeholder="Enter your first name">
+            </div>
+            <div class="form-field">
+                <label for="voter-last-name">Last Name</label>
+                <input type="text" id="voter-last-name" placeholder="Enter your last name">
+            </div>
+            <div class="form-field">
+                <label for="voter-dob">Date of Birth</label>
+                <input type="date" id="voter-dob">
+            </div>
+            <div class="form-field">
+                <label for="voter-county">County</label>
+                <select id="voter-county">
+                    <option value="">Select County</option>
+                    <option value="maricopa">Maricopa</option>
+                    <option value="pima">Pima</option>
+                    <option value="pinal">Pinal</option>
+                    <option value="yavapai">Yavapai</option>
+                    <option value="mohave">Mohave</option>
+                    <option value="coconino">Coconino</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+        </div>
+        
+        <button class="btn btn-primary" onclick="checkVoterRegistration()" style="margin: 20px 0;">Check Registration Status</button>
+        
+        <div id="registration-result"></div>
+        
+        <div class="voter-resources">
+            <h4>Voting Resources</h4>
+            <div class="resource-links">
+                <a href="https://servicearizona.com/voterRegistration" target="_blank" class="btn btn-outline">Register to Vote</a>
+                <a href="https://my.arizona.vote/PortalList.aspx" target="_blank" class="btn btn-outline">Find Polling Location</a>
+                <a href="https://azsos.gov/elections" target="_blank" class="btn btn-outline">Election Information</a>
+            </div>
+        </div>
+        
+        <div class="voting-rights-info">
+            <h4>🔓 Voting Rights Restoration in Arizona</h4>
+            <p>In Arizona, voting rights are automatically restored upon completion of sentence (including parole and probation) for most felonies. Some exceptions apply for certain violent crimes.</p>
+            <ul>
+                <li>✅ Rights restored automatically for most non-violent felonies</li>
+                <li>✅ No additional paperwork required in most cases</li>
+                <li>⚠️ Some violent crimes require additional steps</li>
+                <li>📞 Contact us for personalized assistance: (602) 555-0123</li>
+            </ul>
+        </div>
+    `;
+    
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+// Open Legislative Tracker
+function openLegislativeTracker() {
+    const modal = document.getElementById('legislative-tracker-modal');
+    const content = document.getElementById('legislative-tracker-content');
+    
+    content.innerHTML = `
+        <div class="legislative-header">
+            <h2>📋 Arizona Criminal Justice Bills Tracker</h2>
+            <p>Track current legislation affecting criminal justice reform in Arizona.</p>
+        </div>
+        
+        <div class="bill-filters">
+            <button class="filter-btn active" onclick="filterBills('all')">All Bills</button>
+            <button class="filter-btn" onclick="filterBills('sentencing')">Sentencing Reform</button>
+            <button class="filter-btn" onclick="filterBills('oversight')">Prison Oversight</button>
+            <button class="filter-btn" onclick="filterBills('reentry')">Reentry Services</button>
+            <button class="filter-btn" onclick="filterBills('drug-policy')">Drug Policy</button>
+            <button class="filter-btn" onclick="filterBills('voting-rights')">Voting Rights</button>
+        </div>
+        
+        <div class="bills-list" id="bills-container">
+            ${currentBills.map(bill => `
+                <div class="bill-card" data-category="${bill.category}">
+                    <div class="bill-number">${bill.number}</div>
+                    <div class="bill-title">${bill.title}</div>
+                    <div class="bill-description">${bill.description}</div>
+                    <div class="bill-status ${bill.status}">${bill.status.charAt(0).toUpperCase() + bill.status.slice(1)}</div>
+                    <div class="bill-details">
+                        <p><strong>Sponsor:</strong> ${bill.sponsor}</p>
+                        <p><strong>Committee:</strong> ${bill.committee}</p>
+                        <p><strong>Last Action:</strong> ${bill.lastAction}</p>
+                    </div>
+                    <button class="btn btn-outline" onclick="trackBill('${bill.number}')">Track This Bill</button>
+                </div>
+            `).join('')}
+        </div>
+        
+        <div class="legislative-actions">
+            <h4>Take Action</h4>
+            <p>Stay informed and make your voice heard on these important issues.</p>
+            <button class="btn btn-primary" onclick="signUpForAlerts()">Sign Up for Bill Alerts</button>
+            <button class="btn btn-secondary" onclick="contactRepresentatives()">Contact Your Representatives</button>
+        </div>
+    `;
+    
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+// Open Advocacy Center
+function openAdvocacyCenter() {
+    const modal = document.getElementById('advocacy-center-modal');
+    const content = document.getElementById('advocacy-center-content');
+    
+    content.innerHTML = `
+        <div class="advocacy-header">
+            <h2>📢 Advocacy Action Center</h2>
+            <p>Connect with your representatives and take action on criminal justice issues.</p>
+        </div>
+        
+        <div class="representatives-section">
+            <h3>Your Arizona Representatives</h3>
+            <div class="representatives-grid">
+                ${arizonaRepresentatives.map(rep => `
+                    <div class="representative-card">
+                        <div class="rep-photo">${rep.photo}</div>
+                        <div class="rep-name">${rep.name}</div>
+                        <div class="rep-title">${rep.title} (${rep.party})</div>
+                        <div class="contact-methods">
+                            <button class="contact-btn phone" onclick="contactRep('phone', '${rep.phone}')">📞 Call</button>
+                            <button class="contact-btn email" onclick="contactRep('email', '${rep.email}')">✉️ Email</button>
+                            <button class="contact-btn office" onclick="contactRep('office', '${rep.office}')">🏢 Office</button>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+        
+        <div class="advocacy-campaigns">
+            <h3>Current Advocacy Campaigns</h3>
+            <div class="campaigns-list">
+                <div class="campaign-card">
+                    <h4>Support Prison Oversight Reform</h4>
+                    <p>Urge your representatives to support independent oversight of Arizona's prison system.</p>
+                    <button class="btn btn-primary" onclick="joinCampaign('prison-oversight')">Join Campaign</button>
+                </div>
+                <div class="campaign-card">
+                    <h4>Expand Reentry Services</h4>
+                    <p>Advocate for increased funding for job training and housing assistance programs.</p>
+                    <button class="btn btn-primary" onclick="joinCampaign('reentry-services')">Join Campaign</button>
+                </div>
+                <div class="campaign-card">
+                    <h4>Restore Voting Rights</h4>
+                    <p>Support automatic restoration of voting rights for formerly incarcerated individuals.</p>
+                    <button class="btn btn-primary" onclick="joinCampaign('voting-rights')">Join Campaign</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="advocacy-tools">
+            <h3>Advocacy Tools</h3>
+            <div class="tools-list">
+                <button class="btn btn-outline" onclick="generateLetter()">Generate Advocacy Letter</button>
+                <button class="btn btn-outline" onclick="scheduleCall()">Schedule Call with Rep</button>
+                <button class="btn btn-outline" onclick="findTownHalls()">Find Town Halls</button>
+                <button class="btn btn-outline" onclick="shareOnSocial()">Share on Social Media</button>
+            </div>
+        </div>
+    `;
+    
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+// Open Volunteer Matcher
+function openVolunteerMatcher() {
+    const modal = document.getElementById('volunteer-matcher-modal');
+    const content = document.getElementById('volunteer-matcher-content');
+    
+    content.innerHTML = `
+        <div class="volunteer-header">
+            <h2>🤝 Volunteer Opportunity Matcher</h2>
+            <p>Find volunteer opportunities that match your skills and interests in criminal justice reform.</p>
+        </div>
+        
+        <div class="volunteer-filters">
+            <div class="form-field">
+                <label for="volunteer-category">Category</label>
+                <select id="volunteer-category" onchange="filterVolunteerOpportunities()">
+                    <option value="all">All Categories</option>
+                    <option value="research">Research & Policy</option>
+                    <option value="outreach">Community Outreach</option>
+                    <option value="training">Training & Education</option>
+                    <option value="digital">Digital Advocacy</option>
+                    <option value="mentoring">Mentoring & Support</option>
+                </select>
+            </div>
+            <div class="form-field">
+                <label for="volunteer-time">Time Commitment</label>
+                <select id="volunteer-time" onchange="filterVolunteerOpportunities()">
+                    <option value="all">Any Time Commitment</option>
+                    <option value="low">1-5 hours/week</option>
+                    <option value="medium">6-10 hours/week</option>
+                    <option value="high">10+ hours/week</option>
+                    <option value="events">Events/Workshops Only</option>
+                </select>
+            </div>
+            <div class="form-field">
+                <label for="volunteer-location">Location</label>
+                <select id="volunteer-location" onchange="filterVolunteerOpportunities()">
+                    <option value="all">All Locations</option>
+                    <option value="remote">Remote</option>
+                    <option value="phoenix">Phoenix Metro</option>
+                    <option value="tucson">Tucson</option>
+                    <option value="statewide">Statewide</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="volunteer-opportunities" id="opportunities-container">
+            ${volunteerOpportunities.map(opp => `
+                <div class="opportunity-card" data-category="${opp.category}">
+                    <div class="opportunity-title">${opp.title}</div>
+                    <div class="opportunity-org">${opp.organization}</div>
+                    <div class="opportunity-description">${opp.description}</div>
+                    <div class="opportunity-details">
+                        <div class="detail-item">
+                            <span>⏰</span>
+                            <span>${opp.timeCommitment}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>📍</span>
+                            <span>${opp.location}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>🛠️</span>
+                            <span>${opp.skills.join(', ')}</span>
+                        </div>
+                    </div>
+                    <button class="apply-volunteer-btn" onclick="applyForVolunteer('${opp.title}', '${opp.contact}')">Apply Now</button>
+                </div>
+            `).join('')}
+        </div>
+        
+        <div class="volunteer-signup">
+            <h3>Can't Find What You're Looking For?</h3>
+            <p>Let us know your interests and we'll match you with opportunities.</p>
+            <button class="btn btn-primary" onclick="customVolunteerRequest()">Request Custom Match</button>
+        </div>
+    `;
+    
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+// Open Event Calendar
+function openEventCalendar() {
+    alert(`Training & Events Calendar:\n\n${upcomingEvents.map(event => 
+        `${event.title}\n📅 ${event.date} at ${event.time}\n📍 ${event.location}\n${event.description}\n`
+    ).join('\n')}\n\nFor registration and more events, visit our website or call (602) 555-0123.`);
+}
+
+// Open Impact Tracker
+function openImpactTracker() {
+    alert(`Impact Tracker Dashboard:\n\n🎯 Your Advocacy Impact:\n• 3 representatives contacted this month\n• 2 bills tracked and supported\n• 1 community event attended\n\n🌟 Community Impact:\n• 1,247 advocacy actions taken\n• 23 bills actively tracked\n• 156 volunteers engaged\n• 89% increase in civic participation\n\nTogether, we're making a difference in criminal justice reform!`);
+}
+
+// Utility Functions
+function checkVoterRegistration() {
+    const firstName = document.getElementById('voter-first-name').value;
+    const lastName = document.getElementById('voter-last-name').value;
+    const dob = document.getElementById('voter-dob').value;
+    const county = document.getElementById('voter-county').value;
+    
+    const resultDiv = document.getElementById('registration-result');
+    
+    if (!firstName || !lastName || !dob || !county) {
+        resultDiv.innerHTML = '<div class="error-state">Please fill in all fields to check registration status.</div>';
+        return;
+    }
+    
+    // Simulate registration check
+    setTimeout(() => {
+        const isRegistered = Math.random() > 0.3; // 70% chance of being registered
+        
+        if (isRegistered) {
+            resultDiv.innerHTML = `
+                <div class="registration-status">
+                    <h4>✅ You are registered to vote!</h4>
+                    <p>Registration found for ${firstName} ${lastName} in ${county} County.</p>
+                    <p>Your polling location and ballot information will be mailed to your registered address.</p>
+                </div>
+            `;
+        } else {
+            resultDiv.innerHTML = `
+                <div class="registration-status not-registered">
+                    <h4>⚠️ Registration not found</h4>
+                    <p>We couldn't find a registration for ${firstName} ${lastName} in ${county} County.</p>
+                    <p>You may need to register or update your registration.</p>
+                    <a href="https://servicearizona.com/voterRegistration" target="_blank" class="btn btn-primary">Register Now</a>
+                </div>
+            `;
+        }
+    }, 1500);
+    
+    resultDiv.innerHTML = '<div class="loading-spinner"></div><p>Checking registration status...</p>';
+}
+
+function filterBills(category) {
+    const bills = document.querySelectorAll('.bill-card');
+    const buttons = document.querySelectorAll('.filter-btn');
+    
+    // Update active button
+    buttons.forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+    
+    // Filter bills
+    bills.forEach(bill => {
+        if (category === 'all' || bill.dataset.category === category) {
+            bill.style.display = 'block';
+        } else {
+            bill.style.display = 'none';
+        }
+    });
+}
+
+function contactRep(method, contact) {
+    if (method === 'phone') {
+        window.open(`tel:${contact}`, '_self');
+    } else if (method === 'email') {
+        window.open(contact, '_blank');
+    } else if (method === 'office') {
+        alert(`Office Address: ${contact}\n\nYou can visit during regular business hours or call to schedule an appointment.`);
+    }
+}
+
+function applyForVolunteer(title, contact) {
+    alert(`Thank you for your interest in: ${title}\n\nTo apply, please email: ${contact}\n\nInclude your resume, a brief cover letter explaining your interest, and your availability.`);
+}
+
+// Close Civic Modal
+function closeCivicModal(modalId) {
+    const modal = document.getElementById(modalId);
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// Civic Engagement Sharing
+function shareCivicEngagement() {
+    const url = window.location.href;
+    const title = 'Join Civic Engagement & Advocacy Training';
+    const text = 'Empower yourself with advocacy skills and help shape criminal justice reform in Arizona. Join our comprehensive civic engagement training program. #CivicEngagement #CriminalJusticeReform';
+    
+    if (navigator.share) {
+        navigator.share({
+            title: title,
+            text: text,
+            url: url
+        }).catch(console.error);
+    } else {
+        const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+        window.open(twitterUrl, '_blank', 'width=600,height=400');
+    }
+}
+
+// Newsletter Signup
+function handleCivicNewsletter(event) {
+    event.preventDefault();
+    
+    const form = event.target;
+    const email = form.email.value;
+    const interests = Array.from(form.querySelectorAll('input[name="interests"]:checked')).map(cb => cb.value);
+    
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Subscribing...';
+    submitBtn.disabled = true;
+    
+    setTimeout(() => {
+        alert(`Thank you for subscribing to civic engagement updates!\n\nYou'll receive information about: ${interests.join(', ')}`);
+        form.reset();
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+    }, 1500);
+}
+
+// Initialize Civic Engagement Page
+function initializeCivicEngagementPage() {
+    // Initialize animated counters
+    const counters = document.querySelectorAll('.animated-counter');
+    
+    const observerOptions = {
+        threshold: 0.5,
+        rootMargin: '0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                animateCivicCounter(entry.target);
+                entry.target.classList.add('counted');
+            }
+        });
+    }, observerOptions);
+    
+    counters.forEach(counter => observer.observe(counter));
+    
+    // Close modals when clicking outside
+    window.onclick = function(event) {
+        const modals = ['voter-registration-modal', 'legislative-tracker-modal', 'advocacy-center-modal', 'volunteer-matcher-modal'];
+        modals.forEach(modalId => {
+            const modal = document.getElementById(modalId);
+            if (event.target === modal) {
+                closeCivicModal(modalId);
+            }
+        });
+    };
+    
+    // Add smooth scrolling for newsletter link
+    const newsletterLink = document.querySelector('a[href="#civic-newsletter"]');
+    if (newsletterLink) {
+        newsletterLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector('#civic-newsletter');
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    }
+}
+
+function animateCivicCounter(element) {
+    const target = parseFloat(element.dataset.target);
+    const suffix = element.dataset.suffix || '';
+    const duration = 2000;
+    const increment = target / (duration / 16);
+    
+    let current = 0;
+    const timer = setInterval(() => {
+        current += increment;
+        
+        if (current >= target) {
+            current = target;
+            clearInterval(timer);
+        }
+        
+        let displayValue;
+        if (target === 5) {
+            displayValue = Math.floor(current) + ' Million';
+        } else if (target === 96) {
+            displayValue = Math.floor(current) + '%';
+        } else if (target === 0) {
+            displayValue = 'Zero';
+        } else {
+            displayValue = Math.floor(current);
+        }
+        
+        element.textContent = displayValue;
+    }, 16);
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.location.pathname.includes('4D') || window.location.pathname.includes('civic_engagement')) {
+        initializeCivicEngagementPage();
+    }
+});
+
