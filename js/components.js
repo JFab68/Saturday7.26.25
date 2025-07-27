@@ -1025,3 +1025,482 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+
+
+// ===== NEWS PAGE FUNCTIONALITY =====
+
+// News page filtering and search
+function initializeNewsPage() {
+    const searchInput = document.getElementById('searchInput');
+    const searchSuggestions = document.getElementById('searchSuggestions');
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const sortSelect = document.getElementById('sortBy');
+    const dateFilter = document.getElementById('dateFilter');
+    const gridViewBtn = document.getElementById('gridView');
+    const listViewBtn = document.getElementById('listView');
+    const contentItems = document.querySelector('.content-items');
+    const resultsCount = document.getElementById('resultsCount');
+    
+    let allArticles = [];
+    let filteredArticles = [];
+    let currentFilter = 'all';
+    let currentSort = 'date-desc';
+    let currentDateFilter = 'all';
+    let searchTerm = '';
+    
+    // Initialize articles data
+    function initializeArticles() {
+        const articles = document.querySelectorAll('.content-card, .featured-article');
+        allArticles = Array.from(articles).map(article => ({
+            element: article,
+            type: article.dataset.type || 'article',
+            date: new Date(article.dataset.date || '2025-01-01'),
+            popularity: parseInt(article.dataset.popularity || '50'),
+            title: article.querySelector('.card-title, h2')?.textContent || '',
+            excerpt: article.querySelector('.card-excerpt, .featured-description')?.textContent || '',
+            tags: Array.from(article.querySelectorAll('.tag')).map(tag => tag.textContent),
+            author: article.querySelector('.card-meta span:nth-child(2)')?.textContent || ''
+        }));
+        filteredArticles = [...allArticles];
+        updateResultsCount();
+    }
+    
+    // Search functionality with suggestions
+    if (searchInput) {
+        let searchTimeout;
+        const searchSuggestionsList = [
+            'bail reform', 'restorative justice', 'mandatory minimums', 'prison reform',
+            'criminal justice', 'sentencing disparities', 'community programs', 'recidivism',
+            'drug policy', 'mental health courts', 'prosecutorial discretion', 'decarceration'
+        ];
+        
+        searchInput.addEventListener('input', (e) => {
+            clearTimeout(searchTimeout);
+            searchTerm = e.target.value.toLowerCase();
+            
+            // Show suggestions
+            if (searchTerm.length > 1) {
+                const suggestions = searchSuggestionsList.filter(suggestion => 
+                    suggestion.includes(searchTerm)
+                ).slice(0, 5);
+                
+                if (suggestions.length > 0) {
+                    searchSuggestions.innerHTML = suggestions.map(suggestion => 
+                        `<div class="suggestion-item" data-suggestion="${suggestion}">${suggestion}</div>`
+                    ).join('');
+                    searchSuggestions.style.display = 'block';
+                } else {
+                    searchSuggestions.style.display = 'none';
+                }
+            } else {
+                searchSuggestions.style.display = 'none';
+            }
+            
+            // Debounced search
+            searchTimeout = setTimeout(() => {
+                filterAndSortArticles();
+            }, 300);
+        });
+        
+        // Handle suggestion clicks
+        searchSuggestions.addEventListener('click', (e) => {
+            if (e.target.classList.contains('suggestion-item')) {
+                searchInput.value = e.target.dataset.suggestion;
+                searchTerm = e.target.dataset.suggestion.toLowerCase();
+                searchSuggestions.style.display = 'none';
+                filterAndSortArticles();
+            }
+        });
+        
+        // Hide suggestions when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!searchInput.contains(e.target) && !searchSuggestions.contains(e.target)) {
+                searchSuggestions.style.display = 'none';
+            }
+        });
+    }
+    
+    // Filter tabs
+    filterTabs.forEach(tab => {
+        tab.addEventListener('click', (e) => {
+            e.preventDefault();
+            filterTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            currentFilter = tab.dataset.filter;
+            filterAndSortArticles();
+        });
+    });
+    
+    // Sort and date filters
+    if (sortSelect) {
+        sortSelect.addEventListener('change', (e) => {
+            currentSort = e.target.value;
+            filterAndSortArticles();
+        });
+    }
+    
+    if (dateFilter) {
+        dateFilter.addEventListener('change', (e) => {
+            currentDateFilter = e.target.value;
+            filterAndSortArticles();
+        });
+    }
+    
+    // View toggle
+    if (gridViewBtn && listViewBtn) {
+        gridViewBtn.addEventListener('click', () => {
+            gridViewBtn.classList.add('active');
+            listViewBtn.classList.remove('active');
+            contentItems.classList.remove('list-view');
+        });
+        
+        listViewBtn.addEventListener('click', () => {
+            listViewBtn.classList.add('active');
+            gridViewBtn.classList.remove('active');
+            contentItems.classList.add('list-view');
+        });
+    }
+    
+    // Filter and sort function
+    function filterAndSortArticles() {
+        filteredArticles = allArticles.filter(article => {
+            // Type filter
+            if (currentFilter !== 'all' && article.type !== currentFilter) {
+                return false;
+            }
+            
+            // Date filter
+            if (currentDateFilter !== 'all') {
+                const now = new Date();
+                const articleDate = article.date;
+                let cutoffDate;
+                
+                switch (currentDateFilter) {
+                    case 'week':
+                        cutoffDate = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+                        break;
+                    case 'month':
+                        cutoffDate = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+                        break;
+                    case 'quarter':
+                        cutoffDate = new Date(now.getTime() - 90 * 24 * 60 * 60 * 1000);
+                        break;
+                    case 'year':
+                        cutoffDate = new Date(now.getTime() - 365 * 24 * 60 * 60 * 1000);
+                        break;
+                    default:
+                        cutoffDate = new Date(0);
+                }
+                
+                if (articleDate < cutoffDate) {
+                    return false;
+                }
+            }
+            
+            // Search filter
+            if (searchTerm) {
+                const searchableText = (
+                    article.title + ' ' + 
+                    article.excerpt + ' ' + 
+                    article.tags.join(' ') + ' ' + 
+                    article.author
+                ).toLowerCase();
+                
+                if (!searchableText.includes(searchTerm)) {
+                    return false;
+                }
+            }
+            
+            return true;
+        });
+        
+        // Sort articles
+        filteredArticles.sort((a, b) => {
+            switch (currentSort) {
+                case 'date-desc':
+                    return b.date - a.date;
+                case 'date-asc':
+                    return a.date - b.date;
+                case 'popular':
+                    return b.popularity - a.popularity;
+                case 'title':
+                    return a.title.localeCompare(b.title);
+                default:
+                    return 0;
+            }
+        });
+        
+        // Update display
+        updateArticleDisplay();
+        updateResultsCount();
+    }
+    
+    function updateArticleDisplay() {
+        // Hide all articles first
+        allArticles.forEach(article => {
+            article.element.style.display = 'none';
+        });
+        
+        // Show filtered articles
+        filteredArticles.forEach((article, index) => {
+            article.element.style.display = 'block';
+            article.element.style.order = index;
+        });
+    }
+    
+    function updateResultsCount() {
+        if (resultsCount) {
+            const count = filteredArticles.length;
+            const articleText = count === 1 ? 'article' : 'articles';
+            resultsCount.textContent = `${count} ${articleText} found`;
+        }
+    }
+    
+    // Initialize
+    initializeArticles();
+}
+
+// Bookmarking functionality
+function initializeBookmarking() {
+    const bookmarkButtons = document.querySelectorAll('.bookmark-btn');
+    let bookmarkedArticles = JSON.parse(localStorage.getItem('bookmarkedArticles') || '[]');
+    
+    // Update bookmark button states
+    function updateBookmarkStates() {
+        bookmarkButtons.forEach(btn => {
+            const articleId = btn.dataset.articleId;
+            if (bookmarkedArticles.includes(articleId)) {
+                btn.classList.add('bookmarked');
+                btn.querySelector('i').className = 'fas fa-bookmark';
+            } else {
+                btn.classList.remove('bookmarked');
+                btn.querySelector('i').className = 'far fa-bookmark';
+            }
+        });
+    }
+    
+    // Handle bookmark clicks
+    bookmarkButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const articleId = btn.dataset.articleId;
+            
+            if (bookmarkedArticles.includes(articleId)) {
+                bookmarkedArticles = bookmarkedArticles.filter(id => id !== articleId);
+                showNotification('Article removed from bookmarks', 'info');
+            } else {
+                bookmarkedArticles.push(articleId);
+                showNotification('Article bookmarked!', 'success');
+            }
+            
+            localStorage.setItem('bookmarkedArticles', JSON.stringify(bookmarkedArticles));
+            updateBookmarkStates();
+        });
+    });
+    
+    updateBookmarkStates();
+}
+
+// Social sharing functionality
+function initializeSocialSharing() {
+    const shareButtons = document.querySelectorAll('.social-btn, .social-btn-mini, .share-btn');
+    
+    shareButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const platform = btn.dataset.platform;
+            const articleElement = btn.closest('.content-card, .featured-article');
+            const title = articleElement.querySelector('.card-title, h2')?.textContent || 'Praxis Initiative Article';
+            const url = window.location.href;
+            
+            let shareUrl = '';
+            
+            switch (platform) {
+                case 'twitter':
+                    shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`;
+                    break;
+                case 'facebook':
+                    shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+                    break;
+                case 'linkedin':
+                    shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+                    break;
+                case 'email':
+                    shareUrl = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent('Check out this article: ' + url)}`;
+                    break;
+            }
+            
+            if (shareUrl) {
+                if (platform === 'email') {
+                    window.location.href = shareUrl;
+                } else {
+                    window.open(shareUrl, '_blank', 'width=600,height=400');
+                }
+                showNotification('Sharing article...', 'info');
+            }
+        });
+    });
+}
+
+// Tag click functionality
+function initializeTagFiltering() {
+    const tags = document.querySelectorAll('.tag');
+    
+    tags.forEach(tag => {
+        tag.addEventListener('click', () => {
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.value = tag.textContent;
+                searchInput.dispatchEvent(new Event('input'));
+                showNotification(`Filtering by "${tag.textContent}"`, 'info');
+            }
+        });
+    });
+}
+
+// Newsletter preferences
+function initializeNewsletterPreferences() {
+    const preferenceOptions = document.querySelectorAll('.preference-option');
+    const newsletterForm = document.querySelector('.newsletter-form');
+    
+    // Handle preference selection
+    preferenceOptions.forEach(option => {
+        const checkbox = option.querySelector('input[type="checkbox"]');
+        option.addEventListener('click', (e) => {
+            if (e.target !== checkbox) {
+                checkbox.checked = !checkbox.checked;
+            }
+        });
+    });
+    
+    // Handle form submission
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = newsletterForm.querySelector('input[type="email"]').value;
+            const frequency = newsletterForm.querySelector('select[name="frequency"]').value;
+            const interests = Array.from(document.querySelectorAll('.preference-option input:checked'))
+                .map(input => input.value);
+            
+            // Simulate newsletter subscription
+            showNotification('Successfully subscribed to newsletter!', 'success');
+            console.log('Newsletter subscription:', { email, frequency, interests });
+        });
+    }
+}
+
+// Animated statistics counters for News page
+function initializeNewsStats() {
+    const statNumbers = document.querySelectorAll('.stat-number');
+    
+    const animateCounter = (element, target) => {
+        const duration = 2000;
+        const start = 0;
+        const increment = target / (duration / 16);
+        let current = start;
+        
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                current = target;
+                clearInterval(timer);
+            }
+            
+            // Format number with appropriate suffix
+            let displayValue = Math.floor(current);
+            if (target >= 1000) {
+                if (target >= 1000000) {
+                    displayValue = (current / 1000000).toFixed(1) + 'M';
+                } else {
+                    displayValue = (current / 1000).toFixed(1) + 'K';
+                }
+            }
+            
+            element.textContent = displayValue;
+        }, 16);
+    };
+    
+    // Intersection Observer for triggering animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const element = entry.target;
+                const text = element.textContent;
+                let target = parseInt(text.replace(/[^\d]/g, ''));
+                
+                if (text.includes('K')) {
+                    target *= 1000;
+                } else if (text.includes('M')) {
+                    target *= 1000000;
+                }
+                
+                animateCounter(element, target);
+                observer.unobserve(element);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    statNumbers.forEach(stat => observer.observe(stat));
+}
+
+// Notification system
+function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.textContent = message;
+    
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 1rem 1.5rem;
+        border-radius: 6px;
+        color: white;
+        font-weight: 500;
+        z-index: 1000;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+    `;
+    
+    switch (type) {
+        case 'success':
+            notification.style.background = '#28a745';
+            break;
+        case 'error':
+            notification.style.background = '#dc3545';
+            break;
+        case 'info':
+        default:
+            notification.style.background = '#007bff';
+            break;
+    }
+    
+    document.body.appendChild(notification);
+    
+    // Animate in
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+    }, 100);
+    
+    // Animate out and remove
+    setTimeout(() => {
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+            document.body.removeChild(notification);
+        }, 300);
+    }, 3000);
+}
+
+// Initialize all News page functionality
+document.addEventListener('DOMContentLoaded', () => {
+    // Check if we're on the News page
+    if (window.location.pathname.includes('News') || document.querySelector('.news-stats')) {
+        initializeNewsPage();
+        initializeBookmarking();
+        initializeSocialSharing();
+        initializeTagFiltering();
+        initializeNewsletterPreferences();
+        initializeNewsStats();
+    }
+});
+
