@@ -2136,3 +2136,145 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+
+
+// ===== 4A PRISON OVERSIGHT PAGE FUNCTIONALITY =====
+
+// Expandable Card Functionality
+function toggleCardExpansion(button) {
+    const card = button.closest('.expandable-card');
+    const isExpanded = card.classList.contains('expanded');
+    
+    if (isExpanded) {
+        card.classList.remove('expanded');
+        button.textContent = 'Learn More';
+    } else {
+        card.classList.add('expanded');
+        button.textContent = 'Show Less';
+    }
+}
+
+// Social Sharing Functionality
+function shareAdvocacy() {
+    const url = window.location.href;
+    const title = 'Support Independent Prison Oversight in Arizona';
+    const text = 'Arizona needs independent oversight of its prison system. 34,500+ people deserve transparency and accountability. #PrisonOversight #CriminalJusticeReform';
+    
+    if (navigator.share) {
+        navigator.share({
+            title: title,
+            text: text,
+            url: url
+        }).catch(console.error);
+    } else {
+        // Fallback to Twitter sharing
+        const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+        window.open(twitterUrl, '_blank', 'width=600,height=400');
+    }
+}
+
+// Newsletter Signup Functionality
+function handleNewsletterSignup(event) {
+    event.preventDefault();
+    
+    const form = event.target;
+    const email = form.email.value;
+    const interests = Array.from(form.querySelectorAll('input[name="interests"]:checked')).map(cb => cb.value);
+    
+    // Show loading state
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Subscribing...';
+    submitBtn.disabled = true;
+    
+    // Simulate API call (replace with actual integration)
+    setTimeout(() => {
+        alert(`Thank you for subscribing! You'll receive updates about: ${interests.join(', ')}`);
+        form.reset();
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+    }, 1500);
+}
+
+// Enhanced Animated Counters for Prison Oversight Page
+function initializePrisonOversightCounters() {
+    const counters = document.querySelectorAll('.animated-counter');
+    
+    const observerOptions = {
+        threshold: 0.5,
+        rootMargin: '0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                animateCounter(entry.target);
+                entry.target.classList.add('counted');
+            }
+        });
+    }, observerOptions);
+    
+    counters.forEach(counter => observer.observe(counter));
+}
+
+function animateCounter(element) {
+    const target = parseFloat(element.dataset.target);
+    const suffix = element.dataset.suffix || '';
+    const prefix = element.dataset.prefix || '';
+    const duration = 2000; // 2 seconds
+    const increment = target / (duration / 16); // 60fps
+    
+    let current = 0;
+    const timer = setInterval(() => {
+        current += increment;
+        
+        if (current >= target) {
+            current = target;
+            clearInterval(timer);
+        }
+        
+        // Format the number
+        let displayValue;
+        if (target >= 1000 && target < 1000000) {
+            displayValue = (current / 1000).toFixed(1) + 'K';
+        } else if (target >= 1000000) {
+            displayValue = (current / 1000000).toFixed(1) + 'M';
+        } else if (target < 1) {
+            displayValue = current.toFixed(1);
+        } else {
+            displayValue = Math.floor(current).toLocaleString();
+        }
+        
+        element.textContent = prefix + displayValue + suffix;
+        
+        // Add special formatting for specific values
+        if (target === 34500) {
+            element.textContent = Math.floor(current).toLocaleString() + '+';
+        } else if (target === 1.5) {
+            element.textContent = '$' + current.toFixed(1) + 'B';
+        } else if (target === 0) {
+            element.textContent = '0';
+        }
+    }, 16);
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize prison oversight specific functionality
+    if (window.location.pathname.includes('4A') || window.location.pathname.includes('prison_oversight')) {
+        initializePrisonOversightCounters();
+        
+        // Add smooth scrolling for newsletter signup link
+        const newsletterLink = document.querySelector('a[href="#newsletter-signup"]');
+        if (newsletterLink) {
+            newsletterLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector('#newsletter-signup');
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        }
+    }
+});
+
