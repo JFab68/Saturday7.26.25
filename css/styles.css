@@ -11169,8 +11169,8 @@ html {
     color: #28a745;
 }
 
-/* Six Ps Interactive Grid */
-.six-ps-interactive-grid {
+/* Seven Ps Interactive Grid */
+.seven-ps-interactive-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
@@ -11286,7 +11286,7 @@ html {
 @media (max-width: 768px) {
     .reform-overview-grid,
     .reform-areas-grid,
-    .six-ps-interactive-grid {
+    .seven-ps-interactive-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
