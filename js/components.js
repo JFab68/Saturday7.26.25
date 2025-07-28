@@ -4502,3 +4502,230 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+
+
+// ===== PROGRAMS PAGE FUNCTIONALITY =====
+
+// Animated Counter for Programs Page
+function animateProgramsCounter(element) {
+    const target = parseFloat(element.dataset.target);
+    const suffix = element.dataset.suffix || '';
+    const duration = 2000;
+    const increment = target / (duration / 16);
+    
+    let current = 0;
+    const timer = setInterval(() => {
+        current += increment;
+        
+        if (current >= target) {
+            current = target;
+            clearInterval(timer);
+        }
+        
+        let displayValue;
+        if (suffix === '%') {
+            displayValue = current.toFixed(1) + '%';
+        } else if (suffix === '+') {
+            displayValue = Math.floor(current).toLocaleString() + '+';
+        } else if (suffix === 'k+') {
+            displayValue = Math.floor(current / 1000) + 'k+';
+        } else {
+            displayValue = Math.floor(current).toLocaleString();
+        }
+        
+        element.textContent = displayValue;
+    }, 16);
+}
+
+// Expandable Cards Functionality
+function initExpandableCards() {
+    const expandableCards = document.querySelectorAll('.expandable-card');
+    
+    expandableCards.forEach(card => {
+        const button = card.querySelector('.learn-more-btn');
+        const expandedContent = card.querySelector('.expanded-content');
+        
+        if (button && expandedContent) {
+            // Initially hide expanded content
+            expandedContent.style.maxHeight = '0';
+            expandedContent.style.overflow = 'hidden';
+            expandedContent.style.transition = 'max-height 0.3s ease-out';
+            
+            button.addEventListener('click', function() {
+                const isExpanded = expandedContent.style.maxHeight !== '0px';
+                
+                if (isExpanded) {
+                    // Collapse
+                    expandedContent.style.maxHeight = '0';
+                    button.textContent = 'Learn More';
+                    button.setAttribute('aria-expanded', 'false');
+                } else {
+                    // Expand
+                    expandedContent.style.maxHeight = expandedContent.scrollHeight + 'px';
+                    button.textContent = 'Show Less';
+                    button.setAttribute('aria-expanded', 'true');
+                }
+            });
+        }
+    });
+}
+
+// Interactive Timeline Widget
+function initProgramsTimeline() {
+    const timelineContainer = document.querySelector('.programs-timeline');
+    if (!timelineContainer) return;
+    
+    const timelineData = [
+        {
+            year: '2024',
+            title: 'Independent Oversight Office Created',
+            description: 'Arizona\'s first Independent Correctional Oversight Office established through legislative advocacy.',
+            impact: 'Groundbreaking transparency and accountability measure'
+        },
+        {
+            year: '2023',
+            title: 'Coalition Building Success',
+            description: 'Built bipartisan coalition of 25+ organizations supporting criminal justice reform.',
+            impact: 'Unified advocacy across ideological lines'
+        },
+        {
+            year: '2022',
+            title: 'Evidence-Based Research Initiative',
+            description: 'Launched comprehensive data collection and analysis program for policy development.',
+            impact: 'Data-driven approach to systemic change'
+        },
+        {
+            year: '2021',
+            title: 'Community Engagement Program',
+            description: 'Established direct support services and advocacy training for returning citizens.',
+            impact: 'Empowered formerly incarcerated individuals as advocates'
+        }
+    ];
+    
+    const timelineHTML = `
+        <div class="timeline-header">
+            <h3>Our Impact Timeline</h3>
+            <p>Key milestones in transforming Arizona's criminal justice system</p>
+        </div>
+        <div class="timeline-track">
+            ${timelineData.map((item, index) => `
+                <div class="timeline-item" data-year="${item.year}">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">${item.year}</div>
+                        <h4 class="timeline-title">${item.title}</h4>
+                        <p class="timeline-description">${item.description}</p>
+                        <div class="timeline-impact">${item.impact}</div>
+                    </div>
+                </div>
+            `).join('')}
+        </div>
+    `;
+    
+    timelineContainer.innerHTML = timelineHTML;
+    
+    // Add click interactions
+    const timelineItems = timelineContainer.querySelectorAll('.timeline-item');
+    timelineItems.forEach(item => {
+        item.addEventListener('click', function() {
+            // Remove active class from all items
+            timelineItems.forEach(i => i.classList.remove('active'));
+            // Add active class to clicked item
+            this.classList.add('active');
+        });
+    });
+}
+
+// Programs Page Statistics Enhancement
+function enhanceProgramsStats() {
+    const statsContainer = document.querySelector('.crisis-stats');
+    if (!statsContainer) return;
+    
+    // Add data attributes for animation
+    const stats = [
+        { selector: '.crisis-stat:nth-child(1) .crisis-number', target: 13, suffix: '%' },
+        { selector: '.crisis-stat:nth-child(2) .crisis-number', target: 446, suffix: '+' },
+        { selector: '.crisis-stat:nth-child(3) .crisis-number', target: 4.2, suffix: '%' },
+        { selector: '.crisis-stat:nth-child(4) .crisis-number', target: 215000, suffix: 'k+' }
+    ];
+    
+    stats.forEach(stat => {
+        const element = document.querySelector(stat.selector);
+        if (element) {
+            element.dataset.target = stat.target;
+            element.dataset.suffix = stat.suffix;
+            element.classList.add('animated-counter');
+            element.textContent = '0'; // Start from 0
+        }
+    });
+}
+
+// Initialize Programs Page
+function initializeProgramsPage() {
+    console.log('Initializing Programs page...');
+    
+    // Enhance statistics with animation data
+    enhanceProgramsStats();
+    
+    // Initialize animated counters
+    const counters = document.querySelectorAll('.animated-counter');
+    
+    const observerOptions = {
+        threshold: 0.5,
+        rootMargin: '0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                animateProgramsCounter(entry.target);
+                entry.target.classList.add('counted');
+            }
+        });
+    }, observerOptions);
+    
+    counters.forEach(counter => observer.observe(counter));
+    
+    // Initialize expandable cards
+    initExpandableCards();
+    
+    // Initialize timeline widget
+    initProgramsTimeline();
+    
+    // Add smooth scrolling for internal links
+    const internalLinks = document.querySelectorAll('a[href^="#"]');
+    internalLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+    
+    console.log('Programs page initialization complete');
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    const currentPath = window.location.pathname.toLowerCase();
+    const currentHref = window.location.href.toLowerCase();
+    
+    console.log('Current path:', currentPath);
+    console.log('Current href:', currentHref);
+    
+    // Check for Programs page with multiple conditions
+    if (currentPath.includes('4 programs') || 
+        currentPath.includes('programs.html') || 
+        currentHref.includes('4%20programs') ||
+        currentHref.includes('programs')) {
+        console.log('Programs page detected, initializing...');
+        initializeProgramsPage();
+    }
+    
+    if (window.location.pathname.includes('4E') || window.location.pathname.includes('arts_in_prison')) {
+        initializeArtsInPrisonPage();
+    }
+});
+
