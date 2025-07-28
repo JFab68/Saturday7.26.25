@@ -21,385 +21,783 @@
 </head>
 <body>
 
-    <div id="global-header"></div>
-
-    <section class="hero">
-        <div class="container">
-            <h1>News & Resources</h1>
-            <p>Insights and stories from the frontlines of criminal legal system reform. Stay informed with our latest research, analysis, and advocacy updates.</p>
-            
-            <!-- News Statistics -->
-            <div class="news-stats">
-                <div class="news-stat">
-                    <div class="stat-number">127</div>
-                    <div class="stat-label">Published Articles</div>
-                </div>
-                <div class="news-stat">
-                    <div class="stat-number">23</div>
-                    <div class="stat-label">Research Reports</div>
-                </div>
-                <div class="news-stat">
-                    <div class="stat-number">45K</div>
-                    <div class="stat-label">Monthly Readers</div>
-                </div>
-                <div class="news-stat">
-                    <div class="stat-number">8.2K</div>
-                    <div class="stat-label">Newsletter Subscribers</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="filter-bar">
-        <div class="container">
-            <div class="filter-content">
-                <div class="filter-tabs">
-                    <a href="#" class="filter-tab active" data-filter="all">All Content</a>
-                    <a href="#" class="filter-tab" data-filter="whitepaper">White Papers</a>
-                    <a href="#" class="filter-tab" data-filter="blog">Blog Posts</a>
-                    <a href="#" class="filter-tab" data-filter="article">Articles</a>
-                    <a href="#" class="filter-tab" data-filter="report">Reports</a>
-                </div>
-                <div class="search-container">
-                    <input type="text" placeholder="Search news and resources..." id="searchInput">
-                    <button type="button" id="searchBtn"><i class="fas fa-search"></i></button>
-                    <div class="search-suggestions" id="searchSuggestions"></div>
-                </div>
-                <div class="filter-options">
-                    <select id="sortBy" aria-label="Sort articles">
-                        <option value="date-desc">Newest First</option>
-                        <option value="date-asc">Oldest First</option>
-                        <option value="popular">Most Popular</option>
-                        <option value="title">Alphabetical</option>
-                    </select>
-                    <select id="dateFilter" aria-label="Filter by date">
-                        <option value="all">All Time</option>
-                        <option value="week">Past Week</option>
-                        <option value="month">Past Month</option>
-                        <option value="quarter">Past 3 Months</option>
-                        <option value="year">Past Year</option>
-                    </select>
-                </div>
-            </div>
-            <div class="results-info">
-                <span id="resultsCount">6 articles found</span>
-                <div class="view-options">
-                    <button id="gridView" class="view-btn active" aria-label="Grid view">
-                        <i class="fas fa-th"></i>
-                    </button>
-                    <button id="listView" class="view-btn" aria-label="List view">
-                        <i class="fas fa-list"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="featured section">
-        <div class="container">
-            <div class="section-label">Featured</div>
-            <div class="featured-article" data-type="report" data-date="2025-06-15" data-popularity="95">
-                <div class="featured-image">
-                    <div class="featured-badge">New Report</div>
-                    <i class="fas fa-file-alt icon-60"></i>
-                    <div class="article-actions">
-                        <button class="action-btn bookmark-btn" data-article-id="featured-1" aria-label="Bookmark article">
-                            <i class="far fa-bookmark"></i>
-                        </button>
-                        <button class="action-btn share-btn" data-article-id="featured-1" aria-label="Share article">
-                            <i class="fas fa-share-alt"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="featured-content">
-                    <h2>Decarceration Strategies That Work: A 2025 Policy Review</h2>
-                    <div class="featured-meta">
-                        <span><i class="far fa-calendar-alt"></i> June 15, 2025</span>
-                        <span><i class="far fa-user"></i> Dr. Maya Chen</span>
-                        <span><i class="far fa-file-pdf"></i> PDF, 2.4MB</span>
-                        <span class="popularity-indicator"><i class="fas fa-fire"></i> Trending</span>
-                    </div>
-                    <p class="featured-description">
-                        Our latest comprehensive analysis examines successful decarceration initiatives across 12 states, identifying key policy interventions that reduced prison populations without compromising public safety. The report includes actionable recommendations for legislators and community organizations.
-                    </p>
-                    <div class="article-tags">
-                        <span class="tag">Decarceration</span>
-                        <span class="tag">Policy Analysis</span>
-                        <span class="tag">Public Safety</span>
-                        <span class="tag">State Legislation</span>
-                    </div>
-                    <div class="card-actions">
-                        <a href="#" class="btn btn-primary">Read Report</a>
-                        <a href="#" class="btn btn-outline">Download PDF</a>
-                        <span class="read-time"><i class="far fa-clock"></i> 15 min read</span>
-                        <div class="social-share">
-                            <button class="social-btn" data-platform="twitter" aria-label="Share on Twitter">
-                                <i class="fab fa-twitter"></i>
-                            </button>
-                            <button class="social-btn" data-platform="facebook" aria-label="Share on Facebook">
-                                <i class="fab fa-facebook-f"></i>
-                            </button>
-                            <button class="social-btn" data-platform="linkedin" aria-label="Share on LinkedIn">
-                                <i class="fab fa-linkedin-in"></i>
-                            </button>
-                            <button class="social-btn" data-platform="email" aria-label="Share via email">
-                                <i class="fas fa-envelope"></i>
-                            </button>
+    <main id="main-content" role="main">
+        <section class="news-overview section">
+            <div class="container">
+                <div class="section-label">Stay Informed</div>
+                <h1>News & Resources</h1>
+                <p class="section-intro">Insights and stories from the frontlines of criminal legal system reform. Stay informed with our latest research, analysis, and advocacy updates.</p>
+                
+                <div class="news-stats-grid">
+                    <div class="news-stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-newspaper"></i>
                         </div>
+                        <div class="stat-number">127</div>
+                        <div class="stat-label">Published Articles</div>
+                        <div class="stat-description">Research & analysis</div>
+                    </div>
+                    
+                    <div class="news-stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="stat-number">23</div>
+                        <div class="stat-label">Research Reports</div>
+                        <div class="stat-description">In-depth studies</div>
+                    </div>
+                    
+                    <div class="news-stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-number">45K</div>
+                        <div class="stat-label">Monthly Readers</div>
+                        <div class="stat-description">Engaged audience</div>
+                    </div>
+                    
+                    <div class="news-stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="stat-number">8.2K</div>
+                        <div class="stat-label">Newsletter Subscribers</div>
+                        <div class="stat-description">Weekly updates</div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="content-grid section-sm" id="contentGrid">
-        <div class="container">
-            <div class="content-items">
-                <div class="content-card" data-type="whitepaper" data-date="2025-05-28" data-popularity="78">
-                    <div class="card-image">
-                        <div class="card-badge badge-whitepaper">Whitepaper</div>
-                        <i class="fas fa-file-contract icon-40"></i>
-                        <div class="card-actions-overlay">
-                            <button class="action-btn bookmark-btn" data-article-id="article-1" aria-label="Bookmark article">
-                                <i class="far fa-bookmark"></i>
-                            </button>
-                            <button class="action-btn share-btn" data-article-id="article-1" aria-label="Share article">
-                                <i class="fas fa-share-alt"></i>
-                            </button>
+        <section class="content-categories section">
+            <div class="container">
+                <div class="section-label">Content Types</div>
+                <h2>Explore Our Resources</h2>
+                <p class="section-intro">From in-depth research reports to timely blog posts, discover the content that matters most to you.</p>
+                
+                <div class="categories-grid">
+                    <div class="content-category-card" data-filter="report">
+                        <div class="category-icon">
+                            <i class="fas fa-chart-line"></i>
                         </div>
+                        <h3>Research Reports</h3>
+                        <p>Comprehensive studies and data analysis on criminal justice reform initiatives and their outcomes.</p>
+                        <div class="category-stats">
+                            <span class="content-count">23 Reports</span>
+                            <span class="avg-length">15-30 min read</span>
+                        </div>
+                        <button class="btn btn-secondary category-filter-btn" data-filter="report">View Reports</button>
                     </div>
-                    <div class="card-content">
-                        <h3 class="card-title">Bail Reform: Economic Impacts on Local Communities</h3>
-                        <div class="card-meta">
-                            <span><i class="far fa-calendar-alt"></i> May 28, 2025</span>
-                            <span><i class="far fa-user"></i> Research Team</span>
-                            <span class="popularity-score"><i class="fas fa-eye"></i> 2.3K views</span>
+                    
+                    <div class="content-category-card" data-filter="whitepaper">
+                        <div class="category-icon">
+                            <i class="fas fa-file-pdf"></i>
                         </div>
-                        <p class="card-excerpt">
-                            Quantitative analysis of how bail reform policies affected local economies in 8 jurisdictions, with surprising findings about small business impacts.
-                        </p>
-                        <div class="article-tags">
-                            <span class="tag">Bail Reform</span>
-                            <span class="tag">Economic Impact</span>
-                            <span class="tag">Local Communities</span>
+                        <h3>White Papers</h3>
+                        <p>Detailed policy analysis and recommendations for legislative and systemic reform initiatives.</p>
+                        <div class="category-stats">
+                            <span class="content-count">12 Papers</span>
+                            <span class="avg-length">20-45 min read</span>
                         </div>
-                        <div class="card-actions">
-                            <a href="#" class="btn btn-outline">Read More</a>
-                            <span class="read-time"><i class="far fa-clock"></i> 8 min read</span>
-                            <div class="social-share-mini">
-                                <button class="social-btn-mini" data-platform="twitter" aria-label="Share on Twitter">
-                                    <i class="fab fa-twitter"></i>
-                                </button>
-                                <button class="social-btn-mini" data-platform="linkedin" aria-label="Share on LinkedIn">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </button>
+                        <button class="btn btn-secondary category-filter-btn" data-filter="whitepaper">View Papers</button>
+                    </div>
+                    
+                    <div class="content-category-card" data-filter="blog">
+                        <div class="category-icon">
+                            <i class="fas fa-blog"></i>
+                        </div>
+                        <h3>Blog Posts</h3>
+                        <p>Regular updates, insights, and commentary on current events and ongoing advocacy efforts.</p>
+                        <div class="category-stats">
+                            <span class="content-count">67 Posts</span>
+                            <span class="avg-length">5-10 min read</span>
+                        </div>
+                        <button class="btn btn-secondary category-filter-btn" data-filter="blog">View Blog</button>
+                    </div>
+                    
+                    <div class="content-category-card" data-filter="article">
+                        <div class="category-icon">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <h3>News Articles</h3>
+                        <p>Breaking news, press releases, and timely updates on criminal justice developments.</p>
+                        <div class="category-stats">
+                            <span class="content-count">25 Articles</span>
+                            <span class="avg-length">3-8 min read</span>
+                        </div>
+                        <button class="btn btn-secondary category-filter-btn" data-filter="article">View News</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-controls section">
+            <div class="container">
+                <div class="controls-card">
+                    <div class="controls-header">
+                        <div class="section-label">Browse Content</div>
+                        <h2>Find What You're Looking For</h2>
+                    </div>
+                    
+                    <div class="filter-controls">
+                        <div class="filter-tabs">
+                            <button class="filter-tab active" data-filter="all">All Content</button>
+                            <button class="filter-tab" data-filter="whitepaper">White Papers</button>
+                            <button class="filter-tab" data-filter="blog">Blog Posts</button>
+                            <button class="filter-tab" data-filter="article">Articles</button>
+                            <button class="filter-tab" data-filter="report">Reports</button>
+                        </div>
+                        
+                        <div class="search-and-options">
+                            <div class="search-container">
+                                <input type="text" placeholder="Search news and resources..." id="searchInput" aria-label="Search content">
+                                <button type="button" id="searchBtn" aria-label="Search"><i class="fas fa-search"></i></button>
+                            </div>
+                            
+                            <div class="filter-options">
+                                <select id="sortBy" aria-label="Sort articles">
+                                    <option value="date-desc">Newest First</option>
+                                    <option value="date-asc">Oldest First</option>
+                                    <option value="popular">Most Popular</option>
+                                    <option value="title">Alphabetical</option>
+                                </select>
+                                <select id="dateFilter" aria-label="Filter by date">
+                                    <option value="all">All Time</option>
+                                    <option value="week">Past Week</option>
+                                    <option value="month">Past Month</option>
+                                    <option value="quarter">Past 3 Months</option>
+                                    <option value="year">Past Year</option>
+                                </select>
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="results-info">
+                        <span id="resultsCount">6 articles found</span>
+                        <div class="view-options">
+                            <button id="gridView" class="view-btn active" aria-label="Grid view">
+                                <i class="fas fa-th"></i>
+                            </button>
+                            <button id="listView" class="view-btn" aria-label="List view">
+                                <i class="fas fa-list"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="content-card" data-type="blog" data-date="2025-05-15" data-popularity="92">
-                    <div class="card-image">
-                        <div class="card-badge badge-blog">Blog</div>
-                        <i class="fas fa-blog icon-40"></i>
-                        <div class="card-actions-overlay">
-                            <button class="action-btn bookmark-btn" data-article-id="article-2" aria-label="Bookmark article">
+        <section class="featured-content section">
+            <div class="container">
+                <div class="section-label">Featured</div>
+                <h2>Latest Research</h2>
+                <p class="section-intro">Our most recent and impactful research, analysis, and policy recommendations.</p>
+                
+                <div class="featured-article-card" data-type="report" data-date="2025-06-15" data-popularity="95">
+                    <div class="featured-image">
+                        <div class="featured-badge">New Report</div>
+                        <div class="featured-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="article-actions">
+                            <button class="action-btn bookmark-btn" data-article-id="featured-1" aria-label="Bookmark article">
                                 <i class="far fa-bookmark"></i>
                             </button>
-                            <button class="action-btn share-btn" data-article-id="article-2" aria-label="Share article">
+                            <button class="action-btn share-btn" data-article-id="featured-1" aria-label="Share article">
                                 <i class="fas fa-share-alt"></i>
                             </button>
                         </div>
                     </div>
-                    <div class="card-content">
-                        <h3 class="card-title">Voices From Inside: A Mother's Story of Mandatory Minimums</h3>
-                        <div class="card-meta">
-                            <span><i class="far fa-calendar-alt"></i> May 15, 2025</span>
-                            <span><i class="far fa-user"></i> Jamila Washington</span>
-                            <span class="popularity-score"><i class="fas fa-eye"></i> 4.1K views</span>
-                            <span class="popularity-indicator"><i class="fas fa-fire"></i> Popular</span>
+                    <div class="featured-content">
+                        <h3>Decarceration Strategies That Work: A 2025 Policy Review</h3>
+                        <div class="featured-meta">
+                            <span><i class="far fa-calendar-alt"></i> June 15, 2025</span>
+                            <span><i class="far fa-user"></i> Dr. Maya Chen</span>
+                            <span><i class="far fa-file-pdf"></i> PDF, 2.4MB</span>
+                            <span class="popularity-indicator"><i class="fas fa-fire"></i> Trending</span>
                         </div>
-                        <p class="card-excerpt">
-                            First-person account from a formerly incarcerated mother about how mandatory minimum sentencing tore her family apart and the reforms that could prevent similar tragedies.
+                        <p class="featured-description">
+                            Our latest comprehensive analysis examines successful decarceration initiatives across 12 states, identifying key policy interventions that reduced prison populations without compromising public safety. The report includes actionable recommendations for legislators and community organizations.
                         </p>
                         <div class="article-tags">
-                            <span class="tag">Personal Stories</span>
-                            <span class="tag">Mandatory Minimums</span>
-                            <span class="tag">Family Impact</span>
+                            <span class="tag">Decarceration</span>
+                            <span class="tag">Policy Analysis</span>
+                            <span class="tag">Public Safety</span>
+                            <span class="tag">State Legislation</span>
                         </div>
                         <div class="card-actions">
-                            <a href="#" class="btn btn-outline">Read More</a>
-                            <span class="read-time"><i class="far fa-clock"></i> 6 min read</span>
-                            <div class="social-share-mini">
-                                <button class="social-btn-mini" data-platform="twitter" aria-label="Share on Twitter">
+                            <a href="#" class="btn btn-primary">Read Report</a>
+                            <a href="#" class="btn btn-secondary">Download PDF</a>
+                            <span class="read-time"><i class="far fa-clock"></i> 15 min read</span>
+                            <div class="social-share">
+                                <button class="social-btn" data-platform="twitter" aria-label="Share on Twitter">
                                     <i class="fab fa-twitter"></i>
                                 </button>
-                                <button class="social-btn-mini" data-platform="facebook" aria-label="Share on Facebook">
+                                <button class="social-btn" data-platform="facebook" aria-label="Share on Facebook">
                                     <i class="fab fa-facebook-f"></i>
                                 </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="content-card" data-type="article" data-date="2025-04-30" data-popularity="85">
-                    <div class="card-image">
-                        <div class="card-badge badge-article">Article</div>
-                        <i class="fas fa-newspaper icon-40"></i>
-                        <div class="card-actions-overlay">
-                            <button class="action-btn bookmark-btn" data-article-id="article-3" aria-label="Bookmark article">
-                                <i class="far fa-bookmark"></i>
-                            </button>
-                            <button class="action-btn share-btn" data-article-id="article-3" aria-label="Share article">
-                                <i class="fas fa-share-alt"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">How Restorative Justice Programs Reduce Recidivism by 43%</h3>
-                        <div class="card-meta">
-                            <span><i class="far fa-calendar-alt"></i> April 30, 2025</span>
-                            <span><i class="far fa-user"></i> Carlos Mendez</span>
-                            <span class="popularity-score"><i class="fas fa-eye"></i> 3.7K views</span>
-                        </div>
-                        <p class="card-excerpt">
-                            Case study of innovative restorative justice programs in Oakland showing dramatic reductions in repeat offenses and improved community relations.
-                        </p>
-                        <div class="article-tags">
-                            <span class="tag">Restorative Justice</span>
-                            <span class="tag">Recidivism</span>
-                            <span class="tag">Case Study</span>
-                        </div>
-                        <div class="card-actions">
-                            <a href="#" class="btn btn-outline">Read More</a>
-                            <span class="read-time"><i class="far fa-clock"></i> 7 min read</span>
-                            <div class="social-share-mini">
-                                <button class="social-btn-mini" data-platform="twitter" aria-label="Share on Twitter">
-                                    <i class="fab fa-twitter"></i>
-                                </button>
-                                <button class="social-btn-mini" data-platform="linkedin" aria-label="Share on LinkedIn">
+                                <button class="social-btn" data-platform="linkedin" aria-label="Share on LinkedIn">
                                     <i class="fab fa-linkedin-in"></i>
                                 </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="content-card" data-type="report" data-date="2025-04-22" data-popularity="88">
-                    <div class="card-image">
-                        <div class="card-badge badge-report">Report</div>
-                        <i class="fas fa-chart-bar icon-40"></i>
-                        <div class="card-actions-overlay">
-                            <button class="action-btn bookmark-btn" data-article-id="article-4" aria-label="Bookmark article">
-                                <i class="far fa-bookmark"></i>
-                            </button>
-                            <button class="action-btn share-btn" data-article-id="article-4" aria-label="Share article">
-                                <i class="fas fa-share-alt"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">The Color of Justice 2025: Racial Disparities in Sentencing</h3>
-                        <div class="card-meta">
-                            <span><i class="far fa-calendar-alt"></i> April 22, 2025</span>
-                            <span><i class="far fa-user"></i> Equity Task Force</span>
-                            <span class="popularity-score"><i class="fas fa-eye"></i> 5.2K views</span>
-                        </div>
-                        <p class="card-excerpt">
-                            Our annual analysis reveals persistent racial disparities in sentencing outcomes, with new data on how implicit bias training for judges affects outcomes.
-                        </p>
-                        <div class="article-tags">
-                            <span class="tag">Racial Equity</span>
-                            <span class="tag">Sentencing Disparities</span>
-                            <span class="tag">Annual Report</span>
-                        </div>
-                        <div class="card-actions">
-                            <a href="#" class="btn btn-outline">Read More</a>
-                            <span class="read-time"><i class="far fa-clock"></i> 12 min read</span>
-                            <div class="social-share-mini">
-                                <button class="social-btn-mini" data-platform="twitter" aria-label="Share on Twitter">
-                                    <i class="fab fa-twitter"></i>
-                                </button>
-                                <button class="social-btn-mini" data-platform="linkedin" aria-label="Share on LinkedIn">
-                                    <i class="fab fa-linkedin-in"></i>
+                                <button class="social-btn" data-platform="email" aria-label="Share via email">
+                                    <i class="fas fa-envelope"></i>
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="content-card" data-type="whitepaper" data-date="2025-03-18" data-popularity="72">
-                    <div class="card-image">
-                        <div class="card-badge badge-whitepaper">Whitepaper</div>
-                        <i class="fas fa-balance-scale icon-40"></i>
-                        <div class="card-actions-overlay">
-                            <button class="action-btn bookmark-btn" data-article-id="article-5" aria-label="Bookmark article">
-                                <i class="far fa-bookmark"></i>
-                            </button>
-                            <button class="action-btn share-btn" data-article-id="article-5" aria-label="Share article">
-                                <i class="fas fa-share-alt"></i>
-                            </button>
+                    <div class="content-card" data-type="whitepaper" data-date="2025-05-28" data-popularity="78">
+                        <div class="card-image">
+                            <div class="card-badge badge-whitepaper">Whitepaper</div>
+                            <div class="card-icon">
+                                <i class="fas fa-file-contract"></i>
+                            </div>
+                            <div class="card-actions-overlay">
+                                <button class="action-btn bookmark-btn" data-article-id="article-1" aria-label="Bookmark article">
+                                    <i class="far fa-bookmark"></i>
+                                </button>
+                                <button class="action-btn share-btn" data-article-id="article-1" aria-label="Share article">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Bail Reform: Economic Impacts on Local Communities</h3>
+                            <div class="card-meta">
+                                <span><i class="far fa-calendar-alt"></i> May 28, 2025</span>
+                                <span><i class="far fa-user"></i> Research Team</span>
+                                <span class="popularity-score"><i class="fas fa-eye"></i> 2.3K views</span>
+                            </div>
+                            <p class="card-excerpt">
+                                Quantitative analysis of how bail reform policies affected local economies in 8 jurisdictions, with surprising findings about small business impacts.
+                            </p>
+                            <div class="article-tags">
+                                <span class="tag">Bail Reform</span>
+                                <span class="tag">Economic Impact</span>
+                                <span class="tag">Local Communities</span>
+                            </div>
+                            <div class="card-actions">
+                                <a href="#" class="btn btn-primary">Read More</a>
+                                <span class="read-time"><i class="far fa-clock"></i> 8 min read</span>
+                                <div class="social-share-mini">
+                                    <button class="social-btn-mini" data-platform="twitter" aria-label="Share on Twitter">
+                                        <i class="fab fa-twitter"></i>
+                                    </button>
+                                    <button class="social-btn-mini" data-platform="linkedin" aria-label="Share on LinkedIn">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="card-content">
-                        <h3 class="card-title">Prosecutorial Discretion: Models for Reform</h3>
-                        <div class="card-meta">
-                            <span><i class="far fa-calendar-alt"></i> March 18, 2025</span>
-                            <span><i class="far fa-user"></i> Legal Reform Initiative</span>
-                            <span class="popularity-score"><i class="fas fa-eye"></i> 1.8K views</span>
-                        </div>
-                        <p class="card-excerpt">
-                            Examination of progressive prosecution models in 6 jurisdictions, with policy recommendations for reducing unnecessary incarceration through charging decisions.
-                        </p>
-                        <div class="article-tags">
-                            <span class="tag">Prosecutorial Reform</span>
-                            <span class="tag">Policy Models</span>
-                            <span class="tag">Legal Reform</span>
-                        </div>
-                        <div class="card-actions">
-                            <a href="#" class="btn btn-outline">Read More</a>
-                            <span class="read-time"><i class="far fa-clock"></i> 10 min read</span>
-                            <div class="social-share-mini">
-                                <button class="social-btn-mini" data-platform="twitter" aria-label="Share on Twitter">
-                                    <i class="fab fa-twitter"></i>
+
+                    <div class="content-card" data-type="blog" data-date="2025-05-15" data-popularity="92">
+                        <div class="card-image">
+                            <div class="card-badge badge-blog">Blog</div>
+                            <div class="card-icon">
+                                <i class="fas fa-blog"></i>
+                            </div>
+                            <div class="card-actions-overlay">
+                                <button class="action-btn bookmark-btn" data-article-id="article-2" aria-label="Bookmark article">
+                                    <i class="far fa-bookmark"></i>
                                 </button>
-                                <button class="social-btn-mini" data-platform="linkedin" aria-label="Share on LinkedIn">
-                                    <i class="fab fa-linkedin-in"></i>
+                                <button class="action-btn share-btn" data-article-id="article-2" aria-label="Share article">
+                                    <i class="fas fa-share-alt"></i>
                                 </button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Voices From Inside: A Mother's Story of Mandatory Minimums</h3>
+                            <div class="card-meta">
+                                <span><i class="far fa-calendar-alt"></i> May 15, 2025</span>
+                                <span><i class="far fa-user"></i> Jamila Washington</span>
+                                <span class="popularity-score"><i class="fas fa-eye"></i> 4.1K views</span>
+                                <span class="popularity-indicator"><i class="fas fa-fire"></i> Popular</span>
+                            </div>
+                            <p class="card-excerpt">
+                                First-person account from a formerly incarcerated mother about how mandatory minimum sentencing tore her family apart and the reforms that could prevent similar tragedies.
+                            </p>
+                            <div class="article-tags">
+                                <span class="tag">Personal Stories</span>
+                                <span class="tag">Mandatory Minimums</span>
+                                <span class="tag">Family Impact</span>
+                            </div>
+                            <div class="card-actions">
+                                <a href="#" class="btn btn-primary">Read More</a>
+                                <span class="read-time"><i class="far fa-clock"></i> 6 min read</span>
+                                <div class="social-share-mini">
+                                    <button class="social-btn-mini" data-platform="twitter" aria-label="Share on Twitter">
+                                        <i class="fab fa-twitter"></i>
+                                    </button>
+                                    <button class="social-btn-mini" data-platform="facebook" aria-label="Share on Facebook">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-card" data-type="article" data-date="2025-04-30" data-popularity="85">
+                        <div class="card-image">
+                            <div class="card-badge badge-article">Article</div>
+                            <div class="card-icon">
+                                <i class="fas fa-newspaper"></i>
+                            </div>
+                            <div class="card-actions-overlay">
+                                <button class="action-btn bookmark-btn" data-article-id="article-3" aria-label="Bookmark article">
+                                    <i class="far fa-bookmark"></i>
+                                </button>
+                                <button class="action-btn share-btn" data-article-id="article-3" aria-label="Share article">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">How Restorative Justice Programs Reduce Recidivism by 43%</h3>
+                            <div class="card-meta">
+                                <span><i class="far fa-calendar-alt"></i> April 30, 2025</span>
+                                <span><i class="far fa-user"></i> Carlos Mendez</span>
+                                <span class="popularity-score"><i class="fas fa-eye"></i> 3.7K views</span>
+                            </div>
+                            <p class="card-excerpt">
+                                Case study of innovative restorative justice programs in Oakland showing dramatic reductions in repeat offenses and improved community relations.
+                            </p>
+                            <div class="article-tags">
+                                <span class="tag">Restorative Justice</span>
+                                <span class="tag">Recidivism</span>
+                                <span class="tag">Case Study</span>
+                            </div>
+                            <div class="card-actions">
+                                <a href="#" class="btn btn-primary">Read More</a>
+                                <span class="read-time"><i class="far fa-clock"></i> 7 min read</span>
+                                <div class="social-share-mini">
+                                    <button class="social-btn-mini" data-platform="twitter" aria-label="Share on Twitter">
+                                        <i class="fab fa-twitter"></i>
+                                    </button>
+                                    <button class="social-btn-mini" data-platform="linkedin" aria-label="Share on LinkedIn">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-card" data-type="report" data-date="2025-04-22" data-popularity="88">
+                        <div class="card-image">
+                            <div class="card-badge badge-report">Report</div>
+                            <div class="card-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <div class="card-actions-overlay">
+                                <button class="action-btn bookmark-btn" data-article-id="article-4" aria-label="Bookmark article">
+                                    <i class="far fa-bookmark"></i>
+                                </button>
+                                <button class="action-btn share-btn" data-article-id="article-4" aria-label="Share article">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">The Color of Justice 2025: Racial Disparities in Sentencing</h3>
+                            <div class="card-meta">
+                                <span><i class="far fa-calendar-alt"></i> April 22, 2025</span>
+                                <span><i class="far fa-user"></i> Equity Task Force</span>
+                                <span class="popularity-score"><i class="fas fa-eye"></i> 5.2K views</span>
+                            </div>
+                            <p class="card-excerpt">
+                                Our annual analysis reveals persistent racial disparities in sentencing outcomes, with new data on how implicit bias training for judges affects outcomes.
+                            </p>
+                            <div class="article-tags">
+                                <span class="tag">Racial Equity</span>
+                                <span class="tag">Sentencing Disparities</span>
+                                <span class="tag">Annual Report</span>
+                            </div>
+                            <div class="card-actions">
+                                <a href="#" class="btn btn-primary">Read More</a>
+                                <span class="read-time"><i class="far fa-clock"></i> 12 min read</span>
+                                <div class="social-share-mini">
+                                    <button class="social-btn-mini" data-platform="twitter" aria-label="Share on Twitter">
+                                        <i class="fab fa-twitter"></i>
+                                    </button>
+                                    <button class="social-btn-mini" data-platform="linkedin" aria-label="Share on LinkedIn">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-card" data-type="whitepaper" data-date="2025-03-18" data-popularity="72">
+                        <div class="card-image">
+                            <div class="card-badge badge-whitepaper">Whitepaper</div>
+                            <div class="card-icon">
+                                <i class="fas fa-balance-scale"></i>
+                            </div>
+                            <div class="card-actions-overlay">
+                                <button class="action-btn bookmark-btn" data-article-id="article-5" aria-label="Bookmark article">
+                                    <i class="far fa-bookmark"></i>
+                                </button>
+                                <button class="action-btn share-btn" data-article-id="article-5" aria-label="Share article">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Prosecutorial Discretion: Models for Reform</h3>
+                            <div class="card-meta">
+                                <span><i class="far fa-calendar-alt"></i> March 18, 2025</span>
+                                <span><i class="far fa-user"></i> Legal Reform Initiative</span>
+                                <span class="popularity-score"><i class="fas fa-eye"></i> 1.8K views</span>
+                            </div>
+                            <p class="card-excerpt">
+                                Examination of progressive prosecution models in 6 jurisdictions, with policy recommendations for reducing unnecessary incarceration through charging decisions.
+                            </p>
+                            <div class="article-tags">
+                                <span class="tag">Prosecutorial Reform</span>
+                                <span class="tag">Policy Models</span>
+                                <span class="tag">Legal Reform</span>
+                            </div>
+                            <div class="card-actions">
+                                <a href="#" class="btn btn-primary">Read More</a>
+                                <span class="read-time"><i class="far fa-clock"></i> 10 min read</span>
+                                <div class="social-share-mini">
+                                    <button class="social-btn-mini" data-platform="twitter" aria-label="Share on Twitter">
+                                        <i class="fab fa-twitter"></i>
+                                    </button>
+                                    <button class="social-btn-mini" data-platform="linkedin" aria-label="Share on LinkedIn">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="content-card" data-type="blog" data-date="2025-02-28" data-popularity="65">
-                    <div class="card-image">
-                        <div class="card-badge badge-blog">Blog</div>
-                        <i class="fas fa-users icon-40"></i>
-                        <div class="card-actions-overlay">
-                            <button class="action-btn bookmark-btn" data-article-id="article-6" aria-label="Bookmark article">
-                                <i class="far fa-bookmark"></i>
-                            </button>
-                            <button class="action-btn share-btn" data-article-id="article-6" aria-label="Share article">
-                                <i class="fas fa-share-alt"></i>
-                            </button>
+        <section class="newsletter-signup section">
+            <div class="container">
+                <div class="newsletter-content">
+                    <div class="newsletter-text">
+                        <div class="section-label">Stay Updated</div>
+                        <h2>Never Miss Our Latest Research</h2>
+                        <p>Get our weekly newsletter with the latest criminal justice research, policy updates, and advocacy opportunities delivered to your inbox.</p>
+                        <div class="newsletter-stats">
+                            <div class="newsletter-stat">
+                                <span class="stat-number">8.2K</span>
+                                <span class="stat-label">Subscribers</span>
+                            </div>
+                            <div class="newsletter-stat">
+                                <span class="stat-number">Weekly</span>
+                                <span class="stat-label">Delivery</span>
+                            </div>
+                            <div class="newsletter-stat">
+                                <span class="stat-number">No Spam</span>
+                                <span class="stat-label">Promise</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="card-content">
-                        <h3 class="card-title">Community Bail Funds: What Works and What Doesn't</h3>
-                        <div class="card-meta">
-                            <span><i class="far fa-calendar-alt"></i> February 28, 2025</span>
-                            <span><i class="far fa-user"></i> Priya Kapoor</span>
-                            <span class="popularity-score"><i class="fas fa-eye"></i> 1.5K views</span>
+                    
+                    <div class="newsletter-signup-card">
+                        <div class="signup-icon">
+                            <i class="fas fa-envelope-open"></i>
                         </div>
-                        <p class="card-excerpt">
-                            Lessons learned from three years of operating a community bail fund in Chicago, including surprising findings about who benefits most from these programs.
-                        </p>
-                        <div class="article-tags">
-                            <span class="tag">Community Bail Funds</span>
-                            <span class="tag">Lessons Learned</span>
-                            <span class="tag">Chicago</span>
-                        </div>
-                        <div class="card-actions">
+                        <h3>Subscribe to Our Newsletter</h3>
+                        <p>Join thousands of advocates, researchers, and policymakers who rely on our insights.</p>
+                        <form class="newsletter-form" id="newsletter-form">
+                            <div class="form-group">
+                                <input type="email" id="newsletter-email" placeholder="Enter your email address" required aria-label="Email address">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-paper-plane"></i> Subscribe
+                                </button>
+                            </div>
+                            <div class="form-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="weekly-digest" checked>
+                                    <span class="checkmark"></span>
+                                    Weekly research digest
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="action-alerts">
+                                    <span class="checkmark"></span>
+                                    Action alerts
+                                </label>
+                            </div>
+                            <p class="privacy-note">We respect your privacy. Unsubscribe at any time.</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="global-header"></div>
+    <footer id="global-footer" role="contentinfo"></footer>
+
+    <script src="js/components.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const nav = document.querySelector('.header-nav');
+            if (menuToggle && nav) {
+                menuToggle.addEventListener('click', () => {
+                    menuToggle.classList.toggle('is-active');
+                    nav.classList.toggle('is-active');
+                    const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                    menuToggle.setAttribute('aria-expanded', !isExpanded);
+                });
+            }
+
+            // Content filtering and search functionality
+            const searchInput = document.getElementById('searchInput');
+            const filterTabs = document.querySelectorAll('.filter-tab');
+            const sortSelect = document.getElementById('sortBy');
+            const dateFilter = document.getElementById('dateFilter');
+            const gridViewBtn = document.getElementById('gridView');
+            const listViewBtn = document.getElementById('listView');
+            const contentGrid = document.getElementById('content-grid');
+            const resultsCount = document.getElementById('resultsCount');
+            const contentCards = document.querySelectorAll('.content-card');
+            const categoryFilterBtns = document.querySelectorAll('.category-filter-btn');
+
+            let currentFilter = 'all';
+            let currentSort = 'date-desc';
+            let currentDateFilter = 'all';
+
+            // Filter functionality
+            function filterContent() {
+                const searchTerm = searchInput.value.toLowerCase();
+                let visibleCount = 0;
+
+                contentCards.forEach(card => {
+                    const cardType = card.getAttribute('data-type');
+                    const cardText = card.textContent.toLowerCase();
+                    const cardDate = new Date(card.getAttribute('data-date'));
+                    
+                    const matchesFilter = currentFilter === 'all' || cardType === currentFilter;
+                    const matchesSearch = cardText.includes(searchTerm);
+                    const matchesDate = checkDateFilter(cardDate);
+                    
+                    if (matchesFilter && matchesSearch && matchesDate) {
+                        card.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                resultsCount.textContent = `${visibleCount} article${visibleCount !== 1 ? 's' : ''} found`;
+                sortContent();
+            }
+
+            function checkDateFilter(cardDate) {
+                const now = new Date();
+                const diffTime = now - cardDate;
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+                switch (currentDateFilter) {
+                    case 'week': return diffDays <= 7;
+                    case 'month': return diffDays <= 30;
+                    case 'quarter': return diffDays <= 90;
+                    case 'year': return diffDays <= 365;
+                    default: return true;
+                }
+            }
+
+            function sortContent() {
+                const visibleCards = Array.from(contentCards).filter(card => card.style.display !== 'none');
+                
+                visibleCards.sort((a, b) => {
+                    switch (currentSort) {
+                        case 'date-desc':
+                            return new Date(b.getAttribute('data-date')) - new Date(a.getAttribute('data-date'));
+                        case 'date-asc':
+                            return new Date(a.getAttribute('data-date')) - new Date(b.getAttribute('data-date'));
+                        case 'popular':
+                            return parseInt(b.getAttribute('data-popularity')) - parseInt(a.getAttribute('data-popularity'));
+                        case 'title':
+                            return a.querySelector('.card-title').textContent.localeCompare(b.querySelector('.card-title').textContent);
+                        default:
+                            return 0;
+                    }
+                });
+
+                // Reorder cards in DOM
+                const container = document.querySelector('.content-grid');
+                visibleCards.forEach(card => container.appendChild(card));
+            }
+
+            // Event listeners
+            searchInput.addEventListener('input', filterContent);
+
+            filterTabs.forEach(tab => {
+                tab.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    filterTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    currentFilter = tab.getAttribute('data-filter');
+                    filterContent();
+                });
+            });
+
+            categoryFilterBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const filter = e.target.getAttribute('data-filter');
+                    currentFilter = filter;
+                    
+                    // Update active tab
+                    filterTabs.forEach(t => t.classList.remove('active'));
+                    const targetTab = document.querySelector(`[data-filter="${filter}"]`);
+                    if (targetTab) targetTab.classList.add('active');
+                    
+                    filterContent();
+                    
+                    // Scroll to content section
+                    document.getElementById('content-container').scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                });
+            });
+
+            sortSelect.addEventListener('change', (e) => {
+                currentSort = e.target.value;
+                sortContent();
+            });
+
+            dateFilter.addEventListener('change', (e) => {
+                currentDateFilter = e.target.value;
+                filterContent();
+            });
+
+            // View toggle functionality
+            gridViewBtn.addEventListener('click', () => {
+                contentGrid.classList.remove('list-view');
+                contentGrid.classList.add('grid-view');
+                gridViewBtn.classList.add('active');
+                listViewBtn.classList.remove('active');
+            });
+
+            listViewBtn.addEventListener('click', () => {
+                contentGrid.classList.remove('grid-view');
+                contentGrid.classList.add('list-view');
+                listViewBtn.classList.add('active');
+                gridViewBtn.classList.remove('active');
+            });
+
+            // Counter animation for news stats
+            const observerOptions = {
+                threshold: 0.7,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counters = entry.target.querySelectorAll('.stat-number');
+                        counters.forEach(counter => {
+                            const target = parseInt(counter.textContent.replace(/[^0-9]/g, '')) || 0;
+                            const suffix = counter.textContent.includes('K') ? 'K' : '';
+                            let current = 0;
+                            const increment = target / 50;
+                            const timer = setInterval(() => {
+                                current += increment;
+                                if (current >= target) {
+                                    counter.textContent = target.toLocaleString() + suffix;
+                                    clearInterval(timer);
+                                } else {
+                                    counter.textContent = Math.floor(current).toLocaleString() + suffix;
+                                }
+                            }, 40);
+                        });
+                        counterObserver.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const newsStats = document.querySelector('.news-stats-grid');
+            if (newsStats) {
+                counterObserver.observe(newsStats);
+            }
+
+            // Newsletter form submission
+            const newsletterForm = document.getElementById('newsletter-form');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const email = document.getElementById('newsletter-email').value;
+                    const weeklyDigest = document.getElementById('weekly-digest').checked;
+                    const actionAlerts = document.getElementById('action-alerts').checked;
+                    
+                    // Here you would typically send the data to your newsletter service
+                    console.log('Newsletter subscription:', { email, weeklyDigest, actionAlerts });
+                    
+                    // Show success message
+                    alert('Thank you for subscribing to our newsletter!');
+                    newsletterForm.reset();
+                });
+            }
+
+            // Social sharing functionality
+            document.addEventListener('click', (e) => {
+                if (e.target.closest('.social-btn') || e.target.closest('.social-btn-mini')) {
+                    e.preventDefault();
+                    const btn = e.target.closest('.social-btn') || e.target.closest('.social-btn-mini');
+                    const platform = btn.getAttribute('data-platform');
+                    const url = window.location.href;
+                    const title = document.title;
+                    
+                    let shareUrl = '';
+                    switch (platform) {
+                        case 'twitter':
+                            shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`;
+                            break;
+                        case 'facebook':
+                            shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+                            break;
+                        case 'linkedin':
+                            shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+                            break;
+                        case 'email':
+                            shareUrl = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(url)}`;
+                            break;
+                    }
+                    
+                    if (shareUrl) {
+                        window.open(shareUrl, '_blank', 'width=600,height=400');
+                    }
+                }
+            });
+
+            // Bookmark functionality
+            document.addEventListener('click', (e) => {
+                if (e.target.closest('.bookmark-btn')) {
+                    e.preventDefault();
+                    const btn = e.target.closest('.bookmark-btn');
+                    const icon = btn.querySelector('i');
+                    
+                    if (icon.classList.contains('far')) {
+                        icon.classList.remove('far');
+                        icon.classList.add('fas');
+                        btn.setAttribute('aria-label', 'Remove bookmark');
+                    } else {
+                        icon.classList.remove('fas');
+                        icon.classList.add('far');
+                        btn.setAttribute('aria-label', 'Bookmark article');
+                    }
+                }
+            });
+
+            // Initialize
+            filterContent();
+        });
+    </script>
+</body>
+</html>s="card-actions">
                             <a href="#" class="btn btn-outline">Read More</a>
                             <span class="read-time"><i class="far fa-clock"></i> 5 min read</span>
                             <div class="social-share-mini">
