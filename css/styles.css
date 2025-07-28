@@ -7402,3 +7402,506 @@ html {
     }
 }
 
+
+/* =================================================================
+   PARTNERS PAGE CARD/WIDGET STYLES
+   ================================================================= */
+
+/* Partnership Overview Section */
+.partnership-overview {
+    background: var(--light-blue);
+}
+
+.partnership-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.partnership-stat-card {
+    background: var(--white);
+    padding: 40px 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 4px solid var(--primary-navy);
+    position: relative;
+    overflow: hidden;
+}
+
+.partnership-stat-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.partnership-stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 0, 128, 0.05), transparent);
+    transition: left 0.5s ease;
+}
+
+.partnership-stat-card:hover::before {
+    left: 100%;
+}
+
+.stat-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-maroon) 100%);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    margin: 0 auto 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 128, 0.3);
+    position: relative;
+    z-index: 2;
+}
+
+.partnership-stat-card .stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-navy);
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+.partnership-stat-card .stat-label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-navy);
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 2;
+}
+
+.stat-description {
+    color: var(--medium-gray);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    position: relative;
+    z-index: 2;
+}
+
+/* Partnership Categories Section */
+.partnership-categories {
+    background: var(--white);
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.category-card {
+    background: var(--light-blue);
+    padding: 40px 30px;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary-navy);
+}
+
+.category-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-maroon) 100%);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 128, 0.2);
+}
+
+.category-card h3 {
+    color: var(--primary-navy);
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.category-card p {
+    color: var(--medium-gray);
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.category-stats {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    padding: 15px 0;
+    border-top: 1px solid var(--light-gray);
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.partner-count {
+    color: var(--primary-navy);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.focus-area {
+    color: var(--medium-gray);
+    font-size: 0.9rem;
+}
+
+/* Partners Showcase Section */
+.partners-showcase {
+    background: var(--light-blue);
+}
+
+.showcase-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.partners-controls-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+}
+
+.controls-wrapper {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.search-container {
+    position: relative;
+    flex: 1;
+    min-width: 250px;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 12px 45px 12px 15px;
+    border: 2px solid var(--light-gray);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.search-container input:focus {
+    border-color: var(--primary-navy);
+    outline: none;
+}
+
+.search-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--medium-gray);
+}
+
+.filter-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter-container label {
+    color: var(--primary-navy);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.filter-container select {
+    padding: 12px 15px;
+    border: 2px solid var(--light-gray);
+    border-radius: 8px;
+    font-size: 1rem;
+    background: var(--white);
+    color: var(--primary-navy);
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.filter-container select:focus {
+    border-color: var(--primary-navy);
+    outline: none;
+}
+
+.view-toggle {
+    display: flex;
+    gap: 5px;
+}
+
+.view-btn {
+    padding: 12px 15px;
+    border: 2px solid var(--light-gray);
+    background: var(--white);
+    color: var(--medium-gray);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.view-btn:hover,
+.view-btn.active {
+    border-color: var(--primary-navy);
+    background: var(--primary-navy);
+    color: var(--white);
+}
+
+.results-info {
+    text-align: center;
+    color: var(--medium-gray);
+    font-weight: 600;
+}
+
+/* Partners Grid Section */
+.partners-grid-section {
+    background: var(--white);
+}
+
+.partners-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.partners-grid.list-view {
+    grid-template-columns: 1fr;
+}
+
+.partners-grid.list-view .partner-card {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    padding: 25px;
+}
+
+.partners-grid.list-view .partner-logo {
+    width: 80px;
+    height: 80px;
+    margin-right: 25px;
+    margin-bottom: 0;
+}
+
+.partner-card {
+    background: var(--light-blue);
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.partner-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary-navy);
+}
+
+.partner-logo {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    margin: 0 auto 20px;
+    border-radius: 8px;
+    background: var(--white);
+    padding: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.partner-content h3 {
+    color: var(--primary-navy);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.partner-content p {
+    color: var(--medium-gray);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.partner-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.tag {
+    background: var(--white);
+    color: var(--primary-navy);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid var(--primary-navy);
+}
+
+/* Partnership CTA Section */
+.partnership-cta {
+    background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-maroon) 100%);
+    color: var(--white);
+}
+
+.cta-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.cta-text h2 {
+    color: var(--white);
+    margin-bottom: 20px;
+}
+
+.cta-text p {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+}
+
+.cta-card {
+    background: var(--white);
+    padding: 40px 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.cta-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-maroon) 100%);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 128, 0.3);
+}
+
+.cta-card h3 {
+    color: var(--primary-navy);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.cta-card p {
+    color: var(--medium-gray);
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.cta-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-actions .btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .partnership-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .partnership-stat-card {
+        padding: 30px 20px;
+    }
+    
+    .categories-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .controls-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+    
+    .search-container {
+        min-width: auto;
+    }
+    
+    .filter-container {
+        justify-content: space-between;
+    }
+    
+    .view-toggle {
+        justify-content: center;
+    }
+    
+    .partners-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .partners-grid.list-view .partner-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .partners-grid.list-view .partner-logo {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    
+    .cta-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+    
+    .cta-actions {
+        flex-direction: column;
+    }
+    
+    .category-stats {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+
