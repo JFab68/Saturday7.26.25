@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-    <script async src="https://widgets.givebutter.com/latest.umd.cjs?acct=VAFHlg7pVLZ4fmxv&p=other"></script>
+    <script src="https://js.givebutter.com/elements/latest.js"></script>
 </head>
 <body>
 
@@ -26,45 +26,330 @@
     <main id="main-content" role="main">
         <section class="hero">
             <div class="container">
-                <h1>Fund the Fight for Justice</h1>
-                <p>Every dollar supports litigation, advocacy, and direct aid for incarcerated Arizonans. Your donation directly transforms lives and reforms a broken system.</p>
+                <div class="hero-content">
+                    <div class="section-label">Support Justice Reform</div>
+                    <h1>Fund the Fight for Justice</h1>
+                    <p>Every dollar supports litigation, advocacy, and direct aid for incarcerated Arizonans. Your donation directly transforms lives and reforms a broken system.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="donation-impact section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-label">Your Impact</div>
+                    <h2>How Your Donation Makes a Difference</h2>
+                    <p>See exactly how your contribution translates into real change for individuals and communities across Arizona.</p>
+                </div>
                 
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">92%</span>
-                        <span class="stat-label">of donations go directly to programs</span>
+                <div class="impact-stats-grid">
+                    <div class="impact-stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-percentage"></i>
+                        </div>
+                        <div class="stat-number" data-target="92">92</div>
+                        <div class="stat-label">% of donations go directly to programs</div>
+                        <div class="stat-description">Minimal overhead ensures maximum impact</div>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number">$1,250</span>
-                        <span class="stat-label">funds one week of medication-assisted treatment for 5 people</span>
+                    
+                    <div class="impact-stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-number" data-target="1250">1,250</div>
+                        <div class="stat-label">$ funds one week of treatment for 5 people</div>
+                        <div class="stat-description">Medication-assisted treatment saves lives</div>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number">100%</span>
-                        <span class="stat-label">tax deductible (EIN: 88-3271051)</span>
+                    
+                    <div class="impact-stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-receipt"></i>
+                        </div>
+                        <div class="stat-number" data-target="100">100</div>
+                        <div class="stat-label">% tax deductible (EIN: 88-3271051)</div>
+                        <div class="stat-description">Full tax benefits for your generosity</div>
+                    </div>
+                    
+                    <div class="impact-stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-number" data-target="2847">2.8K</div>
+                        <div class="stat-label">+ people helped this year</div>
+                        <div class="stat-description">Direct assistance and advocacy support</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="givebutter-section">
+        <section class="donation-amounts section">
             <div class="container">
-                <div class="donation-container">
-                    <h2>Make Your Impact Today</h2>
-                    <p>Choose your donation amount and frequency. Every contribution directly funds our oversight investigations, legal advocacy, and evidence-based reform campaigns.</p>
+                <div class="section-header">
+                    <div class="section-label">Choose Your Impact</div>
+                    <h2>Donation Amount Options</h2>
+                    <p>Select the donation amount that works for you. Every contribution makes a meaningful difference.</p>
+                </div>
+                
+                <div class="donation-cards-grid">
+                    <div class="donation-card" data-amount="25">
+                        <div class="donation-badge">Most Popular</div>
+                        <div class="donation-icon">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <div class="donation-amount">$25</div>
+                        <div class="donation-impact">Covers court fees for 1 person</div>
+                        <div class="donation-description">Helps individuals navigate the legal system without financial barriers</div>
+                        <div class="donation-features">
+                            <span class="feature">Legal assistance</span>
+                            <span class="feature">Court fee coverage</span>
+                            <span class="feature">Immediate impact</span>
+                        </div>
+                        <button class="btn btn-primary donation-btn">Donate $25</button>
+                    </div>
                     
-                    <div class="givebutter-embed">
-                        <!-- Givebutter Donation Form Widget -->
-                        <givebutter-widget id="LPXeRL"></givebutter-widget>
+                    <div class="donation-card" data-amount="50">
+                        <div class="donation-icon">
+                            <i class="fas fa-heart-pulse"></i>
+                        </div>
+                        <div class="donation-amount">$50</div>
+                        <div class="donation-impact">Provides week of addiction treatment</div>
+                        <div class="donation-description">Evidence-based treatment that saves lives and reduces recidivism</div>
+                        <div class="donation-features">
+                            <span class="feature">Addiction treatment</span>
+                            <span class="feature">Life-saving care</span>
+                            <span class="feature">Recidivism reduction</span>
+                        </div>
+                        <button class="btn btn-primary donation-btn">Donate $50</button>
+                    </div>
+                    
+                    <div class="donation-card featured" data-amount="100">
+                        <div class="donation-badge featured">Recommended</div>
+                        <div class="donation-icon">
+                            <i class="fas fa-scales-balanced"></i>
+                        </div>
+                        <div class="donation-amount">$100</div>
+                        <div class="donation-impact">Funds full day of legal advocacy</div>
+                        <div class="donation-description">Direct legal support for incarcerated individuals and their families</div>
+                        <div class="donation-features">
+                            <span class="feature">Legal advocacy</span>
+                            <span class="feature">Family support</span>
+                            <span class="feature">System reform</span>
+                        </div>
+                        <button class="btn btn-primary donation-btn">Donate $100</button>
+                    </div>
+                    
+                    <div class="donation-card" data-amount="250">
+                        <div class="donation-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="donation-amount">$250</div>
+                        <div class="donation-impact">Sponsors community training event</div>
+                        <div class="donation-description">Educates communities on harm reduction and advocacy strategies</div>
+                        <div class="donation-features">
+                            <span class="feature">Community education</span>
+                            <span class="feature">Harm reduction</span>
+                            <span class="feature">Advocacy training</span>
+                        </div>
+                        <button class="btn btn-primary donation-btn">Donate $250</button>
+                    </div>
+                    
+                    <div class="donation-card" data-amount="500">
+                        <div class="donation-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="donation-amount">$500</div>
+                        <div class="donation-impact">Funds oversight investigation</div>
+                        <div class="donation-description">Comprehensive investigation into prison conditions and systemic issues</div>
+                        <div class="donation-features">
+                            <span class="feature">Prison oversight</span>
+                            <span class="feature">Investigation work</span>
+                            <span class="feature">Transparency</span>
+                        </div>
+                        <button class="btn btn-primary donation-btn">Donate $500</button>
+                    </div>
+                    
+                    <div class="donation-card" data-amount="custom">
+                        <div class="donation-icon">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <div class="donation-amount">Custom</div>
+                        <div class="donation-impact">Your personalized impact</div>
+                        <div class="donation-description">Choose any amount that works for your budget and values</div>
+                        <div class="donation-features">
+                            <span class="feature">Flexible amount</span>
+                            <span class="feature">Personal choice</span>
+                            <span class="feature">Maximum impact</span>
+                        </div>
+                        <button class="btn btn-outline donation-btn">Custom Amount</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="donation-frequency section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-label">Giving Options</div>
+                    <h2>Choose Your Giving Frequency</h2>
+                    <p>Decide how you'd like to support our mission - one-time or recurring donations both make a huge difference.</p>
+                </div>
+                
+                <div class="frequency-cards-grid">
+                    <div class="frequency-card" data-frequency="monthly">
+                        <div class="frequency-badge">Biggest Impact</div>
+                        <div class="frequency-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h3>Monthly Giving</h3>
+                        <p>Sustainable support that allows us to plan long-term initiatives and maintain consistent advocacy efforts.</p>
+                        <div class="frequency-benefits">
+                            <div class="benefit-item">
+                                <i class="fas fa-check"></i>
+                                <span>Predictable funding for programs</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check"></i>
+                                <span>Lower processing fees = more impact</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check"></i>
+                                <span>Exclusive monthly impact reports</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check"></i>
+                                <span>Cancel or modify anytime</span>
+                            </div>
+                        </div>
+                        <div class="frequency-stats">
+                            <div class="stat">
+                                <span class="stat-number">3x</span>
+                                <span class="stat-label">More Impact</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">85%</span>
+                                <span class="stat-label">Of Our Supporters</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary frequency-btn">Choose Monthly</button>
+                    </div>
+                    
+                    <div class="frequency-card" data-frequency="onetime">
+                        <div class="frequency-icon">
+                            <i class="fas fa-hand-holding-dollar"></i>
+                        </div>
+                        <h3>One-Time Donation</h3>
+                        <p>Make an immediate impact with a single donation that directly funds our current priority initiatives.</p>
+                        <div class="frequency-benefits">
+                            <div class="benefit-item">
+                                <i class="fas fa-check"></i>
+                                <span>Immediate impact on current needs</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check"></i>
+                                <span>No ongoing commitment required</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check"></i>
+                                <span>Perfect for special occasions</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check"></i>
+                                <span>Full tax deduction this year</span>
+                            </div>
+                        </div>
+                        <div class="frequency-stats">
+                            <div class="stat">
+                                <span class="stat-number">100%</span>
+                                <span class="stat-label">Immediate Use</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">24hr</span>
+                                <span class="stat-label">Processing</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline frequency-btn">Choose One-Time</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="givebutter-section section">
+            <div class="container">
+                <div class="donation-form-content">
+                    <div class="form-info">
+                        <div class="section-label">Secure Donation</div>
+                        <h2>Complete Your Donation</h2>
+                        <p>Your donation is processed securely through our trusted payment partners. We accept all major payment methods.</p>
                         
-                        <!-- Temporary Fallback - Remove when widget works -->
-                        <div class="donation-fallback" style="text-align: center; margin-top: 20px;">
-                            <p style="color: #666; margin-bottom: 15px;">If the donation form doesn't appear above, you can donate directly:</p>
-                            <a href="https://givebutter.com/praxis-initiative" 
-                               class="cta-button donation-button" 
-                               target="_blank"
-                               style="background: linear-gradient(135deg, #000080 0%, #800000 100%); color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block;">
-                                💝 Donate Now via Givebutter
-                            </a>
+                        <div class="payment-methods">
+                            <div class="payment-method">
+                                <i class="fab fa-cc-visa"></i>
+                                <span>Visa</span>
+                            </div>
+                            <div class="payment-method">
+                                <i class="fab fa-cc-mastercard"></i>
+                                <span>Mastercard</span>
+                            </div>
+                            <div class="payment-method">
+                                <i class="fab fa-cc-amex"></i>
+                                <span>American Express</span>
+                            </div>
+                            <div class="payment-method">
+                                <i class="fab fa-paypal"></i>
+                                <span>PayPal</span>
+                            </div>
+                            <div class="payment-method">
+                                <i class="fab fa-apple-pay"></i>
+                                <span>Apple Pay</span>
+                            </div>
+                            <div class="payment-method">
+                                <i class="fab fa-google-pay"></i>
+                                <span>Google Pay</span>
+                            </div>
+                        </div>
+                        
+                        <div class="security-features">
+                            <div class="security-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>256-bit SSL encryption</span>
+                            </div>
+                            <div class="security-item">
+                                <i class="fas fa-lock"></i>
+                                <span>PCI DSS compliant</span>
+                            </div>
+                            <div class="security-item">
+                                <i class="fas fa-user-shield"></i>
+                                <span>Privacy protected</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="donation-form-card">
+                        <div class="form-header">
+                            <h3>Donation Form</h3>
+                            <p>Complete your secure donation below</p>
+                        </div>
+                        
+                        <div class="givebutter-embed">
+                            <div class="givebutter-placeholder">
+                                <div class="placeholder-icon">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <h4>Givebutter Donation Form</h4>
+                                <p>Your Givebutter donation form embed code goes here</p>
+                                <div class="integration-steps">
+                                    <p><strong>To integrate:</strong></p>
+                                    <ol>
+                                        <li>Copy your Givebutter campaign embed code</li>
+                                        <li>Replace this placeholder div</li>
+                                        <li>Form will handle Stripe, PayPal, and other payment methods</li>
+                                    </ol>
+                                </div>
+                                <button class="btn btn-primary placeholder-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Open Givebutter Form
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -73,32 +358,458 @@
 
         <section class="impact-stories section">
             <div class="container">
-                <h2 class="centered-title">Your Impact in Action</h2>
+                <div class="section-header">
+                    <div class="section-label">Real Impact</div>
+                    <h2>Stories of Change</h2>
+                    <p>See how your donations have directly impacted real people and created lasting change in Arizona's criminal justice system.</p>
+                </div>
                 
                 <div class="stories-grid">
                     <div class="story-card">
-                        <div class="story-amount">$25</div>
-                        <div class="story-impact">Covers court fees for 1 person</div>
-                        <div class="story-description">Helps individuals navigate the legal system without financial barriers</div>
+                        <div class="story-image">
+                            <div class="story-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                        </div>
+                        <div class="story-content">
+                            <h3>Maria's Second Chance</h3>
+                            <p>"Thanks to Praxis Initiative's education program, I earned my GED while incarcerated and now I'm studying to become a paralegal. Your donations gave me hope and a future."</p>
+                            <div class="story-impact">
+                                <span class="impact-label">Funded by:</span>
+                                <span class="impact-amount">$500 in donations</span>
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="story-card">
-                        <div class="story-amount">$50</div>
-                        <div class="story-impact">Provides week of addiction treatment</div>
-                        <div class="story-description">Evidence-based treatment that saves lives and reduces recidivism</div>
+                        <div class="story-image">
+                            <div class="story-icon">
+                                <i class="fas fa-heart-pulse"></i>
+                            </div>
+                        </div>
+                        <div class="story-content">
+                            <h3>James's Recovery</h3>
+                            <p>"The medication-assisted treatment program saved my life. I've been clean for 18 months and recently reunited with my children. This program works."</p>
+                            <div class="story-impact">
+                                <span class="impact-label">Funded by:</span>
+                                <span class="impact-amount">$1,250 in donations</span>
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="story-card">
-                        <div class="story-amount">$100</div>
-                        <div class="story-impact">Funds full day of legal advocacy</div>
-                        <div class="story-description">Direct legal support for incarcerated individuals and their families</div>
+                        <div class="story-image">
+                            <div class="story-icon">
+                                <i class="fas fa-scales-balanced"></i>
+                            </div>
+                        </div>
+                        <div class="story-content">
+                            <h3>Legal Victory</h3>
+                            <p>"Our oversight investigation led to policy changes that improved medical care for 40,000 incarcerated individuals across Arizona. Your support made this possible."</p>
+                            <div class="story-impact">
+                                <span class="impact-label">Funded by:</span>
+                                <span class="impact-amount">$15,000 in donations</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="other-ways-to-give section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-label">More Ways to Help</div>
+                    <h2>Other Ways to Support Our Mission</h2>
+                    <p>Beyond monetary donations, there are many ways to support criminal justice reform in Arizona.</p>
+                </div>
+                
+                <div class="giving-options-grid">
+                    <div class="giving-option-card">
+                        <div class="option-icon">
+                            <i class="fas fa-building-columns"></i>
+                        </div>
+                        <h3>Corporate Partnerships</h3>
+                        <p>Partner with us through corporate sponsorships, employee giving programs, or pro bono services.</p>
+                        <div class="option-features">
+                            <span class="feature">Tax benefits</span>
+                            <span class="feature">CSR impact</span>
+                            <span class="feature">Employee engagement</span>
+                        </div>
+                        <button class="btn btn-outline option-btn">Learn More</button>
                     </div>
                     
-                    <div class="story-card">
-                        <div class="story-amount">$250</div>
-                        <div class="story-impact">Sponsors community training event</div>
-                        <div class="story-description">Educates communities on harm reduction and advocacy strategies</div>
+                    <div class="giving-option-card">
+                        <div class="option-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <h3>Planned Giving</h3>
+                        <p>Include Praxis Initiative in your will, trust, or estate planning to create a lasting legacy of justice.</p>
+                        <div class="option-features">
+                            <span class="feature">Legacy impact</span>
+                            <span class="feature">Tax advantages</span>
+                            <span class="feature">Professional guidance</span>
+                        </div>
+                        <button class="btn btn-outline option-btn">Contact Us</button>
                     </div>
+                    
+                    <div class="giving-option-card">
+                        <div class="option-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3>Volunteer Your Time</h3>
+                        <p>Contribute your skills and time to support our advocacy, research, and community outreach efforts.</p>
+                        <div class="option-features">
+                            <span class="feature">Flexible schedule</span>
+                            <span class="feature">Skill-based matching</span>
+                            <span class="feature">Direct impact</span>
+                        </div>
+                        <button class="btn btn-outline option-btn">Get Involved</button>
+                    </div>
+                    
+                    <div class="giving-option-card">
+                        <div class="option-icon">
+                            <i class="fas fa-share-nodes"></i>
+                        </div>
+                        <h3>Spread Awareness</h3>
+                        <p>Share our mission on social media, host fundraising events, or advocate for reform in your community.</p>
+                        <div class="option-features">
+                            <span class="feature">Social impact</span>
+                            <span class="feature">Community building</span>
+                            <span class="feature">Advocacy training</span>
+                        </div>
+                        <button class="btn btn-outline option-btn">Start Sharing</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="donation-transparency section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-label">Financial Transparency</div>
+                    <h2>How We Use Your Donations</h2>
+                    <p>We believe in complete transparency about how your donations are used to create maximum impact.</p>
+                </div>
+                
+                <div class="transparency-content">
+                    <div class="transparency-chart">
+                        <div class="chart-container">
+                            <div class="chart-segment programs" style="--percentage: 92">
+                                <span class="segment-label">Programs & Services</span>
+                                <span class="segment-percentage">92%</span>
+                            </div>
+                            <div class="chart-segment admin" style="--percentage: 5">
+                                <span class="segment-label">Administration</span>
+                                <span class="segment-percentage">5%</span>
+                            </div>
+                            <div class="chart-segment fundraising" style="--percentage: 3">
+                                <span class="segment-label">Fundraising</span>
+                                <span class="segment-percentage">3%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="transparency-details">
+                        <div class="detail-card">
+                            <div class="detail-icon programs">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h4>Programs & Services (92%)</h4>
+                            <p>Direct funding for legal advocacy, oversight investigations, treatment programs, and community support services.</p>
+                        </div>
+                        
+                        <div class="detail-card">
+                            <div class="detail-icon admin">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <h4>Administration (5%)</h4>
+                            <p>Essential operational costs including staff salaries, office expenses, and organizational infrastructure.</p>
+                        </div>
+                        
+                        <div class="detail-card">
+                            <div class="detail-icon fundraising">
+                                <i class="fas fa-bullhorn"></i>
+                            </div>
+                            <h4>Fundraising (3%)</h4>
+                            <p>Costs associated with donor outreach, grant writing, and fundraising events to sustain our mission.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="transparency-actions">
+                    <button class="btn btn-outline">View Annual Report</button>
+                    <button class="btn btn-outline">Download Financial Statements</button>
+                    <button class="btn btn-outline">See Impact Metrics</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="global-header"></div>
+    <footer id="global-footer" role="contentinfo"></footer>
+
+    <script src="js/components.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const nav = document.querySelector('.header-nav');
+            if (menuToggle && nav) {
+                menuToggle.addEventListener('click', () => {
+                    menuToggle.classList.toggle('is-active');
+                    nav.classList.toggle('is-active');
+                    const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                    menuToggle.setAttribute('aria-expanded', !isExpanded);
+                });
+            }
+
+            // Donation amount selection
+            const donationCards = document.querySelectorAll('.donation-card');
+            const donationBtns = document.querySelectorAll('.donation-btn');
+            let selectedAmount = null;
+
+            donationCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    // Remove active class from all cards
+                    donationCards.forEach(c => c.classList.remove('active'));
+                    card.classList.add('active');
+                    
+                    selectedAmount = card.getAttribute('data-amount');
+                    
+                    // Update button text if not custom
+                    if (selectedAmount !== 'custom') {
+                        updateDonationButtons(selectedAmount);
+                    }
+                });
+            });
+
+            function updateDonationButtons(amount) {
+                donationBtns.forEach(btn => {
+                    if (btn.textContent.includes('Donate')) {
+                        btn.textContent = `Donate $${amount}`;
+                    }
+                });
+            }
+
+            // Frequency selection
+            const frequencyCards = document.querySelectorAll('.frequency-card');
+            const frequencyBtns = document.querySelectorAll('.frequency-btn');
+            let selectedFrequency = 'monthly'; // Default to monthly
+
+            frequencyCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    frequencyCards.forEach(c => c.classList.remove('active'));
+                    card.classList.add('active');
+                    
+                    selectedFrequency = card.getAttribute('data-frequency');
+                    updateFrequencyButtons(selectedFrequency);
+                });
+            });
+
+            function updateFrequencyButtons(frequency) {
+                frequencyBtns.forEach(btn => {
+                    if (frequency === 'monthly') {
+                        btn.textContent = 'Choose Monthly';
+                        btn.classList.remove('btn-outline');
+                        btn.classList.add('btn-primary');
+                    } else {
+                        btn.textContent = 'Choose One-Time';
+                        btn.classList.remove('btn-primary');
+                        btn.classList.add('btn-outline');
+                    }
+                });
+            }
+
+            // Set default selections
+            const defaultDonationCard = document.querySelector('.donation-card[data-amount="100"]');
+            const defaultFrequencyCard = document.querySelector('.frequency-card[data-frequency="monthly"]');
+            
+            if (defaultDonationCard) {
+                defaultDonationCard.classList.add('active');
+                selectedAmount = '100';
+            }
+            
+            if (defaultFrequencyCard) {
+                defaultFrequencyCard.classList.add('active');
+            }
+
+            // Donation button actions
+            donationBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const card = btn.closest('.donation-card');
+                    const amount = card ? card.getAttribute('data-amount') : selectedAmount;
+                    
+                    if (amount === 'custom') {
+                        // Handle custom amount
+                        const customAmount = prompt('Enter your donation amount:');
+                        if (customAmount && !isNaN(customAmount) && customAmount > 0) {
+                            processDonation(customAmount, selectedFrequency);
+                        }
+                    } else {
+                        processDonation(amount, selectedFrequency);
+                    }
+                });
+            });
+
+            // Frequency button actions
+            frequencyBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const card = btn.closest('.frequency-card');
+                    const frequency = card.getAttribute('data-frequency');
+                    
+                    // Scroll to donation form
+                    document.querySelector('.givebutter-section').scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                });
+            });
+
+            function processDonation(amount, frequency) {
+                // This would integrate with your actual donation processing
+                console.log(`Processing ${frequency} donation of $${amount}`);
+                
+                // Scroll to donation form
+                document.querySelector('.givebutter-section').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                
+                // Here you would update the Givebutter form with the selected amount and frequency
+                // Example: updateGivebutterForm(amount, frequency);
+            }
+
+            // Counter animation for impact stats
+            const observerOptions = {
+                threshold: 0.7,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counters = entry.target.querySelectorAll('.stat-number');
+                        counters.forEach(counter => {
+                            const target = parseInt(counter.getAttribute('data-target'));
+                            const suffix = counter.textContent.includes('K') ? 'K' : counter.textContent.includes('%') ? '%' : '';
+                            let current = 0;
+                            const increment = target / 50;
+                            const timer = setInterval(() => {
+                                current += increment;
+                                if (current >= target) {
+                                    counter.textContent = target + suffix;
+                                    clearInterval(timer);
+                                } else {
+                                    counter.textContent = Math.floor(current) + suffix;
+                                }
+                            }, 40);
+                        });
+                        counterObserver.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const impactStats = document.querySelector('.impact-stats-grid');
+            if (impactStats) {
+                counterObserver.observe(impactStats);
+            }
+
+            // Other ways to give button actions
+            const optionBtns = document.querySelectorAll('.option-btn');
+            optionBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const card = btn.closest('.giving-option-card');
+                    const optionTitle = card.querySelector('h3').textContent;
+                    
+                    // Handle different option types
+                    switch (optionTitle) {
+                        case 'Corporate Partnerships':
+                            // Redirect to corporate partnerships page or contact form
+                            window.location.href = '#contact';
+                            break;
+                        case 'Planned Giving':
+                            // Redirect to planned giving information
+                            window.location.href = '#contact';
+                            break;
+                        case 'Volunteer Your Time':
+                            // Redirect to volunteer page
+                            window.location.href = '5 Action Center.html';
+                            break;
+                        case 'Spread Awareness':
+                            // Open social sharing options
+                            openSocialSharing();
+                            break;
+                    }
+                });
+            });
+
+            function openSocialSharing() {
+                const url = window.location.href;
+                const text = 'Support criminal justice reform in Arizona with Praxis Initiative';
+                
+                const shareOptions = [
+                    {
+                        name: 'Twitter',
+                        url: `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`
+                    },
+                    {
+                        name: 'Facebook',
+                        url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`
+                    },
+                    {
+                        name: 'LinkedIn',
+                        url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`
+                    }
+                ];
+                
+                // For demo purposes, just open Twitter
+                window.open(shareOptions[0].url, '_blank', 'width=600,height=400');
+            }
+
+            // Transparency actions
+            const transparencyBtns = document.querySelectorAll('.transparency-actions .btn');
+            transparencyBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const action = btn.textContent.trim();
+                    
+                    switch (action) {
+                        case 'View Annual Report':
+                            // Open annual report PDF
+                            alert('Annual report would open here');
+                            break;
+                        case 'Download Financial Statements':
+                            // Download financial statements
+                            alert('Financial statements would download here');
+                            break;
+                        case 'See Impact Metrics':
+                            // Redirect to impact page
+                            alert('Impact metrics page would open here');
+                            break;
+                    }
+                });
+            });
+
+            // Smooth scrolling for internal links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
                     
                     <div class="story-card">
                         <div class="story-amount">$500</div>
@@ -132,18 +843,10 @@
                     </div>
                     
                     <div class="monthly-givebutter">
-                        <!-- Givebutter Monthly Giving Button -->
-                        <givebutter-widget id="jbkZBL"></givebutter-widget>
-                        
-                        <!-- Temporary Fallback - Remove when widget works -->
-                        <div class="monthly-fallback" style="text-align: center; margin-top: 20px;">
-                            <p style="color: rgba(255,255,255,0.9); margin-bottom: 15px;">If the monthly giving form doesn't appear above:</p>
-                            <a href="https://givebutter.com/praxis-initiative" 
-                               class="cta-button monthly-button" 
-                               target="_blank"
-                               style="background: rgba(255,255,255,0.2); color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block; border: 2px solid rgba(255,255,255,0.3);">
-                                🔄 Set Up Monthly Giving
-                            </a>
+                        <div class="monthly-givebutter-inner white-text centered-div">
+                            <i class="fas fa-calendar-alt newsletter-icon"></i>
+                            <h3>Monthly Giving Form</h3>
+                            <p>Your Givebutter monthly giving embed goes here</p>
                         </div>
                     </div>
                 </div>

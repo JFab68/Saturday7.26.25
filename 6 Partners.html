@@ -22,321 +22,454 @@
     <div id="global-header"></div>
 
     <main id="main-content" role="main">
-        <section class="hero">
-            <h1>Our Partners</h1>
-            <p>Organizations fighting alongside us for justice reform in Arizona</p>
-            
-            <!-- Partnership Statistics -->
-            <div class="partnership-stats">
-                <div class="partnership-stat">
-                    <div class="stat-number">19</div>
-                    <div class="stat-label">Partner Organizations</div>
-                </div>
-                <div class="partnership-stat">
-                    <div class="stat-number">5</div>
-                    <div class="stat-label">Focus Areas</div>
-                </div>
-                <div class="partnership-stat">
-                    <div class="stat-number">12</div>
-                    <div class="stat-label">States Represented</div>
-                </div>
-                <div class="partnership-stat">
-                    <div class="stat-number">50+</div>
-                    <div class="stat-label">Joint Initiatives</div>
+        <section class="partnership-overview section">
+            <div class="container">
+                <div class="section-label">Building Coalitions</div>
+                <h2>Partnership Network</h2>
+                <p class="section-intro">We collaborate with organizations across Arizona and beyond to amplify our impact and create lasting change in criminal justice reform.</p>
+                
+                <div class="partnership-stats-grid">
+                    <div class="partnership-stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div class="stat-number">19</div>
+                        <div class="stat-label">Partner Organizations</div>
+                        <div class="stat-description">Collaborative relationships</div>
+                    </div>
+                    
+                    <div class="partnership-stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">Focus Areas</div>
+                        <div class="stat-description">Specialized expertise</div>
+                    </div>
+                    
+                    <div class="partnership-stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="stat-number">12</div>
+                        <div class="stat-label">States Represented</div>
+                        <div class="stat-description">National network</div>
+                    </div>
+                    
+                    <div class="partnership-stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Joint Initiatives</div>
+                        <div class="stat-description">Collaborative projects</div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Interactive Controls -->
-        <section class="partners-controls">
+        <section class="partnership-categories section">
             <div class="container">
-                <div class="controls-wrapper">
-                    <div class="search-container">
-                        <input type="text" id="partner-search" placeholder="Search partners..." aria-label="Search partners">
-                        <i class="fas fa-search search-icon"></i>
+                <div class="section-label">Areas of Collaboration</div>
+                <h2>Partnership Focus Areas</h2>
+                <p class="section-intro">Our partnerships span multiple areas of expertise, each contributing unique strengths to our collective mission of justice reform.</p>
+                
+                <div class="categories-grid">
+                    <div class="category-card" data-category="criminal-justice">
+                        <div class="category-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h3>Criminal Justice Reform</h3>
+                        <p>Organizations working to transform the criminal legal system through policy change, advocacy, and direct intervention.</p>
+                        <div class="category-stats">
+                            <span class="partner-count">8 Partners</span>
+                            <span class="focus-area">Policy & Advocacy</span>
+                        </div>
+                        <button class="btn btn-secondary category-filter-btn" data-filter="criminal-justice">View Partners</button>
                     </div>
                     
-                    <div class="filter-container">
-                        <label for="category-filter">Filter by Category:</label>
-                        <select id="category-filter" aria-label="Filter partners by category">
-                            <option value="all">All Categories</option>
-                            <option value="criminal-justice">Criminal Justice Reform</option>
-                            <option value="harm-reduction">Harm Reduction</option>
-                            <option value="research">Research & Policy</option>
-                            <option value="advocacy">Advocacy & Rights</option>
-                            <option value="health">Health & Wellness</option>
-                        </select>
+                    <div class="category-card" data-category="harm-reduction">
+                        <div class="category-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Harm Reduction</h3>
+                        <p>Evidence-based organizations focused on reducing the negative consequences of drug use and promoting public health approaches.</p>
+                        <div class="category-stats">
+                            <span class="partner-count">4 Partners</span>
+                            <span class="focus-area">Health & Safety</span>
+                        </div>
+                        <button class="btn btn-secondary category-filter-btn" data-filter="harm-reduction">View Partners</button>
                     </div>
                     
-                    <div class="view-toggle">
-                        <button id="grid-view" class="view-btn active" aria-label="Grid view">
-                            <i class="fas fa-th"></i>
-                        </button>
-                        <button id="list-view" class="view-btn" aria-label="List view">
-                            <i class="fas fa-list"></i>
-                        </button>
+                    <div class="category-card" data-category="research">
+                        <div class="category-icon">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <h3>Research & Policy</h3>
+                        <p>Academic institutions and think tanks providing research, data analysis, and evidence-based policy recommendations.</p>
+                        <div class="category-stats">
+                            <span class="partner-count">3 Partners</span>
+                            <span class="focus-area">Evidence & Analysis</span>
+                        </div>
+                        <button class="btn btn-secondary category-filter-btn" data-filter="research">View Partners</button>
                     </div>
+                    
+                    <div class="category-card" data-category="advocacy">
+                        <div class="category-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <h3>Advocacy & Rights</h3>
+                        <p>Civil rights organizations and advocacy groups fighting for the rights and dignity of incarcerated individuals and their families.</p>
+                        <div class="category-stats">
+                            <span class="partner-count">2 Partners</span>
+                            <span class="focus-area">Rights & Dignity</span>
+                        </div>
+                        <button class="btn btn-secondary category-filter-btn" data-filter="advocacy">View Partners</button>
+                    </div>
+                    
+                    <div class="category-card" data-category="health">
+                        <div class="category-icon">
+                            <i class="fas fa-stethoscope"></i>
+                        </div>
+                        <h3>Health & Wellness</h3>
+                        <p>Healthcare organizations and wellness providers addressing the physical and mental health needs of justice-involved individuals.</p>
+                        <div class="category-stats">
+                            <span class="partner-count">2 Partners</span>
+                            <span class="focus-area">Healthcare Access</span>
+                        </div>
+                        <button class="btn btn-secondary category-filter-btn" data-filter="health">View Partners</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="partners-showcase section">
+            <div class="container">
+                <div class="showcase-header">
+                    <div class="section-label">Our Network</div>
+                    <h2>Partner Organizations</h2>
+                    <p class="section-intro">Meet the organizations working alongside us to transform Arizona's criminal legal system and create lasting change.</p>
                 </div>
                 
-                <div class="results-info">
-                    <span id="results-count">19 partners found</span>
+                <div class="partners-controls-card">
+                    <div class="controls-wrapper">
+                        <div class="search-container">
+                            <input type="text" id="partner-search" placeholder="Search partners..." aria-label="Search partners">
+                            <i class="fas fa-search search-icon"></i>
+                        </div>
+                        
+                        <div class="filter-container">
+                            <label for="category-filter">Filter by Category:</label>
+                            <select id="category-filter" aria-label="Filter partners by category">
+                                <option value="all">All Categories</option>
+                                <option value="criminal-justice">Criminal Justice Reform</option>
+                                <option value="harm-reduction">Harm Reduction</option>
+                                <option value="research">Research & Policy</option>
+                                <option value="advocacy">Advocacy & Rights</option>
+                                <option value="health">Health & Wellness</option>
+                            </select>
+                        </div>
+                        
+                        <div class="view-toggle">
+                            <button id="grid-view" class="view-btn active" aria-label="Grid view">
+                                <i class="fas fa-th"></i>
+                            </button>
+                            <button id="list-view" class="view-btn" aria-label="List view">
+                                <i class="fas fa-list"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="results-info">
+                        <span id="results-count">19 partners found</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="partners-list" id="partners-container">
-            <div class="partner-card" data-category="advocacy">
-                <img src="10 Assets/Partner Logos/ACLU_National_Prison_Project_825_881_825_881.png" alt="ACLU National Prison Project Logo" class="partner-logo" loading="lazy">
-                <div class="partner-content">
-                    <h2>ACLU National Prison Project</h2>
-                    <p>Works to protect the civil rights of incarcerated people nationwide.</p>
-                    <div class="partner-tags">
-                        <span class="tag">Civil Rights</span>
-                        <span class="tag">Prison Reform</span>
-                    </div>
-                    <a href="https://www.aclu.org/issues/prisoners-rights" class="btn btn-primary">Visit Website</a>
-                </div>
+        <section class="partners-grid-section" id="partners-container">
+            <div class="container">
+                <div class="partners-grid" id="partners-grid">
             </div>
 
-            <div class="partner-card" data-category="criminal-justice">
-                <img src="10 Assets/Partner Logos/Alliance_724_162_724_162.png" alt="Alliance for Safety and Justice Logo" class="partner-logo" loading="lazy">
-                <div class="partner-content">
-                    <h2>Alliance for Safety and Justice</h2>
-                    <p>Advances community-driven solutions that reduce incarceration.</p>
-                    <div class="partner-tags">
-                        <span class="tag">Community Solutions</span>
-                        <span class="tag">Incarceration Reduction</span>
+                    <div class="partner-card" data-category="advocacy">
+                        <img src="10 Assets/Partner Logos/ACLU_National_Prison_Project_825_881_825_881.png" alt="ACLU National Prison Project Logo" class="partner-logo" loading="lazy">
+                        <div class="partner-content">
+                            <h3>ACLU National Prison Project</h3>
+                            <p>Works to protect the civil rights of incarcerated people nationwide.</p>
+                            <div class="partner-tags">
+                                <span class="tag">Civil Rights</span>
+                                <span class="tag">Prison Reform</span>
+                            </div>
+                            <a href="https://www.aclu.org/issues/prisoners-rights" class="btn btn-primary" target="_blank">Visit Website</a>
+                        </div>
                     </div>
-                    <a href="https://allianceforsafetyandjustice.org" class="btn btn-primary">Visit Website</a>
-                </div>
-            </div>
 
-            <div class="partner-card" data-category="health">
-                <img src="10 Assets/Partner Logos/CAPPA_818_328_818_328.png" alt="CAPPA Logo" class="partner-logo" loading="lazy">
-                <div class="partner-content">
-                    <h2>CAPPA</h2>
-                    <p>Provides training and certification for childbirth and postpartum professionals.</p>
-                    <div class="partner-tags">
-                        <span class="tag">Maternal Health</span>
-                        <span class="tag">Professional Training</span>
+                    <div class="partner-card" data-category="criminal-justice">
+                        <img src="10 Assets/Partner Logos/Alliance_724_162_724_162.png" alt="Alliance for Safety and Justice Logo" class="partner-logo" loading="lazy">
+                        <div class="partner-content">
+                            <h3>Alliance for Safety and Justice</h3>
+                            <p>Advances community-driven solutions that reduce incarceration.</p>
+                            <div class="partner-tags">
+                                <span class="tag">Community Solutions</span>
+                                <span class="tag">Incarceration Reduction</span>
+                            </div>
+                            <a href="https://allianceforsafetyandjustice.org" class="btn btn-primary" target="_blank">Visit Website</a>
+                        </div>
                     </div>
-                    <a href="https://www.cappa.net" class="btn btn-primary">Visit Website</a>
-                </div>
-            </div>
 
-            <div class="partner-card" data-category="health">
-                <img src="10 Assets/Partner Logos/DONA_392_108_392_108.png" alt="DONA International Logo" class="partner-logo" loading="lazy">
-                <div class="partner-content">
-                    <h2>DONA International</h2>
-                    <p>Largest doula certifying organization supporting families worldwide.</p>
-                    <div class="partner-tags">
-                        <span class="tag">Doula Services</span>
-                        <span class="tag">Family Support</span>
+                    <div class="partner-card" data-category="health">
+                        <img src="10 Assets/Partner Logos/CAPPA_818_328_818_328.png" alt="CAPPA Logo" class="partner-logo" loading="lazy">
+                        <div class="partner-content">
+                            <h3>CAPPA</h3>
+                            <p>Provides training and certification for childbirth and postpartum professionals.</p>
+                            <div class="partner-tags">
+                                <span class="tag">Maternal Health</span>
+                                <span class="tag">Professional Training</span>
+                            </div>
+                            <a href="https://www.cappa.net" class="btn btn-primary" target="_blank">Visit Website</a>
+                        </div>
                     </div>
-                    <a href="https://www.dona.org" class="btn btn-primary">Visit Website</a>
-                </div>
-            </div>
 
-            <div class="partner-card" data-category="harm-reduction">
-                <img src="10 Assets/Partner Logos/Drug_Policy_Alliance_266_118_266_118.png" alt="Drug Policy Alliance Logo" class="partner-logo" loading="lazy">
-                <div class="partner-content">
-                    <h2>Drug Policy Alliance</h2>
-                    <p>Advocates for drug policies grounded in science, compassion, and health.</p>
-                    <div class="partner-tags">
-                        <span class="tag">Drug Policy</span>
-                        <span class="tag">Science-Based</span>
+                    <div class="partner-card" data-category="health">
+                        <img src="10 Assets/Partner Logos/DONA_392_108_392_108.png" alt="DONA International Logo" class="partner-logo" loading="lazy">
+                        <div class="partner-content">
+                            <h3>DONA International</h3>
+                            <p>Largest doula certifying organization supporting families worldwide.</p>
+                            <div class="partner-tags">
+                                <span class="tag">Doula Services</span>
+                                <span class="tag">Family Support</span>
+                            </div>
+                            <a href="https://www.dona.org" class="btn btn-primary" target="_blank">Visit Website</a>
+                        </div>
                     </div>
-                    <a href="https://drugpolicy.org" class="btn btn-primary">Visit Website</a>
-                </div>
-            </div>
 
-            <div class="partner-card" data-category="criminal-justice">
-                <img src="10 Assets/Partner Logos/FAMM_424_463_424_463.png" alt="FAMM Logo" class="partner-logo" loading="lazy">
-                <div class="partner-content">
-                    <h2>Families Against Mandatory Minimums</h2>
-                    <p>Fights for fair and proportionate sentencing laws nationwide.</p>
-                    <div class="partner-tags">
-                        <span class="tag">Sentencing Reform</span>
-                        <span class="tag">Family Advocacy</span>
+                    <div class="partner-card" data-category="harm-reduction">
+                        <img src="10 Assets/Partner Logos/Drug_Policy_Alliance_266_118_266_118.png" alt="Drug Policy Alliance Logo" class="partner-logo" loading="lazy">
+                        <div class="partner-content">
+                            <h3>Drug Policy Alliance</h3>
+                            <p>Advocates for drug policies grounded in science, compassion, and health.</p>
+                            <div class="partner-tags">
+                                <span class="tag">Drug Policy</span>
+                                <span class="tag">Science-Based</span>
+                            </div>
+                            <a href="https://drugpolicy.org" class="btn btn-primary" target="_blank">Visit Website</a>
+                        </div>
                     </div>
-                    <a href="https://famm.org" class="btn btn-primary">Visit Website</a>
-                </div>
-            </div>
 
-            <div class="partner-card" data-category="health">
-                <img src="10 Assets/Partner Logos/ICEA_546_106_546_106.png" alt="ICEA Logo" class="partner-logo" loading="lazy">
-                <div class="partner-content">
-                    <h2>International Childbirth Education Association</h2>
-                    <p>Promotes excellence in childbirth education and doula care.</p>
-                    <div class="partner-tags">
-                        <span class="tag">Education</span>
-                        <span class="tag">Childbirth</span>
+                    <div class="partner-card" data-category="criminal-justice">
+                        <img src="10 Assets/Partner Logos/FAMM_424_463_424_463.png" alt="FAMM Logo" class="partner-logo" loading="lazy">
+                        <div class="partner-content">
+                            <h3>Families Against Mandatory Minimums</h3>
+                            <p>Fights for fair and proportionate sentencing laws nationwide.</p>
+                            <div class="partner-tags">
+                                <span class="tag">Sentencing Reform</span>
+                                <span class="tag">Family Advocacy</span>
+                            </div>
+                            <a href="https://famm.org" class="btn btn-primary" target="_blank">Visit Website</a>
+                        </div>
                     </div>
-                    <a href="https://icea.org" class="btn btn-primary">Visit Website</a>
-                </div>
-            </div>
 
-            <div class="partner-card" data-category="advocacy">
-                <img src="10 Assets/Partner Logos/Innocence_Project_461_137_461_137.png" alt="Innocence Project Logo" class="partner-logo" loading="lazy">
-                <div class="partner-content">
-                    <h2>Innocence Project</h2>
-                    <p>Exonerates the wrongly convicted through DNA testing and reform.</p>
-                    <div class="partner-tags">
-                        <span class="tag">Wrongful Conviction</span>
-                        <span class="tag">DNA Testing</span>
+                    <div class="partner-card" data-category="health">
+                        <img src="10 Assets/Partner Logos/ICEA_546_106_546_106.png" alt="ICEA Logo" class="partner-logo" loading="lazy">
+                        <div class="partner-content">
+                            <h3>International Childbirth Education Association</h3>
+                            <p>Promotes excellence in childbirth education and doula care.</p>
+                            <div class="partner-tags">
+                                <span class="tag">Education</span>
+                                <span class="tag">Childbirth</span>
+                            </div>
+                            <a href="https://icea.org" class="btn btn-primary" target="_blank">Visit Website</a>
+                        </div>
                     </div>
-                    <a href="https://innocenceproject.org" class="btn btn-primary">Visit Website</a>
-                </div>
-            </div>
 
-            <div class="partner-card" data-category="research">
-                <img src="10 Assets/Partner Logos/Marshall_Project_849_112_849_112.png" alt="The Marshall Project Logo" class="partner-logo" loading="lazy">
-                <div class="partner-content">
-                    <h2>The Marshall Project</h2>
-                    <p>Nonprofit newsroom covering the U.S. criminal justice system.</p>
-                    <div class="partner-tags">
-                        <span class="tag">Journalism</span>
-                        <span class="tag">Criminal Justice</span>
+                    <div class="partner-card" data-category="advocacy">
+                        <img src="10 Assets/Partner Logos/Innocence_Project_461_137_461_137.png" alt="Innocence Project Logo" class="partner-logo" loading="lazy">
+                        <div class="partner-content">
+                            <h3>Innocence Project</h3>
+                            <p>Exonerates the wrongly convicted through DNA testing and reform.</p>
+                            <div class="partner-tags">
+                                <span class="tag">Wrongful Conviction</span>
+                                <span class="tag">DNA Testing</span>
+                            </div>
+                            <a href="https://innocenceproject.org" class="btn btn-primary" target="_blank">Visit Website</a>
+                        </div>
                     </div>
-                    <a href="https://www.themarshallproject.org" class="btn btn-primary">Visit Website</a>
-                </div>
-            </div>
 
-            <div class="partner-card" data-category="health">
-                <img src="10 Assets/Partner Logos/NBDA_781_781_781_781.png" alt="National Black Doulas Association Logo" class="partner-logo" loading="lazy">
-                <div class="partner-content">
-                    <h2>National Black Doulas Association</h2>
-                    <p>Supports Black birthing families and trains diverse doulas.</p>
-                    <div class="partner-tags">
-                        <span class="tag">Maternal Health</span>
-                        <span class="tag">Diversity</span>
+                    <div class="partner-card" data-category="research">
+                        <img src="10 Assets/Partner Logos/Marshall_Project_849_112_849_112.png" alt="The Marshall Project Logo" class="partner-logo" loading="lazy">
+                        <div class="partner-content">
+                            <h3>The Marshall Project</h3>
+                            <p>Nonprofit newsroom covering the U.S. criminal justice system.</p>
+                            <div class="partner-tags">
+                                <span class="tag">Journalism</span>
+                                <span class="tag">Criminal Justice</span>
+                            </div>
+                            <a href="https://www.themarshallproject.org" class="btn btn-primary" target="_blank">Visit Website</a>
+                        </div>
                     </div>
-                    <a href="https://www.blackdoulas.org" class="btn btn-primary">Visit Website</a>
-                </div>
-            </div>
 
-            <div class="partner-card" data-category="research">
-                <img src="10 Assets/Partner Logos/NIH_780_120_780_120.png" alt="NIH Logo" class="partner-logo" loading="lazy">
-                <div class="partner-content">
-                    <h2>National Institutes of Health</h2>
-                    <p>U.S. medical research agency improving health and saving lives.</p>
-                    <div class="partner-tags">
-                        <span class="tag">Medical Research</span>
-                        <span class="tag">Public Health</span>
+                    <div class="partner-card" data-category="health">
+                        <img src="10 Assets/Partner Logos/NBDA_781_781_781_781.png" alt="National Black Doulas Association Logo" class="partner-logo" loading="lazy">
+                        <div class="partner-content">
+                            <h3>National Black Doulas Association</h3>
+                            <p>Supports Black birthing families and trains diverse doulas.</p>
+                            <div class="partner-tags">
+                                <span class="tag">Maternal Health</span>
+                                <span class="tag">Diversity</span>
+                            </div>
+                            <a href="https://www.blackdoulas.org" class="btn btn-primary" target="_blank">Visit Website</a>
+                        </div>
                     </div>
-                    <a href="https://www.nih.gov" class="btn btn-primary">Visit Website</a>
-                </div>
-            </div>
 
-            <div class="partner-card" data-category="harm-reduction">
-                <img src="10 Assets/Partner Logos/National_Harm_Reduction_Coalition_331_138_331_138.png" alt="National Harm Reduction Coalition Logo" class="partner-logo" loading="lazy">
-                <div class="partner-content">
-                    <h2>National Harm Reduction Coalition</h2>
-                    <p>Works to advance health and justice for people who use drugs.</p>
-                    <div class="partner-tags">
-                        <span class="tag">Harm Reduction</span>
-                        <span class="tag">Drug Users Rights</span>
+                    <div class="partner-card" data-category="research">
+                        <img src="10 Assets/Partner Logos/NIH_780_120_780_120.png" alt="NIH Logo" class="partner-logo" loading="lazy">
+                        <div class="partner-content">
+                            <h3>National Institutes of Health</h3>
+                            <p>U.S. medical research agency improving health and saving lives.</p>
+                            <div class="partner-tags">
+                                <span class="tag">Medical Research</span>
+                                <span class="tag">Public Health</span>
+                            </div>
+                            <a href="https://www.nih.gov" class="btn btn-primary" target="_blank">Visit Website</a>
+                        </div>
                     </div>
-                    <a href="https://harmreduction.org" class="btn btn-primary">Visit Website</a>
-                </div>
-            </div>
 
-            <div class="partner-card" data-category="harm-reduction">
-                <img src="10 Assets/Partner Logos/Overdose_Prevention_841_150_841_150.png" alt="Overdose Prevention Logo" class="partner-logo" loading="lazy">
-                <div class="partner-content">
-                    <h2>Overdose Prevention</h2>
-                    <p>Provides tools and resources to help prevent overdose deaths.</p>
-                    <div class="partner-tags">
-                        <span class="tag">Overdose Prevention</span>
-                        <span class="tag">Life Saving</span>
+                    <div class="partner-card" data-category="harm-reduction">
+                        <img src="10 Assets/Partner Logos/National_Harm_Reduction_Coalition_331_138_331_138.png" alt="National Harm Reduction Coalition Logo" class="partner-logo" loading="lazy">
+                        <div class="partner-content">
+                            <h3>National Harm Reduction Coalition</h3>
+                            <p>Works to advance health and justice for people who use drugs.</p>
+                            <div class="partner-tags">
+                                <span class="tag">Harm Reduction</span>
+                                <span class="tag">Drug Users Rights</span>
+                            </div>
+                            <a href="https://harmreduction.org" class="btn btn-primary" target="_blank">Visit Website</a>
+                        </div>
                     </div>
-                    <a href="https://overdoseprevention.org" class="btn btn-primary">Visit Website</a>
-                </div>
-            </div>
 
-            <div class="partner-card" data-category="research">
-                <img src="10 Assets/Partner Logos/Prison_Policy_Initiative_421_145_421_145.png" alt="Prison Policy Initiative Logo" class="partner-logo" loading="lazy">
-                <div class="partner-content">
-                    <h2>Prison Policy Initiative</h2>
-                    <p>Produces cutting-edge research to expose the harms of mass incarceration.</p>
-                    <div class="partner-tags">
-                        <span class="tag">Research</span>
-                        <span class="tag">Mass Incarceration</span>
+                    <div class="partner-card" data-category="harm-reduction">
+                        <img src="10 Assets/Partner Logos/Overdose_Prevention_841_150_841_150.png" alt="Overdose Prevention Logo" class="partner-logo" loading="lazy">
+                        <div class="partner-content">
+                            <h3>Overdose Prevention</h3>
+                            <p>Provides tools and resources to help prevent overdose deaths.</p>
+                            <div class="partner-tags">
+                                <span class="tag">Overdose Prevention</span>
+                                <span class="tag">Life Saving</span>
+                            </div>
+                            <a href="https://overdoseprevention.org" class="btn btn-primary" target="_blank">Visit Website</a>
+                        </div>
                     </div>
-                    <a href="https://www.prisonpolicy.org" class="btn btn-primary">Visit Website</a>
-                </div>
-            </div>
 
-            <div class="partner-card" data-category="criminal-justice">
-                <img src="10 Assets/Partner Logos/Right_On_Crime_402_260_402_260.png" alt="Right On Crime Logo" class="partner-logo" loading="lazy">
-                <div class="partner-content">
-                    <h2>Right On Crime</h2>
-                    <p>Conservative campaign for effective criminal justice solutions.</p>
-                    <div class="partner-tags">
-                        <span class="tag">Conservative Reform</span>
-                        <span class="tag">Bipartisan</span>
+                    <div class="partner-card" data-category="research">
+                        <img src="10 Assets/Partner Logos/Prison_Policy_Initiative_421_145_421_145.png" alt="Prison Policy Initiative Logo" class="partner-logo" loading="lazy">
+                        <div class="partner-content">
+                            <h3>Prison Policy Initiative</h3>
+                            <p>Produces cutting-edge research to expose the harms of mass incarceration.</p>
+                            <div class="partner-tags">
+                                <span class="tag">Research</span>
+                                <span class="tag">Mass Incarceration</span>
+                            </div>
+                            <a href="https://www.prisonpolicy.org" class="btn btn-primary" target="_blank">Visit Website</a>
+                        </div>
                     </div>
-                    <a href="https://rightoncrime.com" class="btn btn-primary">Visit Website</a>
-                </div>
-            </div>
 
-            <div class="partner-card" data-category="health">
-                <img src="10 Assets/Partner Logos/SAMHSA_469_159_469_159.png" alt="SAMHSA Logo" class="partner-logo" loading="lazy">
-                <div class="partner-content">
-                    <h2>SAMHSA</h2>
-                    <p>Leads public health efforts to advance behavioral health in the U.S.</p>
-                    <div class="partner-tags">
-                        <span class="tag">Behavioral Health</span>
-                        <span class="tag">Mental Health</span>
+                    <div class="partner-card" data-category="criminal-justice">
+                        <img src="10 Assets/Partner Logos/Right_On_Crime_402_260_402_260.png" alt="Right On Crime Logo" class="partner-logo" loading="lazy">
+                        <div class="partner-content">
+                            <h3>Right On Crime</h3>
+                            <p>Conservative campaign for effective criminal justice solutions.</p>
+                            <div class="partner-tags">
+                                <span class="tag">Conservative Reform</span>
+                                <span class="tag">Bipartisan</span>
+                            </div>
+                            <a href="https://rightoncrime.com" class="btn btn-primary" target="_blank">Visit Website</a>
+                        </div>
                     </div>
-                    <a href="https://www.samhsa.gov" class="btn btn-primary">Visit Website</a>
-                </div>
-            </div>
 
-            <div class="partner-card" data-category="advocacy">
-                <img src="10 Assets/Partner Logos/Sentencing_Project_394_127_394_127.png" alt="The Sentencing Project Logo" class="partner-logo" loading="lazy">
-                <div class="partner-content">
-                    <h2>The Sentencing Project</h2>
-                    <p>Advocates for effective and humane responses to crime.</p>
-                    <div class="partner-tags">
-                        <span class="tag">Sentencing Reform</span>
-                        <span class="tag">Humane Justice</span>
+                    <div class="partner-card" data-category="health">
+                        <img src="10 Assets/Partner Logos/SAMHSA_469_159_469_159.png" alt="SAMHSA Logo" class="partner-logo" loading="lazy">
+                        <div class="partner-content">
+                            <h3>SAMHSA</h3>
+                            <p>Leads public health efforts to advance behavioral health in the U.S.</p>
+                            <div class="partner-tags">
+                                <span class="tag">Behavioral Health</span>
+                                <span class="tag">Mental Health</span>
+                            </div>
+                            <a href="https://www.samhsa.gov" class="btn btn-primary" target="_blank">Visit Website</a>
+                        </div>
                     </div>
-                    <a href="https://www.sentencingproject.org" class="btn btn-primary">Visit Website</a>
-                </div>
-            </div>
 
-            <div class="partner-card" data-category="research">
-                <img src="10 Assets/Partner Logos/Vera_440_243_440_243.png" alt="Vera Institute of Justice Logo" class="partner-logo" loading="lazy">
-                <div class="partner-content">
-                    <h2>Vera Institute of Justice</h2>
-                    <p>Partners with communities and government to transform justice systems.</p>
-                    <div class="partner-tags">
-                        <span class="tag">Justice Reform</span>
-                        <span class="tag">Community Partnership</span>
+                    <div class="partner-card" data-category="advocacy">
+                        <img src="10 Assets/Partner Logos/Sentencing_Project_394_127_394_127.png" alt="The Sentencing Project Logo" class="partner-logo" loading="lazy">
+                        <div class="partner-content">
+                            <h3>The Sentencing Project</h3>
+                            <p>Advocates for effective and humane responses to crime.</p>
+                            <div class="partner-tags">
+                                <span class="tag">Sentencing Reform</span>
+                                <span class="tag">Humane Justice</span>
+                            </div>
+                            <a href="https://www.sentencingproject.org" class="btn btn-primary" target="_blank">Visit Website</a>
+                        </div>
                     </div>
-                    <a href="https://www.vera.org" class="btn btn-primary">Visit Website</a>
-                </div>
-            </div>
 
-            <div class="partner-card" data-category="advocacy">
-                <img src="10 Assets/Partner Logos/fwd_us_436_183_436_183.png" alt="FWD.us Logo" class="partner-logo" loading="lazy">
-                <div class="partner-content">
-                    <h2>FWD.us</h2>
-                    <p>Advocacy organization working to reform immigration and criminal justice laws.</p>
-                    <div class="partner-tags">
-                        <span class="tag">Immigration Reform</span>
-                        <span class="tag">Criminal Justice</span>
+                    <div class="partner-card" data-category="research">
+                        <img src="10 Assets/Partner Logos/Vera_440_243_440_243.png" alt="Vera Institute of Justice Logo" class="partner-logo" loading="lazy">
+                        <div class="partner-content">
+                            <h3>Vera Institute of Justice</h3>
+                            <p>Partners with communities and government to transform justice systems.</p>
+                            <div class="partner-tags">
+                                <span class="tag">Justice Reform</span>
+                                <span class="tag">Community Partnership</span>
+                            </div>
+                            <a href="https://www.vera.org" class="btn btn-primary" target="_blank">Visit Website</a>
+                        </div>
                     </div>
-                    <a href="https://www.fwd.us" class="btn btn-primary">Visit Website</a>
+
+                    <div class="partner-card" data-category="advocacy">
+                        <img src="10 Assets/Partner Logos/fwd_us_436_183_436_183.png" alt="FWD.us Logo" class="partner-logo" loading="lazy">
+                        <div class="partner-content">
+                            <h3>FWD.us</h3>
+                            <p>Advocacy organization working to reform immigration and criminal justice laws.</p>
+                            <div class="partner-tags">
+                                <span class="tag">Immigration Reform</span>
+                                <span class="tag">Criminal Justice</span>
+                            </div>
+                            <a href="https://www.fwd.us" class="btn btn-primary" target="_blank">Visit Website</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="cta">
-            <h2>Become a Partner</h2>
-            <p>Email <a href="mailto:partners@praxisinitiative.org">partners@praxisinitiative.org</a> to align your organization with our work.</p>
+        <section class="partnership-cta section">
+            <div class="container">
+                <div class="cta-content">
+                    <div class="cta-text">
+                        <div class="section-label">Join Our Network</div>
+                        <h2>Become a Partner</h2>
+                        <p>Are you an organization working in criminal justice reform, harm reduction, research, advocacy, or health and wellness? We'd love to explore partnership opportunities with you.</p>
+                    </div>
+                    
+                    <div class="cta-card">
+                        <div class="cta-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3>Partner With Us</h3>
+                        <p>Join our network of organizations working to transform Arizona's criminal legal system.</p>
+                        <div class="cta-actions">
+                            <a href="mailto:partners@praxisinitiative.org" class="btn btn-primary">
+                                <i class="fas fa-envelope"></i> Email Us
+                            </a>
+                            <a href="8 Contact.html" class="btn btn-secondary">
+                                <i class="fas fa-phone"></i> Contact Us
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
+
     </main>
 
     <footer id="global-footer" role="contentinfo"></footer>
@@ -354,6 +487,109 @@
                     const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
                     menuToggle.setAttribute('aria-expanded', !isExpanded);
                 });
+            }
+
+            // Partner filtering and search functionality
+            const searchInput = document.getElementById('partner-search');
+            const categoryFilter = document.getElementById('category-filter');
+            const gridViewBtn = document.getElementById('grid-view');
+            const listViewBtn = document.getElementById('list-view');
+            const partnersGrid = document.getElementById('partners-grid');
+            const resultsCount = document.getElementById('results-count');
+            const partnerCards = document.querySelectorAll('.partner-card');
+            const categoryFilterBtns = document.querySelectorAll('.category-filter-btn');
+
+            // Search functionality
+            function filterPartners() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const selectedCategory = categoryFilter.value;
+                let visibleCount = 0;
+
+                partnerCards.forEach(card => {
+                    const cardCategory = card.getAttribute('data-category');
+                    const cardText = card.textContent.toLowerCase();
+                    
+                    const matchesSearch = cardText.includes(searchTerm);
+                    const matchesCategory = selectedCategory === 'all' || cardCategory === selectedCategory;
+                    
+                    if (matchesSearch && matchesCategory) {
+                        card.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                resultsCount.textContent = `${visibleCount} partner${visibleCount !== 1 ? 's' : ''} found`;
+            }
+
+            // Event listeners
+            searchInput.addEventListener('input', filterPartners);
+            categoryFilter.addEventListener('change', filterPartners);
+
+            // Category filter buttons
+            categoryFilterBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const filter = e.target.getAttribute('data-filter');
+                    categoryFilter.value = filter;
+                    filterPartners();
+                    
+                    // Scroll to partners section
+                    document.getElementById('partners-container').scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                });
+            });
+
+            // View toggle functionality
+            gridViewBtn.addEventListener('click', () => {
+                partnersGrid.classList.remove('list-view');
+                partnersGrid.classList.add('grid-view');
+                gridViewBtn.classList.add('active');
+                listViewBtn.classList.remove('active');
+            });
+
+            listViewBtn.addEventListener('click', () => {
+                partnersGrid.classList.remove('grid-view');
+                partnersGrid.classList.add('list-view');
+                listViewBtn.classList.add('active');
+                gridViewBtn.classList.remove('active');
+            });
+
+            // Counter animation for partnership stats
+            const observerOptions = {
+                threshold: 0.7,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counters = entry.target.querySelectorAll('.stat-number');
+                        counters.forEach(counter => {
+                            const target = parseInt(counter.textContent.replace(/[^0-9]/g, '')) || 0;
+                            const suffix = counter.textContent.includes('+') ? '+' : '';
+                            let current = 0;
+                            const increment = target / 50;
+                            const timer = setInterval(() => {
+                                current += increment;
+                                if (current >= target) {
+                                    counter.textContent = target.toLocaleString() + suffix;
+                                    clearInterval(timer);
+                                } else {
+                                    counter.textContent = Math.floor(current).toLocaleString() + suffix;
+                                }
+                            }, 40);
+                        });
+                        counterObserver.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const partnershipStats = document.querySelector('.partnership-stats-grid');
+            if (partnershipStats) {
+                counterObserver.observe(partnershipStats);
             }
         });
     </script>

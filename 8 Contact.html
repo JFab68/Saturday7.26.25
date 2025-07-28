@@ -15,6 +15,7 @@
     <meta name="twitter:title" content="Contact | Praxis Initiative">
     <meta name="twitter:description" content="Contact Praxis Initiative for general inquiries, legal assistance, press, or to get involved in justice reform in Arizona.">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://js.givebutter.com/elements/latest.js"></script>
 </head>
 <body>
@@ -23,80 +24,636 @@
 
     <main id="main-content" role="main">
         <section class="hero">
-            <h1>Contact Our Team</h1>
-            <p>We respond within 48 hours to all inquiries. Choose your preferred way to connect with us.</p>
-            
-            <!-- Contact Statistics -->
-            <div class="contact-stats">
-                <div class="contact-stat">
-                    <div class="stat-number" data-target="48">48</div>
-                    <div class="stat-label">Hour Response Time</div>
-                </div>
-                <div class="contact-stat">
-                    <div class="stat-number" data-target="95">95</div>
-                    <div class="stat-label">% Satisfaction Rate</div>
-                </div>
-                <div class="contact-stat">
-                    <div class="stat-number" data-target="2400">2.4K</div>
-                    <div class="stat-label">People Helped This Year</div>
-                </div>
-                <div class="contact-stat">
-                    <div class="stat-number" data-target="24">24</div>
-                    <div class="stat-label">Languages Supported</div>
+            <div class="container">
+                <div class="hero-content">
+                    <div class="section-label">Get In Touch</div>
+                    <h1>Contact Our Team</h1>
+                    <p>We respond within 48 hours to all inquiries. Choose your preferred way to connect with us and join the movement for criminal justice reform in Arizona.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Method Selector -->
-        <section class="contact-methods-selector">
+        <section class="contact-overview section">
             <div class="container">
-                <h2>How would you like to connect?</h2>
-                <div class="method-cards">
-                    <div class="method-card active" data-method="form">
+                <div class="section-header">
+                    <div class="section-label">Response Commitment</div>
+                    <h2>Our Contact Promise</h2>
+                    <p>We're committed to providing timely, helpful responses to everyone who reaches out to us.</p>
+                </div>
+                
+                <div class="contact-stats-grid">
+                    <div class="contact-stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-number" data-target="48">48</div>
+                        <div class="stat-label">Hour Response Time</div>
+                        <div class="stat-description">Average response time for all inquiries</div>
+                    </div>
+                    
+                    <div class="contact-stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="stat-number" data-target="95">95</div>
+                        <div class="stat-label">% Satisfaction Rate</div>
+                        <div class="stat-description">Client satisfaction with our support</div>
+                    </div>
+                    
+                    <div class="contact-stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-number" data-target="2400">2.4K</div>
+                        <div class="stat-label">People Helped This Year</div>
+                        <div class="stat-description">Individuals assisted through our programs</div>
+                    </div>
+                    
+                    <div class="contact-stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="stat-number" data-target="24">24</div>
+                        <div class="stat-label">Languages Supported</div>
+                        <div class="stat-description">Multilingual support available</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-methods section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-label">Choose Your Method</div>
+                    <h2>How Would You Like to Connect?</h2>
+                    <p>Select the contact method that works best for you. We're here to help in whatever way is most convenient.</p>
+                </div>
+                
+                <div class="contact-methods-grid">
+                    <div class="contact-method-card" data-method="form">
                         <div class="method-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
                         <h3>Send a Message</h3>
-                        <p>Detailed inquiry form with file attachments</p>
-                        <div class="method-badge">Most Popular</div>
-                    </div>
-                    <div class="method-card" data-method="chat">
-                        <div class="method-icon">
-                            <i class="fas fa-comments"></i>
+                        <p>Detailed inquiry form with file attachments and priority routing to the right team member.</p>
+                        <div class="method-features">
+                            <span class="feature">File attachments</span>
+                            <span class="feature">Priority routing</span>
+                            <span class="feature">Secure messaging</span>
                         </div>
-                        <h3>Live Chat</h3>
-                        <p>Instant support during business hours</p>
-                        <div class="method-status online">Online Now</div>
+                        <div class="method-badge popular">Most Popular</div>
+                        <button class="btn btn-primary method-btn">Start Message</button>
                     </div>
-                    <div class="method-card" data-method="appointment">
-                        <div class="method-icon">
-                            <i class="fas fa-calendar-alt"></i>
-                        </div>
-                        <h3>Schedule Meeting</h3>
-                        <p>Book a consultation with our team</p>
-                        <div class="method-availability">Next: Today 2:00 PM</div>
-                    </div>
-                    <div class="method-card" data-method="phone">
+                    
+                    <div class="contact-method-card" data-method="phone">
                         <div class="method-icon">
                             <i class="fas fa-phone"></i>
                         </div>
                         <h3>Call Us</h3>
-                        <p>Speak directly with our team</p>
-                        <div class="method-hours">Mon-Fri 9AM-5PM</div>
+                        <p>Speak directly with our team for immediate assistance and personalized support.</p>
+                        <div class="method-features">
+                            <span class="feature">Immediate assistance</span>
+                            <span class="feature">Personalized support</span>
+                            <span class="feature">Crisis hotline</span>
+                        </div>
+                        <div class="method-status">
+                            <span class="status-indicator online"></span>
+                            <span>Available Now</span>
+                        </div>
+                        <div class="phone-number">(602) 555-0123</div>
+                        <div class="method-hours">Mon-Fri 9AM-5PM MST</div>
+                    </div>
+                    
+                    <div class="contact-method-card" data-method="appointment">
+                        <div class="method-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3>Schedule Meeting</h3>
+                        <p>Book a consultation with our team for in-depth discussions about your situation or involvement.</p>
+                        <div class="method-features">
+                            <span class="feature">30-60 minute slots</span>
+                            <span class="feature">Video or phone</span>
+                            <span class="feature">Expert consultation</span>
+                        </div>
+                        <div class="next-availability">
+                            <span class="availability-label">Next Available:</span>
+                            <span class="availability-time">Today 2:00 PM</span>
+                        </div>
+                        <button class="btn btn-outline method-btn">Book Appointment</button>
+                    </div>
+                    
+                    <div class="contact-method-card" data-method="chat">
+                        <div class="method-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3>Live Chat</h3>
+                        <p>Instant support during business hours with our knowledgeable team members.</p>
+                        <div class="method-features">
+                            <span class="feature">Instant responses</span>
+                            <span class="feature">Screen sharing</span>
+                            <span class="feature">Chat history</span>
+                        </div>
+                        <div class="method-status">
+                            <span class="status-indicator online"></span>
+                            <span>Online Now</span>
+                        </div>
+                        <button class="btn btn-secondary method-btn">Start Chat</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <div class="contact-container">
-            <!-- Enhanced Contact Form Section -->
-            <section class="contact-form-section" id="form-section">
-                <div class="form-header">
-                    <h2>Send Us a Message</h2>
-                    <p>Fill out the form below and we'll get back to you within 48 hours.</p>
+        <section class="contact-form-section section" id="form-section">
+            <div class="container">
+                <div class="contact-form-content">
+                    <div class="form-info">
+                        <div class="section-label">Send Message</div>
+                        <h2>Get in Touch</h2>
+                        <p>Fill out the form and we'll get back to you within 48 hours. For urgent matters, please call us directly.</p>
+                        
+                        <div class="contact-info-cards">
+                            <div class="contact-info-card">
+                                <div class="info-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="info-content">
+                                    <h4>Office Location</h4>
+                                    <p>1234 Justice Way<br>Phoenix, AZ 85001</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-info-card">
+                                <div class="info-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="info-content">
+                                    <h4>Email Address</h4>
+                                    <p>info@praxisinitiative.org</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-info-card">
+                                <div class="info-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="info-content">
+                                    <h4>Phone Number</h4>
+                                    <p>(602) 555-0123</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form-card">
+                        <div class="form-header">
+                            <h3>Send Us a Message</h3>
+                            <p>We'll route your message to the right team member based on your inquiry type.</p>
+                        </div>
+                        
+                        <form class="contact-form" id="contact-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName">First Name *</label>
+                                    <input type="text" id="firstName" name="firstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name *</label>
+                                    <input type="text" id="lastName" name="lastName" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">Email Address *</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="inquiryType">Inquiry Type *</label>
+                                <select id="inquiryType" name="inquiryType" required>
+                                    <option value="">Select inquiry type...</option>
+                                    <option value="general">General Information</option>
+                                    <option value="legal">Legal Assistance</option>
+                                    <option value="volunteer">Volunteer Opportunities</option>
+                                    <option value="partnership">Partnership Inquiry</option>
+                                    <option value="media">Media & Press</option>
+                                    <option value="donation">Donation Questions</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject *</label>
+                                <input type="text" id="subject" name="subject" required placeholder="Brief description of your inquiry">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message *</label>
+                                <textarea id="message" name="message" rows="6" required placeholder="Please provide details about your inquiry..."></textarea>
+                                <div class="character-count">
+                                    <span id="charCount">0</span>/1000 characters
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="attachment">Attach Files (Optional)</label>
+                                <div class="file-upload-area" id="fileUpload">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Drag and drop files here or <span class="upload-link">browse</span></p>
+                                    <input type="file" id="attachment" name="attachment" multiple accept=".pdf,.doc,.docx,.jpg,.png,.txt">
+                                    <div class="file-info">Max 5MB per file, up to 3 files</div>
+                                </div>
+                                <div class="uploaded-files" id="uploadedFiles"></div>
+                            </div>
+                            
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="newsletter" name="newsletter">
+                                    <span class="checkmark"></span>
+                                    Subscribe to our newsletter for updates on criminal justice reform
+                                </label>
+                            </div>
+                            
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="privacy" name="privacy" required>
+                                    <span class="checkmark"></span>
+                                    I agree to the <a href="#" target="_blank">Privacy Policy</a> and <a href="#" target="_blank">Terms of Service</a> *
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary submit-btn">
+                                <i class="fas fa-paper-plane"></i>
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
                 </div>
+            </div>
+        </section>
 
-                <!-- Multi-step Form Progress -->
+        <section class="office-locations section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-label">Find Us</div>
+                    <h2>Office Locations</h2>
+                    <p>Visit us in person or connect with our regional offices across Arizona.</p>
+                </div>
+                
+                <div class="locations-grid">
+                    <div class="location-card main-office">
+                        <div class="location-badge">Main Office</div>
+                        <div class="location-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3>Phoenix Headquarters</h3>
+                        <div class="location-address">
+                            <p>1234 Justice Way<br>Phoenix, AZ 85001</p>
+                        </div>
+                        <div class="location-details">
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Mon-Fri: 9:00 AM - 5:00 PM</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-phone"></i>
+                                <span>(602) 555-0123</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>phoenix@praxisinitiative.org</span>
+                            </div>
+                        </div>
+                        <div class="location-actions">
+                            <button class="btn btn-outline">Get Directions</button>
+                            <button class="btn btn-secondary">Schedule Visit</button>
+                        </div>
+                    </div>
+                    
+                    <div class="location-card">
+                        <div class="location-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Tucson Office</h3>
+                        <div class="location-address">
+                            <p>567 Reform Street<br>Tucson, AZ 85701</p>
+                        </div>
+                        <div class="location-details">
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Tue, Thu: 10:00 AM - 4:00 PM</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-phone"></i>
+                                <span>(520) 555-0456</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>tucson@praxisinitiative.org</span>
+                            </div>
+                        </div>
+                        <div class="location-actions">
+                            <button class="btn btn-outline">Get Directions</button>
+                        </div>
+                    </div>
+                    
+                    <div class="location-card">
+                        <div class="location-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Flagstaff Outreach</h3>
+                        <div class="location-address">
+                            <p>890 Mountain View Blvd<br>Flagstaff, AZ 86001</p>
+                        </div>
+                        <div class="location-details">
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Wed: 1:00 PM - 6:00 PM</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-phone"></i>
+                                <span>(928) 555-0789</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>flagstaff@praxisinitiative.org</span>
+                            </div>
+                        </div>
+                        <div class="location-actions">
+                            <button class="btn btn-outline">Get Directions</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="emergency-contact section">
+            <div class="container">
+                <div class="emergency-card">
+                    <div class="emergency-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="emergency-content">
+                        <h2>Need Immediate Assistance?</h2>
+                        <p>If you're experiencing a legal emergency or crisis situation, don't wait for our regular response time.</p>
+                        <div class="emergency-actions">
+                            <a href="tel:+16025550123" class="btn btn-primary emergency-btn">
+                                <i class="fas fa-phone"></i>
+                                Call Emergency Line: (602) 555-0123
+                            </a>
+                            <a href="#" class="btn btn-outline">
+                                <i class="fas fa-comments"></i>
+                                Start Crisis Chat
+                            </a>
+                        </div>
+                        <div class="emergency-note">
+                            <p><strong>Available 24/7</strong> for urgent legal matters and crisis support</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="global-header"></div>
+    <footer id="global-footer" role="contentinfo"></footer>
+
+    <script src="js/components.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const nav = document.querySelector('.header-nav');
+            if (menuToggle && nav) {
+                menuToggle.addEventListener('click', () => {
+                    menuToggle.classList.toggle('is-active');
+                    nav.classList.toggle('is-active');
+                    const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                    menuToggle.setAttribute('aria-expanded', !isExpanded);
+                });
+            }
+
+            // Contact method selection
+            const methodCards = document.querySelectorAll('.contact-method-card');
+            const methodBtns = document.querySelectorAll('.method-btn');
+
+            methodCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const method = card.getAttribute('data-method');
+                    
+                    // Remove active class from all cards
+                    methodCards.forEach(c => c.classList.remove('active'));
+                    card.classList.add('active');
+                    
+                    // Handle method-specific actions
+                    if (method === 'form') {
+                        document.getElementById('form-section').scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Method button actions
+            methodBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const card = btn.closest('.contact-method-card');
+                    const method = card.getAttribute('data-method');
+                    
+                    switch (method) {
+                        case 'form':
+                            document.getElementById('form-section').scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                            break;
+                        case 'phone':
+                            window.location.href = 'tel:+16025550123';
+                            break;
+                        case 'appointment':
+                            // Open appointment booking system
+                            alert('Appointment booking system would open here');
+                            break;
+                        case 'chat':
+                            // Open live chat
+                            alert('Live chat system would open here');
+                            break;
+                    }
+                });
+            });
+
+            // Contact form functionality
+            const contactForm = document.getElementById('contact-form');
+            const messageTextarea = document.getElementById('message');
+            const charCount = document.getElementById('charCount');
+            const fileUpload = document.getElementById('fileUpload');
+            const fileInput = document.getElementById('attachment');
+            const uploadedFiles = document.getElementById('uploadedFiles');
+
+            // Character counter
+            if (messageTextarea && charCount) {
+                messageTextarea.addEventListener('input', () => {
+                    const count = messageTextarea.value.length;
+                    charCount.textContent = count;
+                    
+                    if (count > 1000) {
+                        charCount.style.color = '#dc3545';
+                    } else if (count > 800) {
+                        charCount.style.color = '#ffc107';
+                    } else {
+                        charCount.style.color = '#6c757d';
+                    }
+                });
+            }
+
+            // File upload functionality
+            if (fileUpload && fileInput) {
+                fileUpload.addEventListener('click', () => {
+                    fileInput.click();
+                });
+
+                fileUpload.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    fileUpload.classList.add('dragover');
+                });
+
+                fileUpload.addEventListener('dragleave', () => {
+                    fileUpload.classList.remove('dragover');
+                });
+
+                fileUpload.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    fileUpload.classList.remove('dragover');
+                    const files = e.dataTransfer.files;
+                    handleFiles(files);
+                });
+
+                fileInput.addEventListener('change', (e) => {
+                    handleFiles(e.target.files);
+                });
+            }
+
+            function handleFiles(files) {
+                uploadedFiles.innerHTML = '';
+                Array.from(files).forEach((file, index) => {
+                    if (file.size > 5 * 1024 * 1024) { // 5MB limit
+                        alert(`File "${file.name}" is too large. Maximum size is 5MB.`);
+                        return;
+                    }
+
+                    const fileItem = document.createElement('div');
+                    fileItem.className = 'uploaded-file';
+                    fileItem.innerHTML = `
+                        <div class="file-info">
+                            <i class="fas fa-file"></i>
+                            <span class="file-name">${file.name}</span>
+                            <span class="file-size">(${(file.size / 1024).toFixed(1)} KB)</span>
+                        </div>
+                        <button type="button" class="remove-file" data-index="${index}">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    `;
+                    uploadedFiles.appendChild(fileItem);
+                });
+
+                // Add remove file functionality
+                document.querySelectorAll('.remove-file').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.target.closest('.uploaded-file').remove();
+                    });
+                });
+            }
+
+            // Form submission
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    // Basic form validation
+                    const requiredFields = contactForm.querySelectorAll('[required]');
+                    let isValid = true;
+                    
+                    requiredFields.forEach(field => {
+                        if (!field.value.trim()) {
+                            isValid = false;
+                            field.classList.add('error');
+                        } else {
+                            field.classList.remove('error');
+                        }
+                    });
+                    
+                    if (isValid) {
+                        // Show success message
+                        alert('Thank you for your message! We\'ll get back to you within 48 hours.');
+                        contactForm.reset();
+                        uploadedFiles.innerHTML = '';
+                        charCount.textContent = '0';
+                    } else {
+                        alert('Please fill in all required fields.');
+                    }
+                });
+            }
+
+            // Counter animation for contact stats
+            const observerOptions = {
+                threshold: 0.7,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counters = entry.target.querySelectorAll('.stat-number');
+                        counters.forEach(counter => {
+                            const target = parseInt(counter.getAttribute('data-target'));
+                            const suffix = counter.textContent.includes('K') ? 'K' : counter.textContent.includes('%') ? '%' : '';
+                            let current = 0;
+                            const increment = target / 50;
+                            const timer = setInterval(() => {
+                                current += increment;
+                                if (current >= target) {
+                                    counter.textContent = target + suffix;
+                                    clearInterval(timer);
+                                } else {
+                                    counter.textContent = Math.floor(current) + suffix;
+                                }
+                            }, 40);
+                        });
+                        counterObserver.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const contactStats = document.querySelector('.contact-stats-grid');
+            if (contactStats) {
+                counterObserver.observe(contactStats);
+            }
+
+            // Smooth scrolling for internal links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
                 <div class="form-progress">
                     <div class="progress-step active" data-step="1">
                         <div class="step-number">1</div>
