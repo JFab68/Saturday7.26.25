@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-    <script src="https://js.givebutter.com/elements/latest.js"></script>
+    <script async src="https://widgets.givebutter.com/latest.umd.cjs?acct=VAFHlg7pVLZ4fmxv&p=other"></script>
 </head>
 <body>
 
@@ -53,19 +53,20 @@
                     <p>Choose your donation amount and frequency. Every contribution directly funds our oversight investigations, legal advocacy, and evidence-based reform campaigns.</p>
                     
                     <div class="givebutter-embed">
-                        <div class="givebutter-placeholder">
-                            <i class="fas fa-heart"></i>
-                            <h3>Givebutter Donation Form</h3>
-                            <p>Your Givebutter donation form embed code goes here</p>
-                            <p style="font-size: 14px; margin-top: 20px;">
-                                <strong>To integrate:</strong><br>
-                                1. Copy your Givebutter campaign embed code<br>
-                                2. Replace this placeholder div<br>
-                                3. Form will handle Stripe, PayPal, and other payment methods
-                            </p>
-                        </div>
+                        <!-- Givebutter Donation Form Widget -->
+                        <givebutter-widget id="LPXeRL"></givebutter-widget>
                         
+                        <!-- Temporary Fallback - Remove when widget works -->
+                        <div class="donation-fallback" style="text-align: center; margin-top: 20px;">
+                            <p style="color: #666; margin-bottom: 15px;">If the donation form doesn't appear above, you can donate directly:</p>
+                            <a href="https://givebutter.com/praxis-initiative" 
+                               class="cta-button donation-button" 
+                               target="_blank"
+                               style="background: linear-gradient(135deg, #000080 0%, #800000 100%); color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block;">
+                                💝 Donate Now via Givebutter
+                            </a>
                         </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -131,10 +132,18 @@
                     </div>
                     
                     <div class="monthly-givebutter">
-                        <div class="monthly-givebutter-inner white-text centered-div">
-                            <i class="fas fa-calendar-alt newsletter-icon"></i>
-                            <h3>Monthly Giving Form</h3>
-                            <p>Your Givebutter monthly giving embed goes here</p>
+                        <!-- Givebutter Monthly Giving Button -->
+                        <givebutter-widget id="jbkZBL"></givebutter-widget>
+                        
+                        <!-- Temporary Fallback - Remove when widget works -->
+                        <div class="monthly-fallback" style="text-align: center; margin-top: 20px;">
+                            <p style="color: rgba(255,255,255,0.9); margin-bottom: 15px;">If the monthly giving form doesn't appear above:</p>
+                            <a href="https://givebutter.com/praxis-initiative" 
+                               class="cta-button monthly-button" 
+                               target="_blank"
+                               style="background: rgba(255,255,255,0.2); color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block; border: 2px solid rgba(255,255,255,0.3);">
+                                🔄 Set Up Monthly Giving
+                            </a>
                         </div>
                     </div>
                 </div>

@@ -4502,3 +4502,524 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+
+
+// ===== PROGRAMS PAGE FUNCTIONALITY =====
+
+// Animated Counter for Programs Page
+function animateProgramsCounter(element) {
+    const target = parseFloat(element.dataset.target);
+    const suffix = element.dataset.suffix || '';
+    const duration = 2000;
+    const increment = target / (duration / 16);
+    
+    let current = 0;
+    const timer = setInterval(() => {
+        current += increment;
+        
+        if (current >= target) {
+            current = target;
+            clearInterval(timer);
+        }
+        
+        let displayValue;
+        if (suffix === '%') {
+            displayValue = current.toFixed(1) + '%';
+        } else if (suffix === '+') {
+            displayValue = Math.floor(current).toLocaleString() + '+';
+        } else if (suffix === 'k+') {
+            displayValue = Math.floor(current / 1000) + 'k+';
+        } else {
+            displayValue = Math.floor(current).toLocaleString();
+        }
+        
+        element.textContent = displayValue;
+    }, 16);
+}
+
+// Expandable Cards Functionality
+function initExpandableCards() {
+    const expandableCards = document.querySelectorAll('.expandable-card');
+    
+    expandableCards.forEach(card => {
+        const button = card.querySelector('.learn-more-btn');
+        const expandedContent = card.querySelector('.expanded-content');
+        
+        if (button && expandedContent) {
+            // Initially hide expanded content
+            expandedContent.style.maxHeight = '0';
+            expandedContent.style.overflow = 'hidden';
+            expandedContent.style.transition = 'max-height 0.3s ease-out';
+            
+            button.addEventListener('click', function() {
+                const isExpanded = expandedContent.style.maxHeight !== '0px';
+                
+                if (isExpanded) {
+                    // Collapse
+                    expandedContent.style.maxHeight = '0';
+                    button.textContent = 'Learn More';
+                    button.setAttribute('aria-expanded', 'false');
+                } else {
+                    // Expand
+                    expandedContent.style.maxHeight = expandedContent.scrollHeight + 'px';
+                    button.textContent = 'Show Less';
+                    button.setAttribute('aria-expanded', 'true');
+                }
+            });
+        }
+    });
+}
+
+// Interactive Timeline Widget
+function initProgramsTimeline() {
+    const timelineContainer = document.querySelector('.programs-timeline');
+    if (!timelineContainer) return;
+    
+    const timelineData = [
+        {
+            year: '2024',
+            title: 'Independent Oversight Office Created',
+            description: 'Arizona\'s first Independent Correctional Oversight Office established through legislative advocacy.',
+            impact: 'Groundbreaking transparency and accountability measure'
+        },
+        {
+            year: '2023',
+            title: 'Coalition Building Success',
+            description: 'Built bipartisan coalition of 25+ organizations supporting criminal justice reform.',
+            impact: 'Unified advocacy across ideological lines'
+        },
+        {
+            year: '2022',
+            title: 'Evidence-Based Research Initiative',
+            description: 'Launched comprehensive data collection and analysis program for policy development.',
+            impact: 'Data-driven approach to systemic change'
+        },
+        {
+            year: '2021',
+            title: 'Community Engagement Program',
+            description: 'Established direct support services and advocacy training for returning citizens.',
+            impact: 'Empowered formerly incarcerated individuals as advocates'
+        }
+    ];
+    
+    const timelineHTML = `
+        <div class="timeline-header">
+            <h3>Our Impact Timeline</h3>
+            <p>Key milestones in transforming Arizona's criminal justice system</p>
+        </div>
+        <div class="timeline-track">
+            ${timelineData.map((item, index) => `
+                <div class="timeline-item" data-year="${item.year}">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">${item.year}</div>
+                        <h4 class="timeline-title">${item.title}</h4>
+                        <p class="timeline-description">${item.description}</p>
+                        <div class="timeline-impact">${item.impact}</div>
+                    </div>
+                </div>
+            `).join('')}
+        </div>
+    `;
+    
+    timelineContainer.innerHTML = timelineHTML;
+    
+    // Add click interactions
+    const timelineItems = timelineContainer.querySelectorAll('.timeline-item');
+    timelineItems.forEach(item => {
+        item.addEventListener('click', function() {
+            // Remove active class from all items
+            timelineItems.forEach(i => i.classList.remove('active'));
+            // Add active class to clicked item
+            this.classList.add('active');
+        });
+    });
+}
+
+// Programs Page Statistics Enhancement
+function enhanceProgramsStats() {
+    const statsContainer = document.querySelector('.crisis-stats');
+    if (!statsContainer) return;
+    
+    // Add data attributes for animation
+    const stats = [
+        { selector: '.crisis-stat:nth-child(1) .crisis-number', target: 13, suffix: '%' },
+        { selector: '.crisis-stat:nth-child(2) .crisis-number', target: 446, suffix: '+' },
+        { selector: '.crisis-stat:nth-child(3) .crisis-number', target: 4.2, suffix: '%' },
+        { selector: '.crisis-stat:nth-child(4) .crisis-number', target: 215000, suffix: 'k+' }
+    ];
+    
+    stats.forEach(stat => {
+        const element = document.querySelector(stat.selector);
+        if (element) {
+            element.dataset.target = stat.target;
+            element.dataset.suffix = stat.suffix;
+            element.classList.add('animated-counter');
+            element.textContent = '0'; // Start from 0
+        }
+    });
+}
+
+// Initialize Programs Page
+function initializeProgramsPage() {
+    console.log('Initializing Programs page...');
+    
+    // Enhance statistics with animation data
+    enhanceProgramsStats();
+    
+    // Initialize animated counters
+    const counters = document.querySelectorAll('.animated-counter');
+    
+    const observerOptions = {
+        threshold: 0.5,
+        rootMargin: '0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                animateProgramsCounter(entry.target);
+                entry.target.classList.add('counted');
+            }
+        });
+    }, observerOptions);
+    
+    counters.forEach(counter => observer.observe(counter));
+    
+    // Initialize expandable cards
+    initExpandableCards();
+    
+    // Initialize timeline widget
+    initProgramsTimeline();
+    
+    // Add smooth scrolling for internal links
+    const internalLinks = document.querySelectorAll('a[href^="#"]');
+    internalLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+    
+    console.log('Programs page initialization complete');
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    const currentPath = window.location.pathname.toLowerCase();
+    const currentHref = window.location.href.toLowerCase();
+    
+    console.log('Current path:', currentPath);
+    console.log('Current href:', currentHref);
+    
+    // Check for Programs page with multiple conditions
+    if (currentPath.includes('4 programs') || 
+        currentPath.includes('programs.html') || 
+        currentHref.includes('4%20programs') ||
+        currentHref.includes('programs')) {
+        console.log('Programs page detected, initializing...');
+        initializeProgramsPage();
+    }
+    
+    if (window.location.pathname.includes('4E') || window.location.pathname.includes('arts_in_prison')) {
+        initializeArtsInPrisonPage();
+    }
+});
+
+
+
+// ===== DONATION PAGE FUNCTIONALITY =====
+
+// Initialize Donation Page Features
+function initializeDonationPage() {
+    console.log('Initializing Donation Page...');
+    
+    // Animate donation statistics
+    animateDonationStats();
+    
+    // Initialize impact story interactions
+    initializeImpactStories();
+    
+    // Setup Givebutter widget monitoring
+    monitorGivebutterWidgets();
+    
+    // Add donation tracking analytics
+    initializeDonationAnalytics();
+}
+
+// Animate Donation Statistics
+function animateDonationStats() {
+    const stats = [
+        { element: '.stat-number', targets: ['92%', '$1,250', '100%'] }
+    ];
+    
+    const statElements = document.querySelectorAll('.stat-number');
+    
+    statElements.forEach((element, index) => {
+        const target = stats[0].targets[index];
+        if (target) {
+            // Start with 0 and animate to target
+            element.textContent = '0';
+            
+            // Use Intersection Observer for scroll-triggered animation
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateStatNumber(element, target);
+                        observer.unobserve(element);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            observer.observe(element);
+        }
+    });
+}
+
+// Animate Individual Stat Number
+function animateStatNumber(element, target) {
+    const isPercentage = target.includes('%');
+    const isDollar = target.includes('$');
+    const numericValue = parseFloat(target.replace(/[^0-9.]/g, ''));
+    
+    let current = 0;
+    const increment = numericValue / 60; // 60 frames for 1 second at 60fps
+    const duration = 2000; // 2 seconds
+    const frameRate = 1000 / 60;
+    
+    const timer = setInterval(() => {
+        current += increment;
+        
+        if (current >= numericValue) {
+            current = numericValue;
+            clearInterval(timer);
+        }
+        
+        let displayValue = Math.floor(current);
+        
+        if (isDollar) {
+            displayValue = '$' + displayValue.toLocaleString();
+            if (target.includes(',')) {
+                displayValue = '$' + Math.floor(current).toLocaleString();
+            }
+        } else if (isPercentage) {
+            displayValue = displayValue + '%';
+        }
+        
+        element.textContent = displayValue;
+        
+        // Add pulsing effect during animation
+        element.style.transform = 'scale(1.05)';
+        setTimeout(() => {
+            element.style.transform = 'scale(1)';
+        }, 100);
+        
+    }, frameRate);
+}
+
+// Initialize Impact Stories Interactions
+function initializeImpactStories() {
+    const storyCards = document.querySelectorAll('.story-card');
+    
+    storyCards.forEach((card, index) => {
+        // Add hover analytics
+        card.addEventListener('mouseenter', () => {
+            trackDonationInteraction('story_hover', card.querySelector('.story-amount').textContent);
+        });
+        
+        // Add click functionality for donation amount selection
+        card.addEventListener('click', () => {
+            const amount = card.querySelector('.story-amount').textContent.replace('$', '');
+            selectDonationAmount(amount);
+            trackDonationInteraction('story_click', amount);
+        });
+        
+        // Add keyboard accessibility
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('role', 'button');
+        card.setAttribute('aria-label', `Donate ${card.querySelector('.story-amount').textContent} - ${card.querySelector('.story-impact').textContent}`);
+        
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                card.click();
+            }
+        });
+    });
+}
+
+// Select Donation Amount (integrate with Givebutter if possible)
+function selectDonationAmount(amount) {
+    console.log(`Selected donation amount: $${amount}`);
+    
+    // Scroll to donation form
+    const donationForm = document.querySelector('.givebutter-embed');
+    if (donationForm) {
+        donationForm.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'center' 
+        });
+        
+        // Highlight the donation form briefly
+        donationForm.style.border = '3px solid #000080';
+        donationForm.style.boxShadow = '0 0 20px rgba(0, 0, 128, 0.3)';
+        
+        setTimeout(() => {
+            donationForm.style.border = '2px solid #f0f0f0';
+            donationForm.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.1)';
+        }, 2000);
+    }
+    
+    // Try to communicate with Givebutter widget (if API available)
+    try {
+        if (window.Givebutter && window.Givebutter.setAmount) {
+            window.Givebutter.setAmount(amount);
+        }
+    } catch (error) {
+        console.log('Givebutter API not available for amount pre-selection');
+    }
+}
+
+// Monitor Givebutter Widget Loading
+function monitorGivebutterWidgets() {
+    const widgets = document.querySelectorAll('givebutter-widget');
+    
+    widgets.forEach((widget, index) => {
+        // Add loading state
+        widget.setAttribute('data-loading', 'true');
+        
+        // Monitor for successful load
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'childList' && widget.children.length > 0) {
+                    widget.setAttribute('data-loading', 'false');
+                    widget.setAttribute('loaded', 'true');
+                    console.log(`Givebutter widget ${index + 1} loaded successfully`);
+                    trackDonationInteraction('widget_loaded', widget.id);
+                    observer.disconnect();
+                }
+            });
+        });
+        
+        observer.observe(widget, { childList: true, subtree: true });
+        
+        // Fallback timeout
+        setTimeout(() => {
+            if (!widget.hasAttribute('loaded')) {
+                console.warn(`Givebutter widget ${index + 1} may have failed to load`);
+                trackDonationInteraction('widget_load_timeout', widget.id);
+            }
+        }, 10000);
+    });
+}
+
+// Donation Analytics Tracking
+function initializeDonationAnalytics() {
+    // Track page view
+    trackDonationInteraction('page_view', 'donate');
+    
+    // Track scroll depth
+    let maxScroll = 0;
+    window.addEventListener('scroll', () => {
+        const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+        if (scrollPercent > maxScroll) {
+            maxScroll = scrollPercent;
+            if (maxScroll % 25 === 0) { // Track at 25%, 50%, 75%, 100%
+                trackDonationInteraction('scroll_depth', `${maxScroll}%`);
+            }
+        }
+    });
+    
+    // Track time on page
+    const startTime = Date.now();
+    window.addEventListener('beforeunload', () => {
+        const timeSpent = Math.round((Date.now() - startTime) / 1000);
+        trackDonationInteraction('time_on_page', `${timeSpent}s`);
+    });
+}
+
+// Track Donation Interactions
+function trackDonationInteraction(action, value) {
+    console.log(`Donation Analytics: ${action} - ${value}`);
+    
+    // Integration with Google Analytics (if available)
+    if (typeof gtag !== 'undefined') {
+        gtag('event', action, {
+            event_category: 'donation',
+            event_label: value,
+            value: value.includes('$') ? parseInt(value.replace(/[^0-9]/g, '')) : 1
+        });
+    }
+    
+    // Integration with Facebook Pixel (if available)
+    if (typeof fbq !== 'undefined') {
+        fbq('track', 'ViewContent', {
+            content_type: 'donation',
+            content_category: action,
+            value: value
+        });
+    }
+}
+
+// Enhanced Monthly Giving Interactions
+function initializeMonthlyGiving() {
+    const monthlySection = document.querySelector('.monthly-givebutter');
+    
+    if (monthlySection) {
+        // Add interaction tracking
+        monthlySection.addEventListener('click', () => {
+            trackDonationInteraction('monthly_giving_click', 'button');
+        });
+        
+        // Add hover analytics
+        monthlySection.addEventListener('mouseenter', () => {
+            trackDonationInteraction('monthly_giving_hover', 'section');
+        });
+    }
+}
+
+// Newsletter Integration Enhancement
+function initializeNewsletterSignup() {
+    const newsletterSection = document.querySelector('.newsletter-embed');
+    
+    if (newsletterSection) {
+        // Track newsletter interest
+        newsletterSection.addEventListener('click', () => {
+            trackDonationInteraction('newsletter_signup_click', 'donate_page');
+        });
+    }
+}
+
+// Impact Calculator (Future Enhancement)
+function calculateImpactPreview(amount) {
+    const impacts = {
+        25: { people: 1, action: "person's court fees covered" },
+        50: { people: 1, action: "week of addiction treatment provided" },
+        100: { people: 1, action: "day of legal advocacy funded" },
+        250: { people: 20, action: "people trained in community event" },
+        500: { people: 1, action: "family supported during crisis" },
+        1000: { people: 100, action: "people protected through oversight investigation" }
+    };
+    
+    return impacts[amount] || { 
+        people: Math.floor(amount / 25), 
+        action: "people helped through various programs" 
+    };
+}
+
+// Add to main initialization
+document.addEventListener('DOMContentLoaded', () => {
+    // Check if we're on the donation page
+    if (window.location.pathname.includes('Donate') || 
+        window.location.pathname.includes('9%20Donate') ||
+        document.title.includes('Support Justice Reform')) {
+        
+        initializeDonationPage();
+        initializeMonthlyGiving();
+        initializeNewsletterSignup();
+    }
+});
+
