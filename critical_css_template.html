@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praxis Initiative - Optimized Loading</title>
+    
+    <!-- Critical CSS (inline for fastest loading) -->
+    <style>
+        /* Critical CSS will be inlined here */
+        /* This ensures above-the-fold content renders immediately */
+    </style>
+    
+    <!-- Preload non-critical CSS -->
+    <link rel="preload" href="css/non-critical.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/non-critical.min.css"></noscript>
+    
+    <!-- Fallback for browsers that don't support preload -->
+    <script>
+        // Load non-critical CSS asynchronously
+        function loadCSS(href) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = href;
+            document.head.appendChild(link);
+        }
+        
+        // Load after page load
+        window.addEventListener('load', function() {
+            loadCSS('css/non-critical.min.css');
+        });
+    </script>
+</head>
+<body>
+    <!-- Your HTML content here -->
+    <!-- Above-the-fold content will render immediately with critical CSS -->
+    <!-- Below-the-fold content will be styled once non-critical CSS loads -->
+</body>
+</html>

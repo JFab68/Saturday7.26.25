@@ -1,0 +1,457 @@
+/* ===== COMPLETE PAGE STYLING FIX ===== */
+
+/* HERO SECTIONS - FIXED TEXT CONTRAST */
+.hero {
+    background: linear-gradient(135deg, #000080 0%, #800000 100%);
+    color: white !important;
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* FORCE WHITE TEXT ON ALL HERO ELEMENTS */
+.hero h1,
+.hero h2,
+.hero h3,
+.hero p,
+.hero .section-label,
+.hero-text h1,
+.hero-text h2,
+.hero-text p,
+.hero-content h1,
+.hero-content h2,
+.hero-content p {
+    color: white !important;
+}
+
+.about-hero,
+.programs-hero,
+.action-hero,
+.contact-hero,
+.news-hero,
+.donate-hero {
+    background: linear-gradient(135deg, #000080 0%, #800000 100%);
+    color: white !important;
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-hero::before,
+.programs-hero::before,
+.action-hero::before,
+.contact-hero::before,
+.news-hero::before,
+.donate-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.about-hero .container,
+.programs-hero .container,
+.action-hero .container,
+.contact-hero .container,
+.news-hero .container,
+.donate-hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.about-hero h1,
+.about-hero h2,
+.about-hero p,
+.about-hero .section-label,
+.programs-hero h1,
+.programs-hero h2,
+.programs-hero p,
+.programs-hero .section-label,
+.action-hero h1,
+.action-hero h2,
+.action-hero p,
+.action-hero .section-label,
+.contact-hero h1,
+.contact-hero h2,
+.contact-hero p,
+.contact-hero .section-label,
+.news-hero h1,
+.news-hero h2,
+.news-hero p,
+.news-hero .section-label,
+.donate-hero h1,
+.donate-hero h2,
+.donate-hero p,
+.donate-hero .section-label {
+    color: white !important;
+}
+
+/* COMPLETE SECTION STYLING */
+.section {
+    padding: 80px 0;
+}
+
+.section-card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* CONTENT CONTAINERS */
+.content-container {
+    background: #f8f9fa;
+    padding: 60px 0;
+}
+
+.content-card {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* TEXT CONTENT STYLING */
+.text-content {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    margin: 30px 0;
+}
+
+.text-content h2,
+.text-content h3,
+.text-content h4 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.text-content p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.text-content ul,
+.text-content ol {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    padding-left: 30px;
+}
+
+.text-content li {
+    margin-bottom: 10px;
+}
+
+/* FEATURE CARDS */
+.feature-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+    border-top: 4px solid #000080;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #000080, #800000);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.feature-icon i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.feature-card h3 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.feature-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* STATISTICS CARDS */
+.stat-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #000080;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    color: #666;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+}
+
+/* QUOTE STYLING */
+.quote-card {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #000080;
+    margin: 30px 0;
+}
+
+.quote-card blockquote {
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.quote-card cite {
+    color: #800000;
+    font-weight: 600;
+    font-style: normal;
+}
+
+/* FORM STYLING */
+.form-container {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    margin: 30px 0;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    color: #333;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #000080;
+}
+
+/* BUTTON STYLING */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background: #000080;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #000066;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: #800000;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #660000;
+    transform: translateY(-2px);
+}
+
+/* LIST STYLING */
+.styled-list {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    margin: 30px 0;
+}
+
+.styled-list h3 {
+    color: #333;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #000080;
+    padding-bottom: 10px;
+}
+
+.styled-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.styled-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #e9ecef;
+    color: #666;
+    position: relative;
+    padding-left: 30px;
+}
+
+.styled-list li:before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #28a745;
+    font-weight: bold;
+}
+
+.styled-list li:last-child {
+    border-bottom: none;
+}
+
+/* TABLE STYLING */
+.styled-table {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    margin: 30px 0;
+    overflow-x: auto;
+}
+
+.styled-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.styled-table th {
+    background: #000080;
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.styled-table td {
+    padding: 15px;
+    border-bottom: 1px solid #e9ecef;
+    color: #666;
+}
+
+.styled-table tr:hover {
+    background: #f8f9fa;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section {
+        padding: 60px 0;
+    }
+    
+    .section-card,
+    .content-card,
+    .text-content,
+    .form-container,
+    .styled-list,
+    .styled-table {
+        padding: 25px;
+        margin: 20px 0;
+    }
+    
+    .hero {
+        padding: 60px 0;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .quote-card blockquote {
+        font-size: 1.1rem;
+    }
+}
+

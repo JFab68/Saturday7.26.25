@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Test - Original CSS</title>
+    
+    <!-- Original CSS (264.9 KB) -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <style>
+        .performance-info {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 12px;
+            z-index: 10000;
+        }
+    </style>
+</head>
+<body>
+    <div class="performance-info">
+        <div>Original CSS: 264.9 KB</div>
+        <div id="load-time">Loading...</div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <img src="#" alt="Praxis Initiative" class="logo-img" style="width: 50px; height: 50px; background: #000080;">
+            </div>
+            <nav class="header-nav">
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Programs</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="donate-btn btn-primary">Donate</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero hero-section">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Performance Test Page</h1>
+                <p>Testing CSS loading performance with original 264.9 KB CSS file</p>
+                <a href="#" class="btn btn-primary">Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sample Content -->
+    <section class="section">
+        <div class="container">
+            <h2>Sample Content Section</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">264.9</div>
+                    <div class="stat-label">KB Original CSS</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">14,401</div>
+                    <div class="stat-label">Lines of Code</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2,141</div>
+                    <div class="stat-label">CSS Rules</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Measure loading performance
+        window.addEventListener('load', function() {
+            const loadTime = performance.now();
+            document.getElementById('load-time').textContent = `Load Time: ${loadTime.toFixed(2)}ms`;
+            
+            // Log performance metrics
+            console.log('Performance Metrics (Original CSS):');
+            console.log('Load Time:', loadTime.toFixed(2) + 'ms');
+            console.log('DOM Content Loaded:', performance.getEntriesByType('navigation')[0].domContentLoadedEventEnd);
+            console.log('CSS File Size: 264.9 KB');
+        });
+    </script>
+</body>
+</html>
+
