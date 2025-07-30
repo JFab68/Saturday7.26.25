@@ -1,0 +1,200 @@
+{
+  "archived_files": [
+    {
+      "original": "/home/ubuntu/Saturday7.26.25/1-homepage_optimized.html",
+      "archived": "/home/ubuntu/Saturday7.26.25/archive/development_files/1-homepage_optimized.html",
+      "filename": "1-homepage_optimized.html",
+      "size": 7078
+    },
+    {
+      "original": "/home/ubuntu/Saturday7.26.25/1-homepage_conservative.html",
+      "archived": "/home/ubuntu/Saturday7.26.25/archive/development_files/1-homepage_conservative.html",
+      "filename": "1-homepage_conservative.html",
+      "size": 8178
+    },
+    {
+      "original": "/home/ubuntu/Saturday7.26.25/css-test.html",
+      "archived": "/home/ubuntu/Saturday7.26.25/archive/development_files/css-test.html",
+      "filename": "css-test.html",
+      "size": 3156
+    },
+    {
+      "original": "/home/ubuntu/Saturday7.26.25/homepage-test.html",
+      "archived": "/home/ubuntu/Saturday7.26.25/archive/development_files/homepage-test.html",
+      "filename": "homepage-test.html",
+      "size": 3677
+    },
+    {
+      "original": "/home/ubuntu/Saturday7.26.25/critical_css_template.html",
+      "archived": "/home/ubuntu/Saturday7.26.25/archive/development_files/critical_css_template.html",
+      "filename": "critical_css_template.html",
+      "size": 1372
+    },
+    {
+      "original": "/home/ubuntu/Saturday7.26.25/performance_test_original.html",
+      "archived": "/home/ubuntu/Saturday7.26.25/archive/development_files/performance_test_original.html",
+      "filename": "performance_test_original.html",
+      "size": 3300
+    },
+    {
+      "original": "/home/ubuntu/Saturday7.26.25/performance_test_optimized.html",
+      "archived": "/home/ubuntu/Saturday7.26.25/archive/development_files/performance_test_optimized.html",
+      "filename": "performance_test_optimized.html",
+      "size": 3645
+    },
+    {
+      "original": "/home/ubuntu/Saturday7.26.25/3-about_fixed.html",
+      "archived": "/home/ubuntu/Saturday7.26.25/archive/development_files/3-about_fixed.html",
+      "filename": "3-about_fixed.html",
+      "size": 17751
+    },
+    {
+      "original": "/home/ubuntu/Saturday7.26.25/4-programs_enhanced.html",
+      "archived": "/home/ubuntu/Saturday7.26.25/archive/development_files/4-programs_enhanced.html",
+      "filename": "4-programs_enhanced.html",
+      "size": 22748
+    },
+    {
+      "original": "/home/ubuntu/Saturday7.26.25/5-action-center_enhanced.html",
+      "archived": "/home/ubuntu/Saturday7.26.25/archive/development_files/5-action-center_enhanced.html",
+      "filename": "5-action-center_enhanced.html",
+      "size": 24589
+    },
+    {
+      "original": "/home/ubuntu/Saturday7.26.25/8-contact_enhanced.html",
+      "archived": "/home/ubuntu/Saturday7.26.25/archive/development_files/8-contact_enhanced.html",
+      "filename": "8-contact_enhanced.html",
+      "size": 26104
+    },
+    {
+      "original": "/home/ubuntu/Saturday7.26.25/7-news_enhanced.html",
+      "archived": "/home/ubuntu/Saturday7.26.25/archive/development_files/7-news_enhanced.html",
+      "filename": "7-news_enhanced.html",
+      "size": 24626
+    },
+    {
+      "original": "/home/ubuntu/Saturday7.26.25/9-donate_enhanced.html",
+      "archived": "/home/ubuntu/Saturday7.26.25/archive/development_files/9-donate_enhanced.html",
+      "filename": "9-donate_enhanced.html",
+      "size": 34035
+    },
+    {
+      "original": "/home/ubuntu/Saturday7.26.25/4a-prison_oversight_page_enhanced.html",
+      "archived": "/home/ubuntu/Saturday7.26.25/archive/development_files/4a-prison_oversight_page_enhanced.html",
+      "filename": "4a-prison_oversight_page_enhanced.html",
+      "size": 30832
+    },
+    {
+      "original": "/home/ubuntu/Saturday7.26.25/4-programs_complete_redesign.html",
+      "archived": "/home/ubuntu/Saturday7.26.25/archive/development_files/4-programs_complete_redesign.html",
+      "filename": "4-programs_complete_redesign.html",
+      "size": 25696
+    },
+    {
+      "original": "/home/ubuntu/Saturday7.26.25/4b-criminal_legal_reform_page_fixed.html",
+      "archived": "/home/ubuntu/Saturday7.26.25/archive/development_files/4b-criminal_legal_reform_page_fixed.html",
+      "filename": "4b-criminal_legal_reform_page_fixed.html",
+      "size": 16045
+    },
+    {
+      "original": "/home/ubuntu/Saturday7.26.25/4b-criminal-legal-reform-page-fixed.html",
+      "archived": "/home/ubuntu/Saturday7.26.25/archive/development_files/4b-criminal-legal-reform-page-fixed.html",
+      "filename": "4b-criminal-legal-reform-page-fixed.html",
+      "size": 22252
+    },
+    {
+      "original": "/home/ubuntu/Saturday7.26.25/includes/footer.html",
+      "archived": "/home/ubuntu/Saturday7.26.25/archive/development_files/includes/footer.html",
+      "filename": "footer.html",
+      "size": 1808
+    },
+    {
+      "original": "/home/ubuntu/Saturday7.26.25/includes/header.html",
+      "archived": "/home/ubuntu/Saturday7.26.25/archive/development_files/includes/header.html",
+      "filename": "header.html",
+      "size": 1837
+    }
+  ],
+  "kept_files": [
+    {
+      "path": "/home/ubuntu/Saturday7.26.25/8-contact.html",
+      "filename": "8-contact.html",
+      "size": 27965
+    },
+    {
+      "path": "/home/ubuntu/Saturday7.26.25/4a-prison_oversight_page.html",
+      "filename": "4a-prison_oversight_page.html",
+      "size": 33526
+    },
+    {
+      "path": "/home/ubuntu/Saturday7.26.25/3-about.html",
+      "filename": "3-about.html",
+      "size": 19612
+    },
+    {
+      "path": "/home/ubuntu/Saturday7.26.25/4c-drug_policy_page.html",
+      "filename": "4c-drug_policy_page.html",
+      "size": 27902
+    },
+    {
+      "path": "/home/ubuntu/Saturday7.26.25/4e-arts_in_prison_page.html",
+      "filename": "4e-arts_in_prison_page.html",
+      "size": 27081
+    },
+    {
+      "path": "/home/ubuntu/Saturday7.26.25/6-partners.html",
+      "filename": "6-partners.html",
+      "size": 38599
+    },
+    {
+      "path": "/home/ubuntu/Saturday7.26.25/7-news.html",
+      "filename": "7-news.html",
+      "size": 26549
+    },
+    {
+      "path": "/home/ubuntu/Saturday7.26.25/4-programs.html",
+      "filename": "4-programs.html",
+      "size": 24609
+    },
+    {
+      "path": "/home/ubuntu/Saturday7.26.25/2-issues.html",
+      "filename": "2-issues.html",
+      "size": 15702
+    },
+    {
+      "path": "/home/ubuntu/Saturday7.26.25/1-homepage.html",
+      "filename": "1-homepage.html",
+      "size": 77051
+    },
+    {
+      "path": "/home/ubuntu/Saturday7.26.25/index.html",
+      "filename": "index.html",
+      "size": 3939
+    },
+    {
+      "path": "/home/ubuntu/Saturday7.26.25/9-donate.html",
+      "filename": "9-donate.html",
+      "size": 35399
+    },
+    {
+      "path": "/home/ubuntu/Saturday7.26.25/5-action-center.html",
+      "filename": "5-action-center.html",
+      "size": 26450
+    },
+    {
+      "path": "/home/ubuntu/Saturday7.26.25/4b-criminal_legal_reform_page.html",
+      "filename": "4b-criminal_legal_reform_page.html",
+      "size": 16045
+    },
+    {
+      "path": "/home/ubuntu/Saturday7.26.25/4d-civic_engagement_page.html",
+      "filename": "4d-civic_engagement_page.html",
+      "size": 26934
+    }
+  ],
+  "summary": {
+    "total_archived": 19,
+    "total_kept": 15,
+    "archive_location": "/home/ubuntu/Saturday7.26.25/archive/development_files"
+  }
+}
