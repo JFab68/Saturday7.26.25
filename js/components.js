@@ -4054,7 +4054,7 @@ const artTherapyResources = [
 ];
 
 // Volunteer Artist Opportunities Data
-const volunteerOpportunities = [
+const volunteerArtistOpportunities = [
     {
         title: "Visual Arts Instructor",
         location: "Perryville Women's Prison",

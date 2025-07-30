@@ -1,9 +1,9 @@
 {
   "lighthouseVersion": "12.8.0",
-  "requestedUrl": "http://localhost:8000/1%20Homepage.html",
-  "mainDocumentUrl": "http://localhost:8000/1%20Homepage.html",
-  "finalDisplayedUrl": "http://localhost:8000/1%20Homepage.html",
-  "finalUrl": "http://localhost:8000/1%20Homepage.html",
+  "requestedUrl": "http://localhost:8000/1-homepage.html",
+  "mainDocumentUrl": "http://localhost:8000/1-homepage.html",
+  "finalDisplayedUrl": "http://localhost:8000/1-homepage.html",
+  "finalUrl": "http://localhost:8000/1-homepage.html",
   "fetchTime": "2025-07-19T03:33:42.137Z",
   "gatherMode": "navigation",
   "runWarnings": [],
@@ -281,7 +281,7 @@
         ],
         "items": [
           {
-            "url": "http://localhost:8000/1%20Homepage.html",
+            "url": "http://localhost:8000/1-homepage.html",
             "responseTime": 1.291
           }
         ],
@@ -347,7 +347,7 @@
         "chains": {
           "69C0F2C5368EA0FF34C86B63C3498162": {
             "request": {
-              "url": "http://localhost:8000/1%20Homepage.html",
+              "url": "http://localhost:8000/1-homepage.html",
               "startTime": 197912.135503,
               "endTime": 197912.138455,
               "responseReceivedTime": 197912.137899,
@@ -694,7 +694,7 @@
         ],
         "items": [
           {
-            "url": "http://localhost:8000/1%20Homepage.html",
+            "url": "http://localhost:8000/1-homepage.html",
             "total": 604.444,
             "scripting": 7.055999999999997,
             "scriptParseCompile": 2.168
@@ -879,7 +879,7 @@
         ],
         "items": [
           {
-            "url": "http://localhost:8000/1%20Homepage.html",
+            "url": "http://localhost:8000/1-homepage.html",
             "sessionTargetType": "page",
             "protocol": "http/1.0",
             "rendererStartTime": 0,
@@ -1714,17 +1714,17 @@
             "startTime": 1352.7938968208136
           },
           {
-            "url": "http://localhost:8000/1%20Homepage.html",
+            "url": "http://localhost:8000/1-homepage.html",
             "duration": 84,
             "startTime": 910.3969484104068
           },
           {
-            "url": "http://localhost:8000/1%20Homepage.html",
+            "url": "http://localhost:8000/1-homepage.html",
             "duration": 83,
             "startTime": 1077.3969484104068
           },
           {
-            "url": "http://localhost:8000/1%20Homepage.html",
+            "url": "http://localhost:8000/1-homepage.html",
             "duration": 61,
             "startTime": 994.3969484104068
           }
@@ -1739,7 +1739,7 @@
           "type": "debugdata",
           "urls": [
             "http://localhost:8000/js/components.js",
-            "http://localhost:8000/1%20Homepage.html"
+            "http://localhost:8000/1-homepage.html"
           ],
           "tasks": [
             {
@@ -2079,7 +2079,7 @@
             "unusedBytes": 2108
           },
           {
-            "name": "http://localhost:8000/1%20Homepage.html",
+            "name": "http://localhost:8000/1-homepage.html",
             "resourceBytes": 6609,
             "encodedBytes": 6609,
             "unusedBytes": 3755,
@@ -3107,7 +3107,7 @@
             "totalBytes": 105228
           },
           {
-            "url": "http://localhost:8000/1%20Homepage.html",
+            "url": "http://localhost:8000/1-homepage.html",
             "totalBytes": 71337
           },
           {
@@ -3517,7 +3517,7 @@
         ],
         "items": [
           {
-            "url": "http://localhost:8000/1%20Homepage.html",
+            "url": "http://localhost:8000/1-homepage.html",
             "totalBytes": 71149,
             "wastedBytes": 60709
           },
@@ -4619,7 +4619,7 @@
               "type": "network-tree",
               "chains": {
                 "69C0F2C5368EA0FF34C86B63C3498162": {
-                  "url": "http://localhost:8000/1%20Homepage.html",
+                  "url": "http://localhost:8000/1-homepage.html",
                   "navStartToEndTime": 18,
                   "transferSize": 71337,
                   "isLongest": true,

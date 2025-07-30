@@ -19,6 +19,7 @@
  --warning-orange: #fd7e14;
  --success-green: #28a745;
  --light-blue: #e8f0ff;
+ --alt-light-blue: #80CCFF;
 }
 
 * {
@@ -18007,5 +18008,235 @@ function toggleFAQ(faqNumber) {
     .quote-card .quote-text {
         font-size: 20px;
     }
+}
+
+
+/* =================================================================
+ GIVEBUTTER WIDGET STYLING
+ ================================================================= */
+
+/* Header Givebutter widget styling */
+.header-givebutter-widget {
+    margin-left: 15px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Style the Givebutter widget in header to be visible and functional */
+.header-givebutter-widget givebutter-widget {
+    min-width: 100px;
+    min-height: 40px;
+    display: inline-block;
+    background: var(--secondary-maroon);
+    border-radius: 6px;
+    padding: 8px 12px;
+}
+
+/* Ensure header widget is always visible */
+.header-givebutter-widget givebutter-widget button {
+    background: var(--secondary-maroon) !important;
+    color: white !important;
+    border: none !important;
+    padding: 8px 16px !important;
+    border-radius: 6px !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    cursor: pointer !important;
+}
+
+/* Main donation form Givebutter widget styling */
+.givebutter-embed {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.givebutter-embed h4 {
+    color: var(--primary-navy);
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.givebutter-embed p {
+    color: var(--medium-gray);
+    margin-bottom: 20px;
+}
+
+/* Ensure Givebutter widgets are responsive */
+givebutter-widget {
+    width: 100%;
+    max-width: 100%;
+    display: block;
+}
+
+/* Mobile responsiveness for header widget */
+@media (max-width: 768px) {
+    .header-givebutter-widget {
+        margin-left: 10px; /* Reduce margin on mobile but keep visible */
+    }
+    
+    .header-givebutter-widget givebutter-widget {
+        min-width: 80px; /* Smaller on mobile but still visible */
+        padding: 6px 10px;
+    }
+}
+
+
+/* =================================================================
+ QUOTE TEXT VISIBILITY FIX
+ Fix white text on white backgrounds in quote sections
+ ================================================================= */
+
+/* Fix for hero quote sections - ensure dark text on white backgrounds */
+.hero-quote-prominent p,
+.hero-quote-prominent blockquote p,
+.hero-quote-prominent .quote-text {
+    color: #333333 !important; /* Dark gray for readability */
+}
+
+.hero-quote-prominent cite,
+.hero-quote-prominent .quote-author {
+    color: #000080 !important; /* Navy blue for author attribution */
+}
+
+/* Fix for all quote cards */
+.quote-card .quote-text,
+.quote-card blockquote,
+.quote-card blockquote p {
+    color: #333333 !important; /* Dark gray for quote text */
+}
+
+.quote-card .quote-author,
+.quote-card cite {
+    color: #000080 !important; /* Navy blue for author */
+}
+
+/* Fix for any remaining white text in quote sections */
+.hero-quote p,
+.hero-quote blockquote,
+.hero-quote .quote-text {
+    color: #333333 !important;
+}
+
+.hero-quote cite,
+.hero-quote .quote-author {
+    color: #000080 !important;
+}
+
+/* Ensure blockquotes in white card sections are visible */
+.section-card blockquote,
+.content-section blockquote {
+    color: #333333 !important;
+}
+
+.section-card cite,
+.content-section cite {
+    color: #000080 !important;
+}
+
+/* Fix for any hero sections with white backgrounds */
+.hero.white-bg .quote-text,
+.hero.white-bg blockquote,
+.hero.white-bg p {
+    color: #333333 !important;
+}
+
+.hero.white-bg cite,
+.hero.white-bg .quote-author {
+    color: #000080 !important;
+}
+
+
+/* =================================================================
+ LIGHT BLUE BACKGROUND SECTIONS
+ Alternative background color for visual variety
+ ================================================================= */
+
+/* Light blue background section class */
+.section.light-blue-bg {
+    background-color: var(--alt-light-blue);
+    background: linear-gradient(135deg, var(--alt-light-blue) 0%, rgba(128, 204, 255, 0.8) 100%);
+}
+
+/* Ensure text contrast on light blue backgrounds */
+.section.light-blue-bg h1,
+.section.light-blue-bg h2,
+.section.light-blue-bg h3,
+.section.light-blue-bg h4,
+.section.light-blue-bg h5,
+.section.light-blue-bg h6 {
+    color: var(--primary-navy);
+}
+
+.section.light-blue-bg p,
+.section.light-blue-bg .section-intro {
+    color: var(--dark-gray);
+}
+
+/* Cards within light blue sections maintain white backgrounds */
+.section.light-blue-bg .section-card,
+.section.light-blue-bg .content-card,
+.section.light-blue-bg .program-card,
+.section.light-blue-bg .team-card,
+.section.light-blue-bg .research-card,
+.section.light-blue-bg .content-type-card {
+    background: var(--white);
+    box-shadow: 0 4px 12px rgba(0, 0, 128, 0.1);
+}
+
+/* Section labels on light blue backgrounds */
+.section.light-blue-bg .section-label {
+    color: var(--primary-navy);
+    background: rgba(255, 255, 255, 0.9);
+    padding: 4px 12px;
+    border-radius: 20px;
+    display: inline-block;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+}
+
+/* Buttons on light blue backgrounds */
+.section.light-blue-bg .btn-primary {
+    background: var(--primary-navy);
+    color: var(--white);
+    border: 2px solid var(--primary-navy);
+}
+
+.section.light-blue-bg .btn-primary:hover {
+    background: var(--white);
+    color: var(--primary-navy);
+}
+
+.section.light-blue-bg .btn-secondary {
+    background: var(--white);
+    color: var(--primary-navy);
+    border: 2px solid var(--white);
+}
+
+.section.light-blue-bg .btn-secondary:hover {
+    background: var(--primary-navy);
+    color: var(--white);
+}
+
+/* Stats on light blue backgrounds */
+.section.light-blue-bg .stat-number {
+    color: var(--primary-navy);
+}
+
+.section.light-blue-bg .stat-label {
+    color: var(--dark-gray);
+}
+
+/* Icons on light blue backgrounds */
+.section.light-blue-bg .content-icon,
+.section.light-blue-bg .program-icon {
+    background: var(--white);
+    color: var(--primary-navy);
+    box-shadow: 0 2px 8px rgba(0, 0, 128, 0.15);
 }
 
